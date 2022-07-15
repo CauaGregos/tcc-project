@@ -29,7 +29,8 @@ const Home = (props) => {
     return (
         <View style={styles.container}>
            <Animatable.View animation="fadeInRight" delay={500}>
-               <Text style={styles.title} >Aqui futuramente terá os conteudos {props.route.params?.name} tem 
+            {/* aqui recebo as props da tela de SignIn e exibo o objeto */}
+               <Text style={styles.title} >Aqui futuramente terá os conteudos {props.route.params?.nome} tem 
                     sexo : {alunos.Nome}
                </Text>                
             </Animatable.View> 

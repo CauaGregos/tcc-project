@@ -17,6 +17,8 @@ const Singin = () => {
     
 
     async function singUser(){
+        //Assim que mando props para a outra tela
+        navegar.navigate('Home',{nome:email})
         // await signInWithEmailAndPassword(auth,email,password)
         // .then(value => {
         //     Alert.alert('Sucesso','Bem vindo!')

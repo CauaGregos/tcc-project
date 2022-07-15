@@ -1,4 +1,4 @@
-import {Alert} from 'react-native';
+// import {Alert} from 'react-native';
 
 const nodemailer = require("nodemailer");
 
@@ -22,9 +22,9 @@ const sendMail = (otherUser,subject,html) => {
     }).then(mensage =>{
         // tentar por aqui dentro a função do axios para setar na pessoa a informaçao que o email dele
         // ja pode ser validado
-        Alert.alert('Confirmação de email','Confirme seu email')
+        // Alert.alert('Confirmação de email','Confirme seu email')
      
     }).catch(err => {console.log(err);})
 }
 
-export default sendMail
+module.exports = {sendMail}
