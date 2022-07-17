@@ -13,6 +13,7 @@ const Home = (props) => {
     const [alunos, setAlunos] = useState([]);
     const axios = require('axios');
     const [logado,setLogado] = useState([true]);
+   
     const navigate = useNavigation()
   
       useEffect(()=>{
@@ -30,24 +31,11 @@ const Home = (props) => {
       },[])
       // bloquear a volta da pagina 
       useEffect(() => {
-        if (logado) {
-        const backAction = () => {
-          Alert.alert("Ops!", "Você esta tentando sair do eu app favorito, deseja mesmo?", [
-            {
-              text: "Não",
-              onPress: () => null,
-              style: "cancel"
-            },
-            { text: "Sim", onPress: () => BackHandler.exitApp() }
-          ]);
-          return true;
-        };
-        const backHandler = BackHandler.addEventListener(
-          "hardwareBackPress",
-          backAction
-        );
-        return () => backHandler.remove();
-      }}, []);
+        BackHandler.addEventListener('hardwareBackPress',() => true)
+        return() =>{
+          BackHandler.addEventListener('hardwareBackPress',() => true)
+        }
+      }, []);
 
       const logout = () =>{
         setLogado(false)

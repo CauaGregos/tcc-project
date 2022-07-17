@@ -1,5 +1,5 @@
 import React,{ useState } from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Alert,TextInput} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Alert,TextInput, ActivityIndicator} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import CheckBox from 'react-native-custom-checkbox';
 import { useNavigation } from '@react-navigation/native';
@@ -13,10 +13,15 @@ const Singin = () => {
     const [email, setEmail] = useState(""); 
     const [password, setPassword] = useState();
     const [invisible, setVisible] = useState(false);
+    // estado para quando apertado o botao de loading tenha um loading
+    const [loading, setLoading] = useState([{
+        loadingLogin: false
+      }])
 
     
 
     async function singUser(){
+        setLoading({loadingLogin:true})
         //Assim que mando props para a outra tela
         navegar.navigate('Home',{nome:email})
         // await signInWithEmailAndPassword(auth,email,password)
@@ -25,6 +30,7 @@ const Singin = () => {
         //     navegar.navigate('Home')
         // })
         // .catch(error => Alert.alert('Acesso inválido','Senha ou Email está incorreto!'))
+        setLoading({loadingLogin:false})
     }
 
     return (
@@ -62,7 +68,7 @@ const Singin = () => {
                
 
                     <TouchableOpacity onPress={() => {singUser()}} style={styles.button}>
-                                <Text style={styles.buttonText}>Acessar</Text>
+                                {loading.loadingLogin ? <ActivityIndicator size={"small"} color ={"white"}/> :<Text style={styles.buttonText}>Acessar</Text>}
                     </TouchableOpacity>
             
                <TouchableOpacity style={styles.buttonRegister} onPress={()=>{navegar.navigate('Register')}}>

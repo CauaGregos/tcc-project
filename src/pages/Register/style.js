@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
         color: '#838089'
     },
     input:{
+        padding:5,
         borderWidth:1,
         borderColor:'#79797953',
         borderRadius:5,
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     },
     button:{
         backgroundColor:'#5A4FCF',
-        borderRadius:23,
+        borderRadius:10,
         paddingVertical:8,
         width:'42%',
         alignItems:'center',

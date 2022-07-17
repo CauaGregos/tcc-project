@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
         color: '#838089',
     },
     input:{
+        padding:5,
         borderWidth:1,
         borderColor:'#79797953',
         borderRadius:5,
@@ -41,9 +42,9 @@ const styles = StyleSheet.create({
     button:{
         marginTop:30,
         backgroundColor:'#5A4FCF',
-        borderRadius:42,
+        borderRadius:10,
         paddingVertical:8,
-        width:'60%',
+        width:'50%',
         bottom:'1%',
         alignItems:'center',
         justifyContent:'center',
