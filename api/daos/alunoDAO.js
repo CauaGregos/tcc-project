@@ -4,10 +4,24 @@ async function cadastrarAluno(aluno) {
     const conexao = await bd.getConexao();
     if (conexao == null) return null;
 
+    console.log(aluno.nome,aluno.sobrenome,aluno.email,aluno.idade)
+
     try {
-        const sql = "insert into alunos (id,Nome,Idade,CEP) values(?,?,?,?)";
-        const dados = [aluno.id,aluno.nome,aluno.idade,aluno.cep];
-        console.log(dados)
+        const sql = "insert into alunos (email, nome,sobrenome, idade) values(?,?,?,?)";
+        const dados = [aluno.email,aluno.nome,aluno.sobrenome,aluno.idade];
+        await conexao.query(sql, dados);
+        return true;
+    }
+    catch (excecao) { return false; }
+}
+
+async function cadastrarPerfil(perfil) {
+    const conexao = await bd.getConexao();
+    if (conexao == null) return null;
+
+    try {
+        const sql = "insert into perfilaluno (nome, sobrenome,email, senha) values(?,?,?,?)";
+        const dados = [perfil.nome,perfil.sobrenome,perfil.email,perfil.senha];
         await conexao.query(sql, dados);
         return true;
     }
@@ -66,4 +80,4 @@ async function recupereTodos() {
     }
     catch (excecao) { return false; }
 }
-module.exports = { cadastrarAluno, atualizarAluno, excluirAluno,getAluno,recupereTodos}
+module.exports = { cadastrarAluno, atualizarAluno, excluirAluno,getAluno,recupereTodos,cadastrarPerfil}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity,TextInput,ScrollView} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity,TextInput,ScrollView, Alert} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {LinearGradient} from 'expo-linear-gradient';
 import { useState } from 'react';
@@ -10,17 +10,35 @@ import styles from './style';
 const Register = () => {
 
     const navegar = useNavigation();
+    const axios = require('axios');
+
+    const [nome, setNome] = useState(null);
+    const [sobrenome, setSobrenome] = useState(null);
+    const [idade, setIdade] = useState(null);
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
-
+    
 
     async function createUser() {
-        // await createUserWithEmailAndPassword(auth,email,password)
-        // .then(value => {
-        //     alert('Cadastrado com sucesso!!')
-        //     navegar.navigate('Singin')
-        // })
-        // .catch(error => console.log(error))
+        await axios.post('http://192.168.1.105:3000/cadastrarAluno',{
+            nome:nome,
+            sobrenome:sobrenome,
+            email: email,
+            idade:idade
+        })
+        .then(res =>{
+            axios.post('http://192.168.1.105:3000/cadastrarPerfil',{
+                nome:nome,
+            sobrenome:sobrenome,
+            email: email,
+            senha:password
+            }).then(res =>{navegar.navigate("WaitConfirm")}).catch(err =>{console.log(err)})
+        })
+        .catch(err =>{
+          console.log(err)
+        })
+
+        
     }
 
     return (
@@ -36,13 +54,25 @@ const Register = () => {
                     <Text style={styles.title}>Nome</Text>
                     <TextInput
                         style={styles.input}
+                        value={nome}
+                        onChangeText={text => setNome(text)}
                         placeholder='Digite seu Nome..'
                     />
 
                     <Text style={styles.title}>Seu Sobrenome</Text>
                     <TextInput
                         style={styles.input}
+                        value={sobrenome}
+                        onChangeText={text => setSobrenome(text)}
                         placeholder='Digite seu Sobrenome..'
+                    />
+
+                    <Text style={styles.title}>Sua idade</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={idade}
+                        onChangeText={text => setIdade(text)}
+                        placeholder='Digite sua idade..'
                     />
 
                     <Text style={styles.title}>Cadastre seu email</Text>

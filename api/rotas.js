@@ -2,22 +2,48 @@ const bd = require('./config/bd');
 const bdConfig = require('./config/bdConfig');
 const AlunoDAO = require('./daos/alunoDAO');
 const AlunoDBO = require('./dbos/alunoDBO');
-const comunicado=require('./comunicado.js');
+const PerfilDBO = require('./dbos/perfilDBO');
+const comunicado=require('./config/erros');
 
 async function cadastrarAluno(req, res) {
-    if (Object.values(req.body).length != 4 || !req.body.id|| !req.body.Nome || !req.body.Idade || !req.body.CEP) {
-        const erro=comunicado.novo('Ddi','Dados inesperados','Não foram fornecidos exatamente as 4 informações esperadas de um Aluno').object;
+    if (Object.values(req.body).length != 4 || !req.body.nome || !req.body.sobrenome || !req.body.idade || !req.body.email) {
+        const erro=comunicado.novo('Ddi','Dados inesperados','Não foram fornecidos exatamente as 5 informações esperadas de um Aluno').object;
         return res.status(422).json(erro)
     }
     
     let aluno;
     try {
-        aluno = AlunoDBO.novo(req.body.id,req.body.Nome, req.body.Idade, req.body.CEP)
+        aluno = AlunoDBO.novo(req.body.nome,req.body.sobrenome, req.body.email ,req.body.idade)
     } catch (error) {
         const erro=comunicado.novo('Ddi','Dados inesperados','Não foram fornecidos exatamente as 3 informações esperadas de um aluno(nome, idade e cep)').object;
         return res.status(422).json(erro);
     }
     const ret = await AlunoDAO.cadastrarAluno(aluno)
+
+    if (ret === undefined) {
+        const erro=comunicado.novo('CBD','Sem conexao com o BD','Não foi possivel estabelecer conexao com o banco de dados').object; 
+        return res.status(500).json(erro)
+    }
+
+    const sucesso=comunicado.novo('RBS','Inclusão bem sucedida','sucess').object; 
+    return res.status(201).json(sucesso);
+
+}
+
+async function cadastrarPerfil(req, res) {
+    if (Object.values(req.body).length != 4 || !req.body.nome || !req.body.sobrenome || !req.body.email || !req.body.senha ) {
+        const erro=comunicado.novo('Ddi','Dados inesperados','Não foram fornecidos exatamente as 5 informações esperadas de um Aluno').object;
+        return res.status(422).json(erro)
+    }
+    
+    let perfil;
+    try {
+        perfil = PerfilDBO.novo(req.body.nome,req.body.sobrenome, req.body.email ,req.body.senha)
+    } catch (error) {
+        const erro=comunicado.novo('Ddi','Dados inesperados','Não foram fornecidos exatamente as 3 informações esperadas de um aluno(nome, idade e cep)').object;
+        return res.status(422).json(erro);
+    }
+    const ret = await AlunoDAO.cadastrarPerfil(perfil)
 
     if (ret === undefined) {
         const erro=comunicado.novo('CBD','Sem conexao com o BD','Não foi possivel estabelecer conexao com o banco de dados').object; 
@@ -203,5 +229,5 @@ async function recupereTodos(req, res) {
     return res.status(200).json(ret); // retorno ret
 }
 
-module.exports={cadastrarAluno,atualizarAluno,excluirAluno,getAluno,recupereTodos};
+module.exports={cadastrarAluno,atualizarAluno,excluirAluno,getAluno,recupereTodos,cadastrarPerfil};
 

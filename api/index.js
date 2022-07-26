@@ -19,7 +19,8 @@ async function ativacaoDoServidor(){
     });
 
 
-    app.post ('/aluno',rotas.cadastrarAluno)
+    app.post ('/cadastrarAluno',rotas.cadastrarAluno)
+    app.post ('/cadastrarPerfil',rotas.cadastrarPerfil)
     app.put('/attAluno/:id',rotas.atualizarAluno)
     app.delete('/alunoDel/:id',rotas.excluirAluno)
     app.get('/aluno/:id', rotas.getAluno)

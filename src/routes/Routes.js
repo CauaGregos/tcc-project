@@ -6,7 +6,7 @@ import Singin from '../pages/SignIn';
 import { StatusBar } from 'expo-status-bar';
 import Register from '../pages/Register';
 import Home from '../pages/Home';
-
+import WaitConfirm from '../pages/waitConfirm';
 const Stack = createNativeStackNavigator();
 
 
@@ -16,6 +16,7 @@ function Routes() {
     <NavigationContainer>
       <StatusBar backgroundColor='#202020'/>
       <Stack.Navigator>
+        <Stack.Screen name="WaitConfirm" component={WaitConfirm} options={{headerShown: false}} />
         <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
         <Stack.Screen name="Singin" component={Singin} options={{headerShown: false}} />
         <Stack.Screen name="Register" component={Register} options={{headerShown: false}} />

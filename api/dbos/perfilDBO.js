@@ -2,12 +2,12 @@ class Aluno {
     #nome
     #sobrenome
     #email
-    #idade
+    #senha
 
-    constructor(nome, sobrenome,email, idade) {
+    constructor(nome, sobrenome,email, senha) {
         this.#nome = nome
         this.#sobrenome = sobrenome
-        this.#idade = idade
+        this.#senha = senha
         this.#email = email 
     }
 
@@ -23,8 +23,8 @@ class Aluno {
         return this.#email
     }
 
-    get idade() {
-        return this.#idade;
+    get senha() {
+        return this.#senha;
     }
 
     set nome(nome) {
@@ -48,17 +48,17 @@ class Aluno {
         this.#email = email;
     }
 
-    set idade(idade) {
-        if (idade === undefined || typeof idade !== 'number' || idade <= 0 )
-        throw ('Idade inválida')
+    set senha(senha) {
+        if (senha === undefined || typeof senha !== 'number' || senha <= 0 )
+        throw ('Nome inválidp')
 
-        this.#idade = idade;
+        this.#senha = senha;
     }
    
 }
 
-function novo(nome, sobrenome,email, idade) {
-    return new Aluno(nome, sobrenome,email, idade)
+function novo(nome, sobrenome,email, senha) {
+    return new Aluno(nome, sobrenome,email, senha)
 }
 
 module.exports = {novo}
