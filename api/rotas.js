@@ -4,6 +4,7 @@ const AlunoDAO = require('./daos/alunoDAO');
 const AlunoDBO = require('./dbos/alunoDBO');
 const PerfilDBO = require('./dbos/perfilDBO');
 const comunicado=require('./config/erros');
+const { sendMail } = require('../src/services/sendEmail');
 
 async function cadastrarAluno(req, res) {
     if (Object.values(req.body).length != 4 || !req.body.nome || !req.body.sobrenome || !req.body.idade || !req.body.email) {
@@ -53,6 +54,19 @@ async function cadastrarPerfil(req, res) {
     const sucesso=comunicado.novo('RBS','Inclusão bem sucedida','sucess').object; 
     return res.status(201).json(sucesso);
 
+}
+ 
+async function enviarEmail (req, res){
+    sendMail(req.body.email,"Confirmar email","<h1>Confirme seu email</h1> <a href = 'http://192.168.1.105:3000/confirmarEmail/"+req.body.email+"'>Confirmar email</a>")
+    const sucesso=comunicado.novo('RBS','Inclusão bem sucedida','sucess').object; 
+    return res.status(201).json(sucesso);
+}
+
+async function confirmarEmail(req, res) {
+    
+    AlunoDAO.confirmarEmail(req.params.email)
+    const sucesso=comunicado.novo('RBS','Email confirmado com sucesso','sucess').object; 
+    return res.status(201).json(sucesso);
 }
 
 async function atualizarAluno(req, res) {
@@ -229,5 +243,5 @@ async function recupereTodos(req, res) {
     return res.status(200).json(ret); // retorno ret
 }
 
-module.exports={cadastrarAluno,atualizarAluno,excluirAluno,getAluno,recupereTodos,cadastrarPerfil};
+module.exports={cadastrarAluno,atualizarAluno,excluirAluno,getAluno,recupereTodos,cadastrarPerfil,confirmarEmail,enviarEmail};
 

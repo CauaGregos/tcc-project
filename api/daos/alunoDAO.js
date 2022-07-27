@@ -28,6 +28,20 @@ async function cadastrarPerfil(perfil) {
     catch (excecao) { return false; }
 }
 
+async function confirmarEmail(email) {
+    const conexao = await bd.getConexao();
+    if (conexao == null) return null;
+
+    try {
+        const sql = "UPDATE perfilaluno SET confirmado = 1 WHERE email = ?";
+        const dados = [email];
+        await conexao.query(sql, dados);
+        return true;
+    }
+    catch (excecao) { return false; }
+}
+
+
 async function atualizarAluno(aluno) {
     const conexao = await bd.getConexao();
     if (conexao == null) return null;
@@ -80,4 +94,4 @@ async function recupereTodos() {
     }
     catch (excecao) { return false; }
 }
-module.exports = { cadastrarAluno, atualizarAluno, excluirAluno,getAluno,recupereTodos,cadastrarPerfil}
+module.exports = { cadastrarAluno, atualizarAluno, excluirAluno,getAluno,recupereTodos,cadastrarPerfil,confirmarEmail}

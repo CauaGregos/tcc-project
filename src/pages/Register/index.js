@@ -5,8 +5,8 @@ import {LinearGradient} from 'expo-linear-gradient';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import styles from './style';
-
-
+// import sendEmail from '../../services/sendEmail';
+ 
 const Register = () => {
 
     const navegar = useNavigation();
@@ -29,16 +29,21 @@ const Register = () => {
         .then(res =>{
             axios.post('http://192.168.1.105:3000/cadastrarPerfil',{
                 nome:nome,
-            sobrenome:sobrenome,
-            email: email,
-            senha:password
-            }).then(res =>{navegar.navigate("WaitConfirm")}).catch(err =>{console.log(err)})
+                sobrenome:sobrenome,
+                email: email,
+                senha:password
+            }).then((res) =>{
+            }).catch(err =>{console.log(err)})
         })
         .catch(err =>{
           console.log(err)
         })
 
-        
+        axios.post('http://192.168.1.105:3000/enviarEmail',{
+                    email: email
+                }).then(res =>{}).catch(err =>{console.log(err)})
+
+                navegar.navigate("WaitConfirm")
     }
 
     return (
