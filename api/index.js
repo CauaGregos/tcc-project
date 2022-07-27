@@ -2,10 +2,6 @@ const express = require('express')
 
 const rotas = require('./rotas')
 
-// function middleWareGlobal(req,res,next){
-//     next();
-// }
-
 async function ativacaoDoServidor(){
     const app = express();
     app.use(express.json());
@@ -17,7 +13,6 @@ async function ativacaoDoServidor(){
         res.header('Access-Control-Allow-Headers', 'Content-Type');
         next();
     });
-
 
     app.post ('/cadastrarAluno',rotas.cadastrarAluno)
     app.post ('/cadastrarPerfil',rotas.cadastrarPerfil)

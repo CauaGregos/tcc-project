@@ -65,7 +65,7 @@ async function enviarEmail (req, res){
 async function confirmarEmail(req, res) {
     
     AlunoDAO.confirmarEmail(req.params.email)
-    const sucesso=comunicado.novo('RBS','Email confirmado com sucesso','sucess').object; 
+    const sucesso=comunicado.novo('RBS','Email '+req.params.email+' confirmado com sucesso','sucess').object; 
     return res.status(201).json(sucesso);
 }
 
