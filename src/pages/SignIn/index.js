@@ -73,6 +73,10 @@ const Singin = () => {
                     <Text style={styles.registerText}>Não possui acesso? Registre - se</Text>
                </TouchableOpacity>
 
+               <TouchableOpacity style={styles.buttonRegister} onPress={()=>{navegar.navigate('ForgotAcsses')}}>
+                    <Text style={styles.registerText}>Esqueci minha senha</Text>
+               </TouchableOpacity>
+
             </Animatable.View> 
 
         </View>
