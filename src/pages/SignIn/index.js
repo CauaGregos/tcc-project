@@ -8,7 +8,7 @@ import styles from './style';
 
 
 const Singin = () => {
-    
+    const axios = require('axios');
     const navegar = useNavigation();
     const [email, setEmail] = useState(""); 
     const [password, setPassword] = useState();
@@ -21,16 +21,14 @@ const Singin = () => {
     
 
     async function singUser(){
+        // aqui tenho minha função de logar
         setLoading({loadingLogin:true})
-        //Assim que mando props para a outra tela
-        navegar.navigate('Home',{nome:email})
-        // await signInWithEmailAndPassword(auth,email,password)
-        // .then(value => {
-        //     Alert.alert('Sucesso','Bem vindo!')
-        //     navegar.navigate('Home')
-        // })
-        // .catch(error => Alert.alert('Acesso inválido','Senha ou Email está incorreto!'))
-        setLoading({loadingLogin:false})
+        await axios.get('http://192.168.1.105:3000/getAluno/'+email+'/'+password).then(res =>{
+                navegar.navigate('Home',{nome:email})
+                setLoading({loadingLogin:false})
+            }).catch(err =>{Alert.alert("Email ou senha incorretos!!") 
+            setLoading({loadingLogin:false})})
+       
     }
 
     return (

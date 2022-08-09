@@ -18,10 +18,11 @@ async function ativacaoDoServidor(){
     app.post ('/cadastrarPerfil',rotas.cadastrarPerfil)
     app.post ('/enviarEmail',rotas.enviarEmail)
     app.get('/confirmarEmail/:email',rotas.confirmarEmail)
-    app.put('/attAluno/:id',rotas.atualizarAluno)
-    app.delete('/alunoDel/:id',rotas.excluirAluno)
-    app.get('/aluno/:id', rotas.getAluno)
-    app.get('/alunos',rotas.recupereTodos)
+    app.get('/getAluno/:email/:senha', rotas.getAluno)
+    
+    // app.put('/attAluno/:id',rotas.atualizarAluno)
+    // app.delete('/alunoDel/:id',rotas.excluirAluno)
+    // app.get('/alunos',rotas.recupereTodos)
     
     console.log('Servidor ativo')
     app.listen(3000);

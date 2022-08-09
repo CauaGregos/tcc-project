@@ -182,9 +182,10 @@ async function getAluno(req, res) {
         
     }
 
-    const id=req.perams.id; // pego o codigo
-
-    const ret = await AlunoDAO.getAluno(id); // utilizo o recupera um
+    const email=req.params.email; // pego o codigo
+    const senha=req.params.senha;
+    
+    const ret = await AlunoDAO.getAluno(email,senha); // utilizo o recupera um
 
     //Trato os erros do recupera um
     if (ret===null) {

@@ -21,7 +21,7 @@ const Home = (props) => {
           .then(res =>{
               const data = res.data
               for(let i = 0; i<data.length; i++){
-                console.log(data[i].Nome)
+                
                 setAlunos(data[i]);
             }
           })

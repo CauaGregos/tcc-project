@@ -69,13 +69,13 @@ async function excluirAluno(id) {
     }
 }
 
-async function getAluno(id) {
+async function getAluno(email,senha) {
     const conexao = await bd.getConexao();
    
     if (conexao == null) return null;
     try {
-        const sql = "SELECT * FROM alunos WHERE id = ?"
-        const dados = [id];
+        const sql = "SELECT * FROM perfilaluno WHERE email = ? AND senha = ?"
+        const dados = [email,senha];
         const [linhas] = await conexao.execute(sql, dados);
         return linhas;
     }
