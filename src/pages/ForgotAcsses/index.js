@@ -7,7 +7,9 @@ import styles from './style';
 
 
 
+
 const ForgotAcsses = () => {
+    const sendEmail = require('../../services/sendEmail')
     const axios = require('axios');
     const navegar = useNavigation();
     const [email, setEmail] = useState(""); 
@@ -21,6 +23,7 @@ const ForgotAcsses = () => {
     
 
     async function commit(){
+        
         // aqui tenho minha função de logar
         // setLoading({loadingLogin:true})
         // await axios.get('http://192.168.1.105:3000/getAluno/'+email+'/'+password).then(res =>{

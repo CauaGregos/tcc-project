@@ -61,6 +61,22 @@ async function enviarEmail (req, res){
     const sucesso=comunicado.novo('RBS','Inclusão bem sucedida','sucess').object; 
     return res.status(201).json(sucesso);
 }
+// aqui aparecera no email
+async function emailEsqueciSenha (req, res){
+    // sendMail(req.body.email,"Esqueci minha senha","<h1>Confirme seu email</h1> <a href = 'http://192.168.1.105:3000/confirmarEmail/"+req.body.email+"'>Confirmar email</a>")
+    const sucesso=comunicado.novo('RBS','Inclusão bem sucedida','sucess').object; 
+    return res.status(201).json(sucesso);
+}
+
+async function esqueciSenha (req, res){
+    const email = req.params.email
+    const sucesso=comunicado.novo('RBS','Inclusão bem sucedida','sucess').object; 
+    // precisa ter input para pegar a nova senha TELA PARA CRIAR NOIVA SENHA
+    return res.send(
+    <html>
+        
+    </html>);
+}
 
 async function confirmarEmail(req, res) {
     
