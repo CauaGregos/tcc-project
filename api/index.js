@@ -16,10 +16,17 @@ async function ativacaoDoServidor(){
 
     app.post ('/cadastrarAluno',rotas.cadastrarAluno)
     app.post ('/cadastrarPerfil',rotas.cadastrarPerfil)
+    // envia email
     app.post ('/enviarEmail',rotas.enviarEmail)
+
+    // confirma email no banco de dados
     app.get('/confirmarEmail/:email',rotas.confirmarEmail)
+    //localiza o user atraves do email e senha 
     app.get('/getAluno/:email/:senha', rotas.getAluno)
-    
+
+    // vai mandar o cliente do email para esse site
+    app.get('/esqueciSenha/:email', rotas.esqueciSenha)
+
     // app.put('/attAluno/:id',rotas.atualizarAluno)
     // app.delete('/alunoDel/:id',rotas.excluirAluno)
     // app.get('/alunos',rotas.recupereTodos)

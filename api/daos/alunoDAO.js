@@ -4,7 +4,7 @@ async function cadastrarAluno(aluno) {
     const conexao = await bd.getConexao();
     if (conexao == null) return null;
 
-    console.log(aluno.nome,aluno.sobrenome,aluno.email,aluno.idade)
+    
 
     try {
         const sql = "insert into alunos (email, nome,sobrenome, idade) values(?,?,?,?)";
