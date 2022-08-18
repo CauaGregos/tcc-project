@@ -7,6 +7,7 @@ const comunicado=require('./config/erros');
 const { sendMail } = require('./sendEmail');
 const { html } = require('./res/resForgotAcsses');
 const { EmailConfirmado } = require('./res/resConfirmEmail');
+const e = require('express');
 
 async function cadastrarAluno(req, res) {
     if (Object.values(req.body).length != 4 || !req.body.nome || !req.body.sobrenome || !req.body.idade || !req.body.email) {
@@ -88,6 +89,19 @@ async function esqueciSenha (req, res){
     return res.send(html(email));
 }
 
+
+async function consultarEmailConfirmado (req, res){
+
+    if (Object.values(req.body).length >= 1) {
+        const erro=comunicado.novo('Ddi','Dados inesperados','Não é necessario ter dados nessa consulta').object;
+        return res.status(422).json(erro)
+    }
+
+    const email = req.params.email
+    let confirmado =  AlunoDAO.consultarEmailConfirmado(email)
+    // precisa ter input para pegar a nova senha TELA PARA CRIAR NOIVA SENHA
+    return confirmado
+}
 
 
 async function atualizarAluno(req, res) {
@@ -265,5 +279,5 @@ async function recupereTodos(req, res) {
     return res.status(200).json(ret); // retorno ret
 }
 
-module.exports={cadastrarAluno,atualizarAluno,excluirAluno,getAluno,recupereTodos,cadastrarPerfil,confirmarEmail,enviarEmail,esqueciSenha};
+module.exports={cadastrarAluno,atualizarAluno,excluirAluno,getAluno,recupereTodos,cadastrarPerfil,confirmarEmail,enviarEmail,esqueciSenha,consultarEmailConfirmado};
 

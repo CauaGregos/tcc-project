@@ -41,6 +41,17 @@ async function confirmarEmail(email) {
     catch (excecao) { return false; }
 }
 
+async function consultarEmailConfirmado(email){
+    const conexao = await bd.getConexao();
+    if(conexao == null) return null;
+    try{
+        const sql = "SELECT confirmado from perfilaluno WHERE email = ?";
+        const dados = [email];
+        const [linhas] = await conexao.query(sql, dados);
+        return linhas; 
+    }
+    catch (excecao) {return false;}
+}
 
 async function atualizarAluno(aluno) {
     const conexao = await bd.getConexao();
@@ -94,4 +105,4 @@ async function recupereTodos() {
     }
     catch (excecao) { return false; }
 }
-module.exports = { cadastrarAluno, atualizarAluno, excluirAluno,getAluno,recupereTodos,cadastrarPerfil,confirmarEmail}
+module.exports = { cadastrarAluno, atualizarAluno, excluirAluno,getAluno,recupereTodos,cadastrarPerfil,confirmarEmail,consultarEmailConfirmado}
