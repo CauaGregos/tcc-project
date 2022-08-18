@@ -4,9 +4,9 @@ const AlunoDAO = require('./daos/alunoDAO');
 const AlunoDBO = require('./dbos/alunoDBO');
 const PerfilDBO = require('./dbos/perfilDBO');
 const comunicado=require('./config/erros');
-const { sendMail } = require('../src/services/sendEmail');
-const { html } = require('../src/services/res/resForgotAcsses');
-const { EmailConfirmado } = require('../src/services/res/resConfirmEmail');
+const { sendMail } = require('./sendEmail');
+const { html } = require('./res/resForgotAcsses');
+const { EmailConfirmado } = require('./res/resConfirmEmail');
 
 async function cadastrarAluno(req, res) {
     if (Object.values(req.body).length != 4 || !req.body.nome || !req.body.sobrenome || !req.body.idade || !req.body.email) {
@@ -74,9 +74,9 @@ async function confirmarEmail(req, res) {
     
 }
 
-// aqui aparecera no email
+//aqui aparecera no email
 async function emailEsqueciSenha (req, res){
-    // sendMail(req.body.email,"Esqueci minha senha","<h1>Confirme seu email</h1> <a href = 'http://192.168.1.105:3000/confirmarEmail/"+req.body.email+"'>Confirmar email</a>")
+    sendMail(req.body.email,"Esqueci minha senha","<h1>Confirme seu email</h1> <a href = 'http://192.168.1.105:3000/confirmarEmail/"+req.body.email+"'>Confirmar email</a>")
     const sucesso=comunicado.novo('RBS','Inclusão bem sucedida','sucess').object; 
     return res.status(201).json(sucesso);
 }

@@ -9,7 +9,6 @@ import styles from './style';
 
 
 const ForgotAcsses = () => {
-    const sendEmail = require('../../services/sendEmail')
     const axios = require('axios');
     const navegar = useNavigation();
     const [email, setEmail] = useState(""); 

@@ -1,6 +1,6 @@
-// import {Alert} from 'react-native';
+// // import {Alert} from 'react-native';
 
-const nodemailer = require("nodemailer");
+ const nodemailer = require("nodemailer");
 
 const sendMail = (otherUser,subject,html) => {
     let transporter = nodemailer.createTransport({
