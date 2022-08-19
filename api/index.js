@@ -27,8 +27,7 @@ async function ativacaoDoServidor(){
     // vai mandar o cliente do email para esse site
     app.get('/esqueciSenha/:email', rotas.esqueciSenha)
 
-    // end point que vai ver se o email da pessoa esta confirmado no banco de dados
-    app.get('/consultarEmailConfirmado/:email', rotas.consultarEmailConfirmado)
+   
     // app.put('/attAluno/:id',rotas.atualizarAluno)
     // app.delete('/alunoDel/:id',rotas.excluirAluno)
     // app.get('/alunos',rotas.recupereTodos)

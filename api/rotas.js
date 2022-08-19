@@ -90,19 +90,6 @@ async function esqueciSenha (req, res){
 }
 
 
-async function consultarEmailConfirmado (req, res){
-
-    if (Object.values(req.body).length >= 1) {
-        const erro=comunicado.novo('Ddi','Dados inesperados','Não é necessario ter dados nessa consulta').object;
-        return res.status(422).json(erro)
-    }
-
-    const email = req.params.email
-    let confirmado =  AlunoDAO.consultarEmailConfirmado(email)
-    // precisa ter input para pegar a nova senha TELA PARA CRIAR NOIVA SENHA
-    return confirmado
-}
-
 
 async function atualizarAluno(req, res) {
     
@@ -128,7 +115,6 @@ async function atualizarAluno(req, res) {
         return res.status(400).json(erro); 
 
     }
-
     let ret = await AlunoDAO.getAluno(id)
     if (ret === null) {
         const erro=comunicado.novo('CBD','Sem conexao com o BD','Não foi possivel estabelecer conexao com o banco de dados').object; 
@@ -142,19 +128,16 @@ async function atualizarAluno(req, res) {
         const erro=comunicado.novo('LJE','Houve um problema','Não foi possivel atualizar o dados do Aluno').object; 
         return res.status(404).json(erro);
     }
-
     ret = await AlunoDAO.atualizarAluno(aluno)
 
     if (ret === null) {
         const erro=comunicado.novo('CBD','Sem conexao com o BD','Não foi possivel estabelecer conexao com o banco de dados').object; 
         return res.status(500).json(erro)
     }
-
     if (ret === false) {
         const erro=comunicado.novo('LJE','Aluno nao existe','nao existe aluno cadastrado com esse id').object; 
         return res.status(409).json(erro)
     }
-
     const sucesso=comunicado.novo('RBS','Atualizacao bem sucedida','O aluno foi atualizado com sucesso').object; 
     return res.status(201).json(sucesso);
 }

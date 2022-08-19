@@ -23,12 +23,16 @@ const Singin = () => {
     async function singUser(){
         // aqui tenho minha função de logar
         setLoading({loadingLogin:true})
-        await axios.get('http://192.168.1.105:3000/getAluno/'+email+'/'+password).then(res =>{
+
+        await  axios.get('http://192.168.1.105:3000/getAluno/'+email+'/'+password).then(res =>{
+            // Usando oque vem de resposta da minha promisse consigo descobrir se a pessoa tem o email 
+            // confirmado ou nao
+            if(res.data[0].confirmado == 1){ 
                 navegar.navigate('Home',{nome:email})
                 setLoading({loadingLogin:false})
-            }).catch(err =>{Alert.alert("Email ou senha incorretos!!") 
-            setLoading({loadingLogin:false})})
-       
+            }else {setLoading({loadingLogin:false}); navegar.navigate('WaitConfirm')}            
+        }).catch(err =>{Alert.alert("Email ou senha incorretos!!")})
+        setLoading({loadingLogin:false})
     }
 
     return (
