@@ -9,26 +9,74 @@ import Home from '../pages/Home';
 import WaitConfirm from '../pages/waitConfirm';
 import InfoForgot from '../pages/InfoForgot';
 import ForgotAcsses from '../pages/ForgotAcsses';
-const Stack = createNativeStackNavigator();
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+// Familia de icones da lib 
+import Icon from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+
+// tipos de navigations
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+// consigo receber as props, se eu chamar e passar elas
+function TabNav(props) {
+ 
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: '#202020',
+          borderTopWidth: 0,
+          borderRadius: 10,
+          position: 'absolute',
+          left: 3,
+          right: 3,
+          bottom: 3
+        }
+      }}
+    >
+      <Tab.Screen name="Home" initialParams={{ nome: props.route.params?.nome }} component={Home}
+        options={{
+          headerShown: false,
+          // Configuração dos icones que aparecem na tabBar
+          tabBarIcon: ({ color, size, focused }) => {
+            if (focused) {
+              return <Icon name="rocket" size={30} color="#6b6080" />;
+            }
+            else
+              return <Icon name="rocket" size={30} color="#525252" />;
+          }
+        }} />
+
+      <Tab.Screen name="Settings" component={Register}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size, focused }) => {
+            if (focused) {
+              return <FontAwesome5 name="user" size={30} color="#6b6080" />;
+            }
+            else
+              return <FontAwesome5 name="user" size={30} color="#525252" />;
+          }
+        }} />
+    </Tab.Navigator>
+    
+  );
+}
 
 function Routes() {
   return (
-   
-    <NavigationContainer>
-      <StatusBar backgroundColor='#202020'/>
       <Stack.Navigator>
         <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
         <Stack.Screen name="WaitConfirm" component={WaitConfirm} options={{headerShown: false}} />
         <Stack.Screen name="Singin" component={Singin} options={{headerShown: false}} />
         <Stack.Screen name="Register" component={Register} options={{headerShown: false}} />
-        <Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
+        <Stack.Screen name="Home" component={TabNav} options={{headerShown: false}} />
         <Stack.Screen name="ForgotAcsses" component={ForgotAcsses} options={{headerShown: false}} />
         <Stack.Screen name="InfoForgot" component={InfoForgot} options={{headerShown: false}} />
       </Stack.Navigator>
-
-    </NavigationContainer>
-    
   );
 }
 
