@@ -262,5 +262,5 @@ async function recupereTodos(req, res) {
     return res.status(200).json(ret); // retorno ret
 }
 
-module.exports={cadastrarAluno,atualizarAluno,excluirAluno,getAluno,recupereTodos,cadastrarPerfil,confirmarEmail,enviarEmail,esqueciSenha,consultarEmailConfirmado};
+module.exports={cadastrarAluno,atualizarAluno,excluirAluno,getAluno,recupereTodos,cadastrarPerfil,confirmarEmail,enviarEmail,esqueciSenha};
 

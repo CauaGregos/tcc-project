@@ -27,6 +27,7 @@
     "mysql2": "^2.3.3",
     "net": "^1.0.2",
     "nodemailer": "^6.7.8",
+    "nodemon": "^2.0.19",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-native": "^0.68.2",
