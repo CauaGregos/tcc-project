@@ -37,16 +37,13 @@ function TabNav(props) {
         }
       }}
     >
+      {/*Aqui passo minhas props para o componente home no initialParams*/}
       <Tab.Screen name="Home" initialParams={{ nome: props.route.params?.nome }} component={Home}
         options={{
           headerShown: false,
           // Configuração dos icones que aparecem na tabBar
           tabBarIcon: ({ color, size, focused }) => {
-            if (focused) {
-              return <Icon name="rocket" size={30} color="#6b6080" />;
-            }
-            else
-              return <Icon name="rocket" size={30} color="#525252" />;
+           return focused ? <Icon name="rocket" size={30} color="#6b6080" /> : <Icon name="rocket" size={30} color="#525252" />
           }
         }} />
 
@@ -54,11 +51,7 @@ function TabNav(props) {
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size, focused }) => {
-            if (focused) {
-              return <FontAwesome5 name="user" size={30} color="#6b6080" />;
-            }
-            else
-              return <FontAwesome5 name="user" size={30} color="#525252" />;
+           return focused ? <FontAwesome5 name="user" size={30} color="#6b6080" /> : <FontAwesome5 name="user" size={30} color="#525252" />;
           }
         }} />
     </Tab.Navigator>

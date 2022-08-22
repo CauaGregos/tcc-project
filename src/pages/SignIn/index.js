@@ -20,17 +20,15 @@ const Singin = () => {
 
     
 
-    async function singUser(){
+    async function signInUser(){
         // aqui tenho minha função de logar
+        // Ativo o circulo de carregamento que fica girando esperando as informações chegarem da promise
         setLoading({loadingLogin:true})
-
         await  axios.get('http://192.168.1.105:3000/getAluno/'+email+'/'+password).then(res =>{
             // Usando oque vem de resposta da minha promisse consigo descobrir se a pessoa tem o email 
             // confirmado ou nao
-            if(res.data[0].confirmado == 1){ 
-                navegar.navigate('Home',{nome:email})
-                setLoading({loadingLogin:false})
-            }else {setLoading({loadingLogin:false}); navegar.navigate('WaitConfirm')}            
+            res.data[0].confirmado == 1 ? navegar.navigate('Home',{nome:email}) : navegar.navigate('WaitConfirm')
+            setLoading({loadingLogin:false})   
         }).catch(err =>{Alert.alert("Email ou senha incorretos!!")})
         setLoading({loadingLogin:false})
     }
@@ -42,24 +40,23 @@ const Singin = () => {
             </Animatable.View> 
 
             <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-               <Text style={styles.title}>Email</Text>
-               <TextInput
-               placeholder='Digite seu Email..'
-               value={email}
-               style={styles.input}
-               onChangeText = {text => setEmail(text)}
-               />
+                <Text style={styles.title}>Email</Text>
+                <TextInput
+                placeholder='Digite seu Email..'
+                value={email}
+                style={styles.input}
+                onChangeText = {text => setEmail(text)}
+                />
                 
-
                 <Text style={styles.title}>Senha</Text>
-               <TextInput
-               passwordRules='number'
-               placeholder='Sua senha...'
-               value={password}
-               style={styles.input}
-               onChangeText = {text => setPassword(text)}
-               secureTextEntry = {!invisible}
-               />
+                <TextInput
+                passwordRules='number'
+                placeholder='Sua senha...'
+                value={password}
+                style={styles.input}
+                onChangeText = {text => setPassword(text)}
+                secureTextEntry = {!invisible}
+                />
 
             <Animatable.View animation="fadeIn" delay={500} style={styles.textVisible}>
             <Text style={styles.textVisible} >Deixar senha vísivel </Text>
@@ -69,7 +66,7 @@ const Singin = () => {
                         
                
 
-                    <TouchableOpacity onPress={() => {singUser()}} style={styles.button}>
+                    <TouchableOpacity onPress={() => {signInUser()}} style={styles.button}>
                                 {loading.loadingLogin ? <ActivityIndicator size={"small"} color ={"white"}/> :<Text style={styles.buttonText}>Acessar</Text>}
                     </TouchableOpacity>
             

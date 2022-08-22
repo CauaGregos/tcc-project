@@ -18,7 +18,7 @@ const InfoForgot = () => {
                 />
             </View>
             <Animatable.View delay={1500} animation="fadeInUp" style={styles.containerForm}>
-                <Text style={styles.title}>Tudo certo... não se preocupe, um email vai chegar indicando qual passo tomar</Text>
+                <Text style={styles.title}>Tudo certo... não se preocupe, um email vai chegar indicando qual passo você deverá tomar.</Text>
                 
                 <TouchableOpacity onPress={()=>{navegar.navigate('Welcome')}} style={styles.button}>
                     <Text style={styles.buttonText}>Voltar</Text>
