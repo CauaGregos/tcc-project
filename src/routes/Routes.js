@@ -11,7 +11,7 @@ import InfoForgot from '../pages/InfoForgot';
 import ForgotAcsses from '../pages/ForgotAcsses';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-// Familia de icones da lib 
+// Familia de icones da lib vector icons
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
