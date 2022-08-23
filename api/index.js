@@ -25,8 +25,11 @@ async function ativacaoDoServidor(){
     app.get('/getAluno/:email/:senha', rotas.getAluno)
 
     // vai mandar o cliente do email para esse site
+    app.get('/encaminharEsqueciSenha/:email', rotas.encaminharEsqueciSenha)
     app.get('/esqueciSenha/:email', rotas.esqueciSenha)
 
+    // vai mudar a senha 
+    app.get('/mudarSenha/:email/:senha', rotas.mudarSenha)
    
     // app.put('/attAluno/:id',rotas.atualizarAluno)
     // app.delete('/alunoDel/:id',rotas.excluirAluno)

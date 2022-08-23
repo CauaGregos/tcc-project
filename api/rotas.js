@@ -75,19 +75,73 @@ async function confirmarEmail(req, res) {
     
 }
 
-//aqui aparecera no email
-async function emailEsqueciSenha (req, res){
-    sendMail(req.body.email,"Esqueci minha senha","<h1>Confirme seu email</h1> <a href = 'http://192.168.1.105:3000/confirmarEmail/"+req.body.email+"'>Confirmar email</a>")
+async function encaminharEsqueciSenha (req, res){
+    const email = req.params.email
+    sendMail(req.params.email,"Confirmar email","<h1>Esqueci minha senha</h1> <a href = 'http://177.220.18.50:3000/esqueciSenha/"+email+"'>Mudar senha</a>")
     const sucesso=comunicado.novo('RBS','Inclusão bem sucedida','sucess').object; 
-    return res.status(201).json(sucesso);
+    return res.status(201).json(sucesso)
 }
 
-async function esqueciSenha (req, res){
+async function esqueciSenha (req,res){
     const email = req.params.email
-    const sucesso=comunicado.novo('RBS','Inclusão bem sucedida','sucess').object; 
-    // precisa ter input para pegar a nova senha TELA PARA CRIAR NOIVA SENHA
+
+    let ret = await AlunoDAO.getAlunoExistente(email)
+   
+    if (ret === null) {
+        const erro=comunicado.novo('CBD','Sem conexao com o BD','Não foi possivel estabelecer conexao com o banco de dados').object; 
+        return res.status(500).json(erro)
+    }
+    if (ret === false) {
+        const erro=comunicado.novo('LJE','Aluno nao existe','nao existe aluno cadastrado com esse id').object; 
+        return res.status(409).json(erro)
+    }
+    if (ret.length == 0) {
+        const erro=comunicado.novo('LJE','Houve um problema','Não foi possivel atualizar o dados do Aluno').object; 
+        return res.status(404).json(erro);
+    }
+
     return res.send(html(email));
 }
+
+async function mudarSenha (req, res){
+    const email = req.params.email
+    const senha = req.params.senha
+    console.log(email,senha)
+    if (Object.values(req.params).length != 2|| !req.params.email  || !req.params.senha) {
+        const erro=comunicado.novo('Ddi','Dados inesperados','Não foram fornecidos exatamente as 2 informações esperadas para a mudança de senha').object;
+        return res.status(422).json(erro)
+    }
+
+    let ret = await AlunoDAO.getAlunoExistente(email)
+   
+    if (ret === null) {
+        const erro=comunicado.novo('CBD','Sem conexao com o BD','Não foi possivel estabelecer conexao com o banco de dados').object; 
+        return res.status(500).json(erro)
+    }
+    if (ret === false) {
+        const erro=comunicado.novo('LJE','Aluno nao existe','nao existe aluno cadastrado com esse id').object; 
+        return res.status(409).json(erro)
+    }
+    if (ret.length == 0) {
+        const erro=comunicado.novo('LJE','Houve um problema','Não foi possivel atualizar o dados do Aluno').object; 
+        return res.status(404).json(erro);
+    }
+    
+    
+    try {
+        AlunoDAO.mudarSenha(email,senha)
+    } catch (error) {
+        const erro=comunicado.novo('Ddi','Dados inesperados','Falha ao gerar DBO do Aluno.').object;
+        return res.status(422).json(erro);
+    }
+
+    const sucesso=comunicado.novo('RBS','Atualizacao bem sucedida','O aluno foi atualizado com sucesso').object; 
+
+    return res.status(201).json(sucesso);
+
+    
+}
+
 
 
 
@@ -262,5 +316,5 @@ async function recupereTodos(req, res) {
     return res.status(200).json(ret); // retorno ret
 }
 
-module.exports={cadastrarAluno,atualizarAluno,excluirAluno,getAluno,recupereTodos,cadastrarPerfil,confirmarEmail,enviarEmail,esqueciSenha};
+module.exports={cadastrarAluno,encaminharEsqueciSenha,mudarSenha,atualizarAluno,excluirAluno,getAluno,recupereTodos,cadastrarPerfil,confirmarEmail,enviarEmail,esqueciSenha};
 

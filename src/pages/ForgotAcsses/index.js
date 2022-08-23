@@ -24,12 +24,14 @@ const ForgotAcsses = () => {
     async function commit(){
         
         // aqui tenho minha função de logar
-        // setLoading({loadingLogin:true})
-        // await axios.get('http://192.168.1.105:3000/getAluno/'+email+'/'+password).then(res =>{
-        //         navegar.navigate('Home',{nome:email})
-        //         setLoading({loadingLogin:false})
-        //     }).catch(err =>{Alert.alert("Email ou senha incorretos!!") 
-        //     setLoading({loadingLogin:false})})
+        setLoading({ loadingLogin: true })
+        await axios.get('http://177.220.18.50:3000/encaminharEsqueciSenha/' + email).then(res => {
+            navegar.navigate('InfoForgot')
+            setLoading({ loadingLogin: false })
+        }).catch(err => {
+            Alert.alert("Ocorreu um problema!")
+            setLoading({ loadingLogin: false })
+        })
        
     }
 
