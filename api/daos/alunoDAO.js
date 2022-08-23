@@ -66,6 +66,19 @@ async function atualizarAluno(aluno) {
 }
 
 
+async function mudarSenha(email,senha){
+    const conexao = await bd.getConexao();
+    if(conexao == null) return null;
+    try{
+        const sql = "UPDATE perfilaluno SET senha = ? WHERE email = ?";
+        const dados = [senha,email];
+        const [linhas] = await conexao.query(sql, dados);
+        return linhas; 
+    }
+    catch (excecao) {return false;}
+}
+
+
 async function excluirAluno(id) {
     const conexao = await bd.getConexao();
     if (conexao == null) return null;
@@ -95,6 +108,21 @@ async function getAluno(email,senha) {
     }
 }
 
+async function getAlunoExistente(email) {
+    const conexao = await bd.getConexao();
+   
+    if (conexao == null) return null;
+    try {
+        const sql = "SELECT * FROM perfilaluno WHERE email = ?"
+        const dados = [email];
+        const [linhas] = await conexao.execute(sql, dados);
+        return linhas;
+    }
+    catch (excecao) {
+        return false;
+    }
+}
+
 async function recupereTodos() {
     const conexao = await bd.getConexao();
     if (conexao == null) return null;
@@ -105,4 +133,4 @@ async function recupereTodos() {
     }
     catch (excecao) { return false; }
 }
-module.exports = { cadastrarAluno, atualizarAluno, excluirAluno,getAluno,recupereTodos,cadastrarPerfil,confirmarEmail,consultarEmailConfirmado}
+module.exports = { cadastrarAluno, atualizarAluno, excluirAluno,getAluno,recupereTodos,cadastrarPerfil,confirmarEmail,consultarEmailConfirmado,getAlunoExistente,mudarSenha}

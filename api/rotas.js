@@ -6,6 +6,7 @@ const PerfilDBO = require('./dbos/perfilDBO');
 const comunicado=require('./config/erros');
 const { sendMail } = require('./sendEmail');
 const { html } = require('./res/resForgotAcsses');
+const { resUpdatePass } = require('./res/sussessoUpdatePass')
 const { EmailConfirmado } = require('./res/resConfirmEmail');
 const e = require('express');
 
@@ -106,7 +107,7 @@ async function esqueciSenha (req,res){
 async function mudarSenha (req, res){
     const email = req.params.email
     const senha = req.params.senha
-    console.log(email,senha)
+    
     if (Object.values(req.params).length != 2|| !req.params.email  || !req.params.senha) {
         const erro=comunicado.novo('Ddi','Dados inesperados','Não foram fornecidos exatamente as 2 informações esperadas para a mudança de senha').object;
         return res.status(422).json(erro)
@@ -136,8 +137,8 @@ async function mudarSenha (req, res){
     }
 
     const sucesso=comunicado.novo('RBS','Atualizacao bem sucedida','O aluno foi atualizado com sucesso').object; 
-
-    return res.status(201).json(sucesso);
+    console.log(email,senha)
+    return res.send(resUpdatePass());
 
     
 }

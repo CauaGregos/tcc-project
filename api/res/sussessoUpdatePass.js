@@ -1,4 +1,4 @@
-const html = (props) => {
+const resUpdatePass = () => {
    
     return (`
     <html>
@@ -11,14 +11,7 @@ const html = (props) => {
 
     <body>
         <div class="box">
-            <form>
-                <img src="https://media.discordapp.net/attachments/929099425584934963/936619891245608960/unknown.png?width=72&height=551" class="icon">
-                <tr><legend class="legends">Troque Sua Senha</legend></tr>
-                <tr></tr>
-                <td class="inputs"><input type="password" id="mudarSenha" placeholder="Digite Sua Senha" class="inputs" style="text-align: center;" ></td>
-                <tr></tr>
-            </form>
-            <button type="submit" class="botao" onclick="mudarSenha('${props}')">Atualizar Senha</button>
+            <h1>Senha alterada com sucesso!</h1>
         </div>
     </body>
     
@@ -96,16 +89,8 @@ const html = (props) => {
             margin-left: 25%;
         }
     </style>
-
-<script>
-const mudarSenha = (email) => {
-   const senha = document.getElementById('mudarSenha').value
-   window.location.href = 'http://192.168.1.105:3000/mudarSenha/'+ email+'/'+senha
-}
-</script>
-
     </html>
     `)
 }
 
-module.exports = {html}
+module.exports = {resUpdatePass}
