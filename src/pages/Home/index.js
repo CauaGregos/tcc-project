@@ -17,7 +17,7 @@ const Home = (props) => {
     const navigate = useNavigation()
   
       useEffect(()=>{
-        axios.get('http://192.168.1.105:3000/alunos')
+        axios.get('http://177.220.18.50:3000/alunos')
           .then(res =>{
               const data = res.data
               for(let i = 0; i<data.length; i++){
@@ -46,9 +46,7 @@ const Home = (props) => {
         <View style={styles.container}>
            <Animatable.View animation="fadeInRight" delay={500}>
             {/* aqui recebo as props da tela de SignIn e exibo o objeto */}
-               <Text style={styles.title} >Aqui futuramente terá os conteudos {props.route.params?.nome} tem 
-                    sexo : {alunos.Nome}
-               </Text>   
+               <Text style={styles.title} >Bem vindo(a) {props.route.params?.nome}</Text>   
               <TouchableOpacity onPress={() => {logout()}}>
               <Text style={styles.title}> Sair da conta</Text>   
               </TouchableOpacity>

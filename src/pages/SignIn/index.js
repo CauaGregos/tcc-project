@@ -24,11 +24,15 @@ const Singin = () => {
         // aqui tenho minha função de logar
         // Ativo o circulo de carregamento que fica girando esperando as informações chegarem da promise
         setLoading({loadingLogin:true})
-        await  axios.get('http://192.168.1.105:3000/getAluno/'+email+'/'+password).then(res =>{
+        await axios.get('http://177.220.18.50:3000/getAluno/'+email+'/'+password).then(res1 =>{
+            axios.get('http://177.220.18.50:3000/getAlunoExistente/'+email).then(res => {
             // Usando oque vem de resposta da minha promisse consigo descobrir se a pessoa tem o email 
             // confirmado ou nao
-            res.data[0].confirmado == 1 ? navegar.navigate('Home',{nome:email}) : navegar.navigate('WaitConfirm')
+            
+            res1.data[0].confirmado == 1 ? navegar.navigate('Home',{nome:res.data[0].nome}) : navegar.navigate('WaitConfirm')
             setLoading({loadingLogin:false})   
+            }).catch(err => {})
+            
         }).catch(err =>{Alert.alert("Email ou senha incorretos!!")})
         setLoading({loadingLogin:false})
     }

@@ -1,63 +1,63 @@
-class Comunicado{
-    #codigo
-    #mensagem
-    #descriçao
+class Comunicate {
+    #code
+    #message
+    #description
 
-    constructor(codigo,mensagem,descriçao){
+    constructor(code, message, description) {
 
-        this.codigo=codigo;
-        this.mensagem=mensagem;
-        this.descriçao=descriçao;
+        this.code = code;
+        this.message = message;
+        this.description = description;
 
     }
 
     //getters
 
-    get codigo (){
-        return this.#codigo;
+    get code() {
+        return this.#code;
     }
 
-    get mensagem (){
-        return this.#mensagem;
+    get message() {
+        return this.#message;
     }
 
-    get descriçao (){
-        return this.#descriçao;
+    get description() {
+        return this.#description;
     }
 
-    set codigo(codigo){
+    set code(code) {
 
-        if (codigo===undefined|| typeof codigo!== 'string'|| codigo.length!==3) {
-            throw ('codigo invalido!!')
+        if (code === undefined || typeof code !== 'string' || code.length !== 3) {
+            throw ('Missing Code!!')
         }
 
-        this.#codigo=codigo;
+        this.#code = code;
     }
 
-    set mensagem(mensagem){
+    set message(message) {
 
-        if (mensagem===undefined|| typeof mensagem!== 'string'|| mensagem==='') {
-            throw ('Mensagem  invalida!!')
+        if (message === undefined || typeof message !== 'string' || message === '') {
+            throw ('Missing message')
         }
 
-        this.#mensagem=mensagem;
+        this.#message = message;
     }
 
-    set descriçao(descriçao){
+    set description(description) {
 
-        if (descriçao===undefined|| typeof descriçao!=='string'|| this.descriçao==='') {
-            throw ('codigo invalido!!')
+        if (description === undefined || typeof description !== 'string' || this.description === '') {
+            throw ('Missing Code')
         }
 
-        this.#descriçao=descriçao;
+        this.#description = description;
     }
 
-    get object(){
-        return{codigo:this.#codigo,mensagem:this.#mensagem,descriçao:this.#descriçao}
+    get object() {
+        return { code: this.#code, message: this.#message, description: this.#description }
     }
 }
-    function novo(codigo,mensagem,descriçao) {
-        return new Comunicado(codigo,mensagem,descriçao);
-    
-    }
-module.exports={novo};
+function newFunctionForComunicate(code, message, description) {
+    return new Comunicate(code, message, description);
+
+}
+module.exports = { newFunctionForComunicate };

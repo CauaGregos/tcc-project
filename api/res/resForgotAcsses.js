@@ -100,7 +100,7 @@ const html = (props) => {
 <script>
 const mudarSenha = (email) => {
    const senha = document.getElementById('mudarSenha').value
-   window.location.href = 'http://192.168.1.105:3000/mudarSenha/'+ email+'/'+senha
+   window.location.href = 'http://177.220.18.50:3000/mudarSenha/'+ email+'/'+senha
 }
 </script>
 

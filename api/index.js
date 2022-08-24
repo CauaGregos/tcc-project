@@ -23,6 +23,7 @@ async function ativacaoDoServidor(){
     app.get('/confirmarEmail/:email',rotas.confirmarEmail)
     //localiza o user atraves do email e senha 
     app.get('/getAluno/:email/:senha', rotas.getAluno)
+    app.get('/getAlunoExistente/:email', rotas.getAlunoExistente)
 
     // vai mandar o cliente do email para esse site
     app.get('/encaminharEsqueciSenha/:email', rotas.encaminharEsqueciSenha)

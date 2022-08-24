@@ -1,44 +1,44 @@
-class Aluno {
-    #nome
-    #sobrenome
+class Student {
+    #name
+    #lastName
     #email
-    #idade
+    #age
 
-    constructor(nome, sobrenome,email, idade) {
-        this.#nome = nome
-        this.#sobrenome = sobrenome
-        this.#idade = idade
+    constructor(name, lastName, email, age) {
+        this.#name = name
+        this.#lastName = lastName
         this.#email = email 
+        this.#age = age
     }
 
-    get nome() {
-        return this.#nome;
+    get name() {
+        return this.#name;
     }
 
-    get sobrenome() {
-        return this.#sobrenome
+    get lastName() {
+        return this.#lastName
     }
 
     get email() {
         return this.#email
     }
 
-    get idade() {
-        return this.#idade;
+    get age() {
+        return this.#age;
     }
 
-    set nome(nome) {
-        if (nome === undefined || typeof nome !== 'string' || nome ==="" )
-        throw ('Nome inválido')
+    set name(name) {
+        if (name === undefined || typeof name !== 'string' || name ==="" )
+        throw ('Missing Name')
 
-        this.#nome = nome;
+        this.#name = name;
     }
 
-    set sobrenome(sobrenome) {
-        if (sobrenome === undefined || typeof sobrenome !== 'string' || sobrenome ==="" )
-        throw ('sobrenome inválido')
+    set lastName(lastName) {
+        if (lastName === undefined || typeof lastName !== 'string' || lastName ==="" )
+        throw ('Missing lastName')
 
-        this.#sobrenome = sobrenome;
+        this.#lastName = lastName;
     }
 
     set email(email) {
@@ -48,17 +48,17 @@ class Aluno {
         this.#email = email;
     }
 
-    set idade(idade) {
-        if (idade === undefined || typeof idade !== 'number' || idade <= 0 )
-        throw ('Idade inválida')
+    set age(age) {
+        if (age === undefined || typeof age !== 'number' || age <= 0 )
+        throw ('Missing Age')
 
-        this.#idade = idade;
+        this.#age = age;
     }
    
 }
 
-function novo(nome, sobrenome,email, idade) {
-    return new Aluno(nome, sobrenome,email, idade)
+function newFunctionStudent(name, lastName, email, age) {
+    return new Student(name, lastName, email, age)
 }
 
-module.exports = {novo}
+module.exports = {newFunctionStudent}

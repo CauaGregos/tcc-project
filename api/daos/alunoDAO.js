@@ -1,136 +1,133 @@
 const bd = require('../config/bd');
 
-async function cadastrarAluno(aluno) {
-    const conexao = await bd.getConexao();
-    if (conexao == null) return null;
-
-    
+async function signStudent(student) {
+    const connection = await bd.getConnection();
+    if (connection == null) return null;
 
     try {
         const sql = "insert into alunos (email, nome,sobrenome, idade) values(?,?,?,?)";
-        const dados = [aluno.email,aluno.nome,aluno.sobrenome,aluno.idade];
-        await conexao.query(sql, dados);
+        const data = [student.email, student.nome, student.sobrenome, student.idade];
+        await connection.query(sql, data);
         return true;
     }
-    catch (excecao) { return false; }
+    catch (exception) { return false; }
 }
 
-async function cadastrarPerfil(perfil) {
-    const conexao = await bd.getConexao();
-    if (conexao == null) return null;
+async function createProfile(profile) {
+    const connection = await bd.getConnection();
+    if (connection == null) return null;
 
     try {
         const sql = "insert into perfilaluno (nome, sobrenome,email, senha) values(?,?,?,?)";
-        const dados = [perfil.nome,perfil.sobrenome,perfil.email,perfil.senha];
-        await conexao.query(sql, dados);
+        const data = [profile.nome, profile.sobrenome, profile.email, profile.senha];
+        await connection.query(sql, data);
         return true;
     }
-    catch (excecao) { return false; }
+    catch (exception) { return false; }
 }
 
-async function confirmarEmail(email) {
-    const conexao = await bd.getConexao();
-    if (conexao == null) return null;
+async function confirmEmail(email) {
+    const connection = await bd.getConnection();
+    if (connection == null) return null;
 
     try {
         const sql = "UPDATE perfilaluno SET confirmado = 1 WHERE email = ?";
-        const dados = [email];
-        await conexao.query(sql, dados);
+        const data = [email];
+        await connection.query(sql, data);
         return true;
     }
-    catch (excecao) { return false; }
+    catch (exception) { return false; }
 }
 
-async function consultarEmailConfirmado(email){
-    const conexao = await bd.getConexao();
-    if(conexao == null) return null;
-    try{
+async function consultConfirmedEmail(email) {
+    const connection = await bd.getConnection();
+    if (connection == null) return null;
+    try {
         const sql = "SELECT confirmado from perfilaluno WHERE email = ?";
-        const dados = [email];
-        const [linhas] = await conexao.query(sql, dados);
-        return linhas; 
+        const data = [email];
+        const [rows] = await connection.query(sql, data);
+        return rows;
     }
-    catch (excecao) {return false;}
+    catch (exception) { return false; }
 }
 
-async function atualizarAluno(aluno) {
-    const conexao = await bd.getConexao();
-    if (conexao == null) return null;
+async function updateStudent(student) {
+    const connection = await bd.getConnection();
+    if (connection == null) return null;
     try {
         const sql = 'UPDATE alunos SET Nome = ?, Idade = ?, CEP = ? WHERE id = ?';
-        const dados = [aluno.nome,aluno.idade,aluno.cep,aluno.id];
-        await conexao.query(sql, dados);
+        const data = [student.nome, student.idade, student.cep, student.id];
+        await connection.query(sql, data);
         return true;
     }
-    catch (excecao) { return false; }
+    catch (exception) { return false; }
 }
 
-
-async function mudarSenha(email,senha){
-    const conexao = await bd.getConexao();
+async function updatePassword(email,password){
+    const conexao = await bd.getConnection();
     if(conexao == null) return null;
     try{
         const sql = "UPDATE perfilaluno SET senha = ? WHERE email = ?";
-        const dados = [senha,email];
-        const [linhas] = await conexao.query(sql, dados);
-        return linhas; 
+        const data = [password,email];
+        const [rows] = await conexao.query(sql, data);
+        return rows; 
     }
     catch (excecao) {return false;}
 }
 
-
-async function excluirAluno(id) {
-    const conexao = await bd.getConexao();
-    if (conexao == null) return null;
+async function deleteStudent(id) {
+    const connection = await bd.getConnection();
+    if (connection == null) return null;
     try {
         const sql = 'DELETE FROM alunos WHERE id = ?';
-        const dados = [id];
-        await conexao.query(sql, dados);
+        const data = [id];
+        await connection.query(sql, data);
         return true;
     }
-    catch (excecao) {
+    catch (exception) {
         return false;
     }
 }
 
-async function getAluno(email,senha) {
-    const conexao = await bd.getConexao();
-   
-    if (conexao == null) return null;
+async function getStudent(email, password) {
+    const connection = await bd.getConnection();
+
+    if (connection == null) return null;
     try {
         const sql = "SELECT * FROM perfilaluno WHERE email = ? AND senha = ?"
-        const dados = [email,senha];
-        const [linhas] = await conexao.execute(sql, dados);
-        return linhas;
+        const data = [email, password];
+        const [rows] = await connection.execute(sql, data);
+        return rows;
     }
-    catch (excecao) {
+    catch (exception) {
         return false;
     }
 }
 
-async function getAlunoExistente(email) {
-    const conexao = await bd.getConexao();
+async function getExistStudent(email) {
+    const conexao = await bd.getConnection();
    
     if (conexao == null) return null;
     try {
         const sql = "SELECT * FROM perfilaluno WHERE email = ?"
-        const dados = [email];
-        const [linhas] = await conexao.execute(sql, dados);
-        return linhas;
+        const data = [email];
+        const [rows] = await conexao.execute(sql, data);
+        return rows;
     }
     catch (excecao) {
         return false;
     }
 }
 
-async function recupereTodos() {
-    const conexao = await bd.getConexao();
-    if (conexao == null) return null;
+
+async function findAllDatas() {
+    const connection = await bd.getConnection();
+    if (connection == null) return null;
     try {
         const sql = 'SELECT * FROM alunos';
-        const [linhas] = await conexao.query(sql);
-        return linhas;
+        const [rows] = await connection.query(sql);
+        return rows;
     }
-    catch (excecao) { return false; }
+    catch (exception) { return false; }
 }
-module.exports = { cadastrarAluno, atualizarAluno, excluirAluno,getAluno,recupereTodos,cadastrarPerfil,confirmarEmail,consultarEmailConfirmado,getAlunoExistente,mudarSenha}
+module.exports = { signStudent,updatePassword,getExistStudent,updateStudent, deleteStudent, getStudent, findAllDatas, createProfile, confirmEmail, consultConfirmedEmail }

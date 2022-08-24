@@ -1,64 +1,64 @@
-class Aluno {
-    #nome
-    #sobrenome
+class Student {
+    #name
+    #lastName
     #email
-    #senha
+    #password
 
-    constructor(nome, sobrenome,email, senha) {
-        this.#nome = nome
-        this.#sobrenome = sobrenome
-        this.#senha = senha
-        this.#email = email 
+    constructor(name, lastName, email, password) {
+        this.#name = name
+        this.#lastName = lastName
+        this.#email = email
+        this.#password = password
     }
 
-    get nome() {
-        return this.#nome;
+    get name() {
+        return this.#name;
     }
 
-    get sobrenome() {
-        return this.#sobrenome
+    get lastName() {
+        return this.#lastName
     }
 
     get email() {
         return this.#email
     }
 
-    get senha() {
-        return this.#senha;
+    get password() {
+        return this.#password;
     }
 
-    set nome(nome) {
-        if (nome === undefined || typeof nome !== 'string' || nome ==="" )
-        throw ('Nome inválido')
+    set name(name) {
+        if (name === undefined || typeof name !== 'string' || name === "")
+            throw ('Missing Name')
 
-        this.#nome = nome;
+        this.#name = name;
     }
 
-    set sobrenome(sobrenome) {
-        if (sobrenome === undefined || typeof sobrenome !== 'string' || sobrenome ==="" )
-        throw ('sobrenome inválido')
+    set lastName(lastName) {
+        if (lastName === undefined || typeof lastName !== 'string' || lastName === "")
+            throw ('Missing lastName')
 
-        this.#sobrenome = sobrenome;
+        this.#lastName = lastName;
     }
 
     set email(email) {
-        if (email === undefined || typeof email !== 'string' || email ==="" )
-        throw ('email inválido')
+        if (email === undefined || typeof email !== 'string' || email === "")
+            throw ('email inválido')
 
         this.#email = email;
     }
 
-    set senha(senha) {
-        if (senha === undefined || typeof senha !== 'number' || senha <= 0 )
-        throw ('Nome inválidp')
+    set password(password) {
+        if (password === undefined || typeof password !== 'number' || password <= 0)
+            throw ('Missing Password')
 
-        this.#senha = senha;
+        this.#password = password;
     }
-   
+
 }
 
-function novo(nome, sobrenome,email, senha) {
-    return new Aluno(nome, sobrenome,email, senha)
+function newFunctionProfile(name, lastName, email, password) {
+    return new Student(name, lastName, email, password)
 }
 
-module.exports = {novo}
+module.exports = { newFunctionProfile }
