@@ -24,8 +24,8 @@ const Singin = () => {
         // aqui tenho minha função de logar
         // Ativo o circulo de carregamento que fica girando esperando as informações chegarem da promise
         setLoading({loadingLogin:true})
-        await axios.get('http://177.220.18.50:3000/getAluno/'+email+'/'+password).then(res1 =>{
-            axios.get('http://177.220.18.50:3000/getAlunoExistente/'+email).then(res => {
+        await axios.get('https://app-tc.herokuapp.com/getAluno/'+email+'/'+password).then(res1 =>{
+            axios.get('https://app-tc.herokuapp.com/getAlunoExistente/'+email).then(res => {
             // Usando oque vem de resposta da minha promisse consigo descobrir se a pessoa tem o email 
             // confirmado ou nao
             

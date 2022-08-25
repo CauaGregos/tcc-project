@@ -17,7 +17,7 @@ const Home = (props) => {
     const navigate = useNavigation()
   
       useEffect(()=>{
-        axios.get('http://177.220.18.50:3000/alunos')
+        axios.get('https://app-tc.herokuapp.com/alunos')
           .then(res =>{
               const data = res.data
               for(let i = 0; i<data.length; i++){

@@ -20,14 +20,14 @@ const Register = () => {
     
 
     async function createUser() {
-        await axios.post('http://177.220.18.50:3000/cadastrarAluno',{
+        await axios.post('https://app-tc.herokuapp.com/cadastrarAluno',{
             nome:nome,
             sobrenome:sobrenome,
             email: email,
             idade:idade
         })
         .then(res =>{
-            axios.post('http://177.220.18.50:3000/cadastrarPerfil',{
+            axios.post('https://app-tc.herokuapp.com/cadastrarPerfil',{
                 nome:nome,
                 sobrenome:sobrenome,
                 email: email,
@@ -39,7 +39,7 @@ const Register = () => {
           console.log(err)
         })
 
-        axios.post('http://177.220.18.50:3000/enviarEmail',{
+        axios.post('https://app-tc.herokuapp.com/enviarEmail',{
                     email: email
                 }).then(res =>{}).catch(err =>{console.log(err)})
 
