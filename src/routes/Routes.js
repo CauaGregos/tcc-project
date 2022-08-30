@@ -19,6 +19,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+//minha navegacao por tabs
 // consigo receber as props, se eu chamar e passar elas
 function TabNav(props) {
  
@@ -60,6 +61,7 @@ function TabNav(props) {
 }
 
 function Routes() {
+  // Aqui esta a navegacao estatica 
   return (
       <Stack.Navigator>
         <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
