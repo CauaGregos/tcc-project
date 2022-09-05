@@ -10,10 +10,11 @@ import WaitConfirm from '../pages/waitConfirm';
 import InfoForgot from '../pages/InfoForgot';
 import ForgotAcsses from '../pages/ForgotAcsses';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
+import Settings from '../pages/Settings';
 // Familia de icones da lib vector icons
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Splash from '../pages/Splash';
 
 // tipos de navigations
 const Stack = createNativeStackNavigator();
@@ -47,7 +48,7 @@ function TabNav(props) {
           }
         }} />
 
-      <Tab.Screen name="Settings" component={Register}
+      <Tab.Screen name="Settings" component={Settings}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size, focused }) => {
@@ -62,6 +63,7 @@ function TabNav(props) {
 function Routes() {
   return (
       <Stack.Navigator>
+        <Stack.Screen name="Splash" component={Splash} options={{headerShown: false}} />
         <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
         <Stack.Screen name="WaitConfirm" component={WaitConfirm} options={{headerShown: false}} />
         <Stack.Screen name="Singin" component={Singin} options={{headerShown: false}} />
