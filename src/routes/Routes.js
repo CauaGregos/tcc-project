@@ -20,6 +20,7 @@ import Splash from '../pages/Splash';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+//minha navegacao por tabs
 // consigo receber as props, se eu chamar e passar elas
 function TabNav(props) {
  
@@ -61,6 +62,7 @@ function TabNav(props) {
 }
 
 function Routes() {
+  // Aqui esta a navegacao estatica 
   return (
       <Stack.Navigator>
         <Stack.Screen name="Splash" component={Splash} options={{headerShown: false}} />
