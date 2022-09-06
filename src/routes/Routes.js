@@ -9,12 +9,14 @@ import Home from '../pages/Home';
 import WaitConfirm from '../pages/waitConfirm';
 import InfoForgot from '../pages/InfoForgot';
 import ForgotAcsses from '../pages/ForgotAcsses';
+import SplashForgot from '../pages/SplashForgotAsses'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Settings from '../pages/Settings';
 // Familia de icones da lib vector icons
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Splash from '../pages/Splash';
+import Profile from '../pages/Profile/profile';
 
 // tipos de navigations
 const Stack = createNativeStackNavigator();
@@ -65,7 +67,8 @@ function Routes() {
   // Aqui esta a navegacao estatica 
   return (
       <Stack.Navigator>
-        <Stack.Screen name="Splash" component={Splash} options={{headerShown: false}} />
+         {/* <Stack.Screen name="Profile" initialParams={{screen:'Welcome'}} component={Profile} options={{headerShown: false}} /> */}
+        <Stack.Screen name="Splash" initialParams={{screen:'Welcome'}} component={Splash} options={{headerShown: false}} />
         <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
         <Stack.Screen name="WaitConfirm" component={WaitConfirm} options={{headerShown: false}} />
         <Stack.Screen name="Singin" component={Singin} options={{headerShown: false}} />
@@ -73,6 +76,7 @@ function Routes() {
         <Stack.Screen name="Home" component={TabNav} options={{headerShown: false}} />
         <Stack.Screen name="ForgotAcsses" component={ForgotAcsses} options={{headerShown: false}} />
         <Stack.Screen name="InfoForgot" component={InfoForgot} options={{headerShown: false}} />
+        <Stack.Screen name="SplashForgot" initialParams={{screen:'InfoForgot'}} component={SplashForgot} options={{headerShown: false}} />
       </Stack.Navigator>
   );
 }
