@@ -67,7 +67,7 @@ function Routes() {
   // Aqui esta a navegacao estatica 
   return (
       <Stack.Navigator>
-         {/* <Stack.Screen name="Profile" initialParams={{screen:'Welcome'}} component={Profile} options={{headerShown: false}} /> */}
+        <Stack.Screen name="Profile" initialParams={{screen:'Welcome'}} component={Profile} options={{headerShown: false}} />
         <Stack.Screen name="Splash" initialParams={{screen:'Welcome'}} component={Splash} options={{headerShown: false}} />
         <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
         <Stack.Screen name="WaitConfirm" component={WaitConfirm} options={{headerShown: false}} />
