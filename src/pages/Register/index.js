@@ -33,10 +33,10 @@ const Register = () => {
                 email: email,
                 senha:password
             }).then((res) =>{
-            }).catch(err =>{console.log(err)})
+            }).catch(err =>{})
         })
         .catch(err =>{
-          console.log(err)
+          
         })
 
         axios.post('https://app-tc.herokuapp.com/sendEmailConfirm',{

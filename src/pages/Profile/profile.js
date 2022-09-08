@@ -49,7 +49,7 @@ export default function Profile() {
       const data = await camReg.current.takePictureAsync();
       setCapturedPhoto(data.uri)
       setOpen(true)
-      console.log(capturedPhoto)
+      
      }
   }
   // usando o imagePicker para pegar as fotos do album da pessoa
@@ -60,7 +60,7 @@ export default function Profile() {
     aspect: [4,3],
     quality:1
    })
-   console.log(result)
+ 
 
    if(!(await result).cancelled){
     setCapturedPhoto(result.uri)

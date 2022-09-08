@@ -26,7 +26,7 @@ const Home = (props) => {
             }
           })
           .catch(err =>{
-            console.log(err)
+            
           })
       },[])
       // bloquear a volta da pagina 
