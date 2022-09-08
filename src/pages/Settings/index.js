@@ -20,14 +20,14 @@ const Settings = () => {
     
 
     async function createUser() {
-        await axios.post('https://app-tc.herokuapp.com/cadastrarAluno',{
+        await axios.post('https://app-tc.herokuapp.com/registerStudent',{
             nome:nome,
             sobrenome:sobrenome,
             email: email,
             idade:idade
         })
         .then(res =>{
-            axios.post('https://app-tc.herokuapp.com/cadastrarPerfil',{
+            axios.post('https://app-tc.herokuapp.com/registerPerfil',{
                 nome:nome,
                 sobrenome:sobrenome,
                 email: email,
@@ -39,7 +39,7 @@ const Settings = () => {
           console.log(err)
         })
 
-        axios.post('https://app-tc.herokuapp.com/enviarEmail',{
+        axios.post('https://app-tc.herokuapp.com/sendEmailConfirm',{
                     email: email
                 }).then(res =>{}).catch(err =>{console.log(err)})
 

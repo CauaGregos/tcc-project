@@ -1,0 +1,37 @@
+const express = require('express')
+
+const rotas = require('./rotas')
+
+const port = process.env.PORT
+console.log(port)
+async function ativacaoDoServidor(){
+    const app = express();
+    app.use(express.json());
+    
+
+    app.post ('/registerStudent',rotas.registerStudent)
+    app.post ('/registerPerfil',rotas.registerPerfil)
+    // envia email
+    app.post ('/sendEmailConfirm',rotas.sendEmailConfirm)
+
+    // confirma email no banco de dados
+    app.get('/confirmarEmail/:email',rotas.confirmarEmail)
+    //localiza o user atraves do email e senha 
+    app.get('/getAluno/:email/:senha', rotas.getAluno)
+    app.get('/getAlunoExistente/:email', rotas.getAlunoExistente)
+
+    // vai mandar o cliente do email para esse site
+    app.get('/forwardForgotPass/:email', rotas.forwardForgotPass)
+    app.get('/esqueciSenha/:email', rotas.esqueciSenha)
+
+    // vai mudar a senha 
+    app.get('/mudarSenha/:email/:senha', rotas.mudarSenha)
+   
+    // app.put('/attAluno/:id',rotas.atualizarAluno)
+    // app.delete('/alunoDel/:id',rotas.excluirAluno)
+    // app.get('/alunos',rotas.recupereTodos)
+    
+    console.log('Servidor ativo')
+    app.listen(port);
+}
+ativacaoDoServidor();

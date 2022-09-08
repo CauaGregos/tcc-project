@@ -25,7 +25,7 @@ const ForgotAcsses = () => {
         
         // aqui tenho minha função de logar
         setLoading({ loadingLogin: true })
-        await axios.get('https://app-tc.herokuapp.com/encaminharEsqueciSenha/' + email).then(res => {
+        await axios.get('https://app-tc.herokuapp.com/forwardForgotPass/' + email).then(res => {
             navegar.navigate('SplashForgot')
             setLoading({ loadingLogin: false })
         }).catch(err => {
