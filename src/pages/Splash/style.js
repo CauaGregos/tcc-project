@@ -7,8 +7,6 @@ const styles = StyleSheet.create({
     },
     containerLogo:{
         flex:1,
-        scaleX:1,
-        scaleY:1,
         justifyContent:'center',
         alignItems:'center',
         left: '27.2%',

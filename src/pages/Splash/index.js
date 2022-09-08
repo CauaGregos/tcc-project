@@ -10,7 +10,7 @@ const Splash = () => {
 
   const navigate = useNavigation()
   const animationProgress = useRef(new Animated.Value(0))
-
+  const size = Dimensions.get('window').width
     useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', () => {
             return true
@@ -32,7 +32,7 @@ const Splash = () => {
             style={styles.containerLogo}
             resizeMode="contain"
         />
-      <LottieView style={{ width: 150, height: 150, top: '-10%', left: '27.2%' }}
+      <LottieView style={{ width:size,height: 150, top: '-10%',left: '25%'}}
         source={require('../assets/loopPlanet.json')}
         progress={animationProgress.current}
         onAnimationFinish={() =>  navigate.navigate('Welcome')}

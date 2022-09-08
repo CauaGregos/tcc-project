@@ -29,7 +29,7 @@ const ForgotAcsses = () => {
             navegar.navigate('SplashForgot')
             setLoading({ loadingLogin: false })
         }).catch(err => {
-            Alert.alert("Ocorreu um problema!")
+            Alert.alert("Ocorreu um problema com o envio do email: "+err)
             setLoading({ loadingLogin: false })
         })
        
