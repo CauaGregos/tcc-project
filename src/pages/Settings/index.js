@@ -1,13 +1,14 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity,TextInput,ScrollView, Alert} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity,TextInput,ScrollView, Alert, Dimensions} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {LinearGradient} from 'expo-linear-gradient';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import styles from './style';
 // import sendEmail from '../../services/sendEmail';
  
-const Settings = () => {
+const Settings = (props) => {
 
     const navegar = useNavigation();
     const axios = require('axios');
@@ -17,7 +18,7 @@ const Settings = () => {
     const [idade, setIdade] = useState(null);
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
-    
+    const size = Dimensions.get('window').height
 
     async function createUser() {
         await axios.post('https://app-tc.herokuapp.com/registerStudent',{
@@ -51,11 +52,29 @@ const Settings = () => {
         <View style={styles.container}>
 
 
-            <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-                <ScrollView>
+            <Animatable.View animation="fadeInUp" style={styles.container}>
+            
+                {/* {props.routes.params?.image!=undefined ? 
                 
+                <Animatable.Image
+                delay={500}
+                animation="flipInX"
+                source={props.routes.params?.image}
+                style={{width:'50%'}}
+                resizeMode="contain"
+                /> 
+                :<FontAwesome5 name="user" size={30} color="#6b6080" /> } */}
                 
-                </ScrollView>
+
+                <View style={styles.containerInfos}>
+                    <View style={styles.imagePerfil}>
+                        <TouchableOpacity style={{top:size*-0.05,borderRadius:3}}>
+                            <FontAwesome5 name="user" size={100} color="#848484" />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+            
             </Animatable.View>
 
 

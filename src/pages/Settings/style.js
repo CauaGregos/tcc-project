@@ -52,12 +52,25 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         fontSize:18,
     },
+    imagePerfil:{
+       justifyContent:'center',
+       alignItems:'center'
+    },
     buttonRegister:{
         marginTop:3,
         alignSelf:'center'
     },
     registerText:{
         color:'#a1a1a1a1'
+    },
+    containerInfos:{
+        backgroundColor:'#FFF',
+        flex:1,
+        top:"16%",
+        borderTopLeftRadius:25,
+        borderTopRightRadius:25,
+        paddingStart:'5%',
+        paddingEnd:'5%'
     }
 })
 

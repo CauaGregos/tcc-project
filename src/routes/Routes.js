@@ -16,7 +16,7 @@ import Settings from '../pages/Settings';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Splash from '../pages/Splash';
-import Profile from '../pages/Profile/profile';
+import CamScreen from '../pages/CamScreen';
 
 // tipos de navigations
 const Stack = createNativeStackNavigator();
@@ -76,7 +76,7 @@ function Routes() {
         <Stack.Screen name="ForgotAcsses" component={ForgotAcsses} options={{headerShown: false}} />
         <Stack.Screen name="InfoForgot" component={InfoForgot} options={{headerShown: false}} />
         <Stack.Screen name="SplashForgot" initialParams={{screen:'InfoForgot'}} component={SplashForgot} options={{headerShown: false}} />
-        <Stack.Screen name="Profile" initialParams={{screen:'Welcome'}} component={Profile} options={{headerShown: false}} />
+        <Stack.Screen name="CamScreen" initialParams={{screen:'Welcome'}} component={CamScreen} options={{headerShown: false}} />
       </Stack.Navigator>
   );
 }
