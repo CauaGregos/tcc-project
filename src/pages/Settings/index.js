@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Text, TouchableOpacity,TextInput,ScrollView, Alert, Dimensions} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {LinearGradient} from 'expo-linear-gradient';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import styles from './style';
@@ -18,35 +18,16 @@ const Settings = (props) => {
     const [idade, setIdade] = useState(null);
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
+    const [imagePerfil,setImagePerfil] = useState(null)
     const size = Dimensions.get('window').height
 
-    async function createUser() {
-        await axios.post('https://app-tc.herokuapp.com/registerStudent',{
-            nome:nome,
-            sobrenome:sobrenome,
-            email: email,
-            idade:idade
-        })
-        .then(res =>{
-            axios.post('https://app-tc.herokuapp.com/registerPerfil',{
-                nome:nome,
-                sobrenome:sobrenome,
-                email: email,
-                senha:password
-            }).then((res) =>{
-            }).catch(err =>{})
-        })
-        .catch(err =>{
-        
-        })
 
-        axios.post('https://app-tc.herokuapp.com/sendEmailConfirm',{
-                    email: email
-                }).then(res =>{}).catch(err =>{})
+    // Vai pegar todas as informacoes do user antes de renderizar o componente
+    // useEffect(() => {
+    //    axios.get('TRABALHAR NISSO.....').then().catch();
+    // }, []);
 
-                navegar.navigate("WaitConfirm")
-    }
-
+  
     return (
 
         <View style={styles.container}>
@@ -68,7 +49,7 @@ const Settings = (props) => {
 
                 <View style={styles.containerInfos}>
                     <View style={styles.imagePerfil}>
-                        <TouchableOpacity style={{top:size*-0.05,borderRadius:3}}>
+                        <TouchableOpacity style={{top:size*-0.05,borderRadius:3}} onPress = {() => navegar.navigate('CamScreen')}>
                             <FontAwesome5 name="user" size={100} color="#848484" />
                         </TouchableOpacity>
                     </View>
@@ -77,7 +58,7 @@ const Settings = (props) => {
             
             </Animatable.View>
 
-
+        
         </View>
     );
 }

@@ -51,7 +51,7 @@ function TabNav(props) {
           }
         }} />
 
-      <Tab.Screen name="Settings" component={Settings}
+      <Tab.Screen name="Settings" component={SettingsNav}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size, focused }) => {
@@ -59,6 +59,18 @@ function TabNav(props) {
           }
         }} />
     </Tab.Navigator>
+    
+  );
+}
+
+// stack navigator para a aba de configurações
+function SettingsNav(props) {
+ 
+  return (
+  <Stack.Navigator>
+    <Stack.Screen name="SettingsScreen" component={Settings} options={{headerShown: false}} />
+    <Stack.Screen name="CamScreen" component={CamScreen} options={{headerShown: false}} />
+  </Stack.Navigator>
     
   );
 }
@@ -76,7 +88,6 @@ function Routes() {
         <Stack.Screen name="ForgotAcsses" component={ForgotAcsses} options={{headerShown: false}} />
         <Stack.Screen name="InfoForgot" component={InfoForgot} options={{headerShown: false}} />
         <Stack.Screen name="SplashForgot" initialParams={{screen:'InfoForgot'}} component={SplashForgot} options={{headerShown: false}} />
-        <Stack.Screen name="CamScreen" initialParams={{screen:'Welcome'}} component={CamScreen} options={{headerShown: false}} />
       </Stack.Navigator>
   );
 }
