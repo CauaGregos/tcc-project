@@ -1,10 +1,9 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity,BackHandler, Alert} from 'react-native';
-import * as Animatable from 'react-native-animatable';
-import styles from './style';
-import stylesButtom from '../Register/style';
+import {View, BackHandler, Dimensions} from 'react-native';
+import LottieView from 'lottie-react-native';
 import { useState,useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
+
 
 
 
@@ -13,6 +12,8 @@ const Home = (props) => {
     const [alunos, setAlunos] = useState([]);
     const axios = require('axios');
     const [logado,setLogado] = useState([true]);
+    const width = Dimensions.get('screen').width;
+    
    
     const navigate = useNavigation()
   
@@ -43,20 +44,36 @@ const Home = (props) => {
       }
 
     return (
-        <View style={styles.container}>
-           <Animatable.View animation="fadeInRight" delay={500}>
-            {/* aqui recebo as props da tela de SignIn e exibo o objeto */}
-               <Text style={styles.title} >Bem vindo(a) {props.route.params?.nome}</Text>   
-              <TouchableOpacity onPress={() => {logout()}}>
-              <Text style={styles.title}> Sair da conta</Text>   
-              </TouchableOpacity>
-            </Animatable.View> 
+        
+        <View>
 
-            <Animatable.View animation="fadeInUp" >
+          <LottieView style={{width:width, backgroundColor:'#241d28'}}
+            source={require('../assets/background.json')}
+            loop={true}
+            autoPlay
+          />
+          
+          <LottieView style={{top:'-40%', width:'30%', left:'45%' }}
+            source={require('../assets/marte.json')}
+            loop={true}
+            autoPlay
+            />
 
-            </Animatable.View> 
+            <LottieView style={{top:'-65%', width:'30%', left:'10%' }}
+            source={require('../assets/netuno.json')}
+            loop={true}
+            autoPlay
+            />
 
+            <LottieView style={{top:'-40%', width:'30%', left:'10%' }}
+            source={require('../assets/terra.json')}
+            loop={true}
+            autoPlay
+            />
         </View>
+        
+
+        
     );
 }
 
