@@ -20,7 +20,7 @@ const Welcome = () => {
             <Animatable.View delay={1500} animation="fadeInUp" style={styles.containerForm}>
                 <Text style={styles.title}>Venha aprender de fato conosco</Text>
                 <Text style={styles.text}>Faça login para começar</Text>
-                <TouchableOpacity onPress={()=>{navegar.navigate('Singin')}} style={styles.button}>
+                <TouchableOpacity onPress={()=>{navegar.navigate('Choice')}} style={styles.button}>
                     <Text style={styles.buttonText}>Acessar</Text>
                 </TouchableOpacity>
             </Animatable.View>

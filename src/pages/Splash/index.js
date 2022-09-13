@@ -32,10 +32,10 @@ const Splash = () => {
             style={styles.containerLogo}
             resizeMode="contain"
         />
-      <LottieView style={{ width:size,height: 150, top: '-10%',left: '25%'}}
+      <LottieView style={{ width:size,height: 150, top: '-10%',left:size*0.15}}
         source={require('../assets/loopPlanet.json')}
         progress={animationProgress.current}
-        onAnimationFinish={() =>  navigate.navigate('Welcome')}
+        onAnimationFinish={() =>  navigate.navigate('Choice')}
         loop={false}
         autoPlay
         
