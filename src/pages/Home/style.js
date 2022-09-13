@@ -11,6 +11,24 @@ const styles = StyleSheet.create({
         marginTop:28,
         marginBottom:12,
         color:'#FFF',
+    },
+    earthButton:{
+        top:'-40%',
+         width:'30%',
+          left:'10%' 
+    },
+
+    neptuneButton:{
+        top:'-65%',
+         width:'30%', 
+         left:'10%'
+    },
+
+    marsButton:{
+        top:'-40%', 
+        width:'30%', 
+        left:'45%' ,
+        
     }
 })
 

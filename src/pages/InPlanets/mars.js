@@ -9,7 +9,7 @@ import styles from './style'
 
 
 
-const Home = (props) => {
+const Mars = (props) => {
 
     const [alunos, setAlunos] = useState([]);
     const axios = require('axios');
@@ -57,23 +57,11 @@ const Home = (props) => {
             autoPlay
           />
           
-          <LottieView style={{top:'-40%', width:'30%', left:'45%' }}
+          
+           
+          
+            <LottieView style={{top:'-23%', width:'300%', right:'25%' }}
             source={require('../assets/marte.json')}
-            loop={true}
-            autoPlay
-            />
-            
-
-            <LottieView style={{top:'-65%', width:'30%', left:'10%' }}
-            source={require('../assets/netuno.json')}
-            loop={true}
-            autoPlay
-            />
-           
-            
-           
-            <LottieView style={{top:'-40%', width:'30%', left:'10%' }}
-            source={require('../assets/terra.json')}
             loop={true}
             autoPlay
             />
@@ -93,4 +81,4 @@ const Home = (props) => {
 }
 
 
-export default Home;
+export default Mars;

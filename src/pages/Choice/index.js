@@ -1,14 +1,14 @@
-import { useNavigation } from '@react-navigation/native';
 import LottieView from 'lottie-react-native';
 import React, { useEffect, useRef } from 'react';
 import { Animated, Dimensions, Easing,Image,TouchableOpacity } from 'react-native';
 import { View, BackHandler,Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import styles from './style';
 import Logo from '../assets/logo.png'
 
 const Choice = () => {
 
-  const navigate = useNavigation()
+  const navegar = useNavigation()
   const animationProgress = useRef(new Animated.Value(0))
   const size = Dimensions.get('window').width
     useEffect(() => {
@@ -27,7 +27,7 @@ const Choice = () => {
             resizeMode="contain"
         />
         
-        <TouchableOpacity style={styles.button1} onPress={()=>{navegar.navigate('Register')}}>
+        <TouchableOpacity style={styles.button1} onPress={()=>{navegar.navigate('Login')}}>
                     <Text style={styles.buttonText}>Começar agora!</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button2} onPress={()=>{navegar.navigate('Register')}}>
