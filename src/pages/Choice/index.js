@@ -27,10 +27,10 @@ const Choice = () => {
             resizeMode="contain"
         />
         
-        <TouchableOpacity style={styles.button1} onPress={()=>{navegar.navigate('Login')}}>
+        <TouchableOpacity style={styles.button1} onPress={()=>{navegar.navigate('Singin')}}>
                     <Text style={styles.buttonText}>Começar agora!</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button2} onPress={()=>{navegar.navigate('Register')}}>
+        <TouchableOpacity style={styles.button2} onPress={()=>{navegar.navigate('Singin')}}>
                     <Text style={styles.buttonText2}> Fazer o login</Text>
         </TouchableOpacity>
 
