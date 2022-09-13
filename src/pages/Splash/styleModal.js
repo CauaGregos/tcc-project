@@ -5,14 +5,6 @@ const styles = StyleSheet.create({
         flex:1,
         backgroundColor:'#000000'
     },
-    containerLogo:{
-        flex:1,
-        justifyContent:'center',
-        alignItems:'center',
-        left: '27.2%',
-        width:'50%',
-        bottom:120
-    },
     containerForm:{
         flex:1,
         backgroundColor:'#FFF',

@@ -9,9 +9,16 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:'center',
         alignItems:'center',
-        left: '27.2%',
+        alignSelf:'center',
         width:'50%',
         bottom:120
+    },
+    containerLogo2:{
+        justifyContent:'center',
+        alignItems:'center',
+        alignSelf: 'center',
+        width:'25%',
+        bottom:480
     },
     containerForm:{
         flex:1,

@@ -1,16 +1,20 @@
 import { useNavigation } from '@react-navigation/native';
 import LottieView from 'lottie-react-native';
-import React, { useEffect, useRef } from 'react';
-import { Animated, Dimensions, Easing,Image } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { Animated, Dimensions, Easing,Image,Modal,TouchableOpacity, Text } from 'react-native';
 import { View, BackHandler } from 'react-native';
 import styles from './style';
-import Logo from '../assets/logo.png'
+import stylesModal from './styleModal';
+import Logo from '../assets/logo.png';
+import * as Animatable from 'react-native-animatable';
 
 const Splash = () => {
 
-  const navigate = useNavigation()
+  const navegar = useNavigation()
   const animationProgress = useRef(new Animated.Value(0))
   const size = Dimensions.get('window').width
+  const [animStoped, setanimStoped] = useState(false);
+
     useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', () => {
             return true
@@ -25,22 +29,52 @@ const Splash = () => {
   }, [])
   return (
     <View style={styles.container}>
-        <Image
+       
+        {
+          !animStoped ?
+        <View style={styles.container}>
+           <Animatable.Image
             delay={500}
             animation="flipInX"
-            source={require('../assets/logo.png')}
+            source={require('../assets/logoPlanetWhite.png')}
+            style={styles.containerLogo}
+            resizeMode="contain"
+          />
+          <LottieView style={{ width:size,height: 150, top: '-10%',alignSelf: 'center' }}
+            source={require('../assets/loopPlanet.json')}
+            progress={animationProgress.current}
+            onAnimationFinish={() => setanimStoped(true)}
+            loop={false}
+            autoPlay
+          />
+        </View>
+      : <Animatable.View animation={'fadeIn'} style={stylesModal.container}>
+         <Animatable.Image
+            delay={500}
+            animation="flipInX"
+            source={require('../assets/logoPlanetWhite.png')}
             style={styles.containerLogo}
             resizeMode="contain"
         />
-      <LottieView style={{ width:size,height: 150, top: '-10%',left:size*0.15}}
-        source={require('../assets/loopPlanet.json')}
-        progress={animationProgress.current}
-        onAnimationFinish={() =>  navigate.navigate('Choice')}
-        loop={false}
-        autoPlay
-        
-      />
+         <Animatable.Image
+            delay={1000}
+            animation="flipInX"
+            source={require('../assets/logo.png')}
+            style={styles.containerLogo2}
+            resizeMode="contain"
+        />
+            <TouchableOpacity style={stylesModal.button1} onPress={()=>{navegar.navigate('Singin')}}>
+                        <Text style={stylesModal.buttonText}>Começar agora!</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={stylesModal.button2} onPress={()=>{navegar.navigate('Singin')}}>
+                        <Text style={stylesModal.buttonText2}> Fazer o login</Text>
+            </TouchableOpacity>
+        </Animatable.View>
+        }
+     
     </View>
+
+    
 
   );
 }

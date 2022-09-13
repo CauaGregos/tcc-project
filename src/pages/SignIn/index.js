@@ -44,9 +44,8 @@ const Singin = () => {
             
             <Animatable.View animation="fadeInUp" style={styles.containerForm}>
                 <Image
-                style={{left:'21%'}}
+                style={{alignSelf: 'center'}}
                 source={require('../assets/SaturnoBilinguo.png')}></Image>
-                <Text style={styles.title}></Text>
                 
                 <TextInput
                 placeholder='Digite seu Email..'
@@ -55,7 +54,6 @@ const Singin = () => {
                 onChangeText = {text => setEmail(text)}
                 />
                 
-                <Text style={styles.title}></Text>
                 <TextInput
                 passwordRules='number'
                 placeholder='Senha:'
