@@ -12,6 +12,7 @@ import ForgotAcsses from '../pages/ForgotAcsses';
 import SplashForgot from '../pages/SplashForgotAsses'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Settings from '../pages/Settings';
+import Choice from '../pages/Choice';
 // Familia de icones da lib vector icons
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -35,9 +36,9 @@ function TabNav(props) {
           borderTopWidth: 0,
           borderRadius: 10,
           position: 'absolute',
-          left: 3,
-          right: 3,
-          bottom: 3
+          left: 10,
+          right: 10,
+          bottom:15
         }
       }}
     >
@@ -82,6 +83,7 @@ function Routes() {
         <Stack.Screen name="Splash" initialParams={{screen:'Welcome'}} component={Splash} options={{headerShown: false}} />
         <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
         <Stack.Screen name="WaitConfirm" component={WaitConfirm} options={{headerShown: false}} />
+        <Stack.Screen name="Choice" component={Choice} options={{headerShown: false}} />
         <Stack.Screen name="Singin" component={Singin} options={{headerShown: false}} />
         <Stack.Screen name="Register" component={Register} options={{headerShown: false}} />
         <Stack.Screen name="Home" component={TabNav} options={{headerShown: false}} />

@@ -1,12 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
 import LottieView from 'lottie-react-native';
 import React, { useEffect, useRef } from 'react';
-import { Animated, Dimensions, Easing,Image } from 'react-native';
-import { View, BackHandler } from 'react-native';
+import { Animated, Dimensions, Easing,Image,TouchableOpacity } from 'react-native';
+import { View, BackHandler,Text } from 'react-native';
 import styles from './style';
 import Logo from '../assets/logo.png'
 
-const Splash = () => {
+const Choice = () => {
 
   const navigate = useNavigation()
   const animationProgress = useRef(new Animated.Value(0))
@@ -16,13 +16,7 @@ const Splash = () => {
             return true
         })
     })
-  useEffect(() => {
-    Animated.timing(animationProgress.current, {
-      toValue: 1,
-      duration: 3000,
-      useNativeDriver: true
-    }).start();
-  }, [])
+  
   return (
     <View style={styles.container}>
         <Image
@@ -32,17 +26,17 @@ const Splash = () => {
             style={styles.containerLogo}
             resizeMode="contain"
         />
-      <LottieView style={{ width:size,height: 150, top: '-10%',left:size*0.15}}
-        source={require('../assets/loopPlanet.json')}
-        progress={animationProgress.current}
-        onAnimationFinish={() =>  navigate.navigate('Welcome')}
-        loop={false}
-        autoPlay
         
-      />
+        <TouchableOpacity style={styles.button1} onPress={()=>{navegar.navigate('Register')}}>
+                    <Text style={styles.buttonText}>Começar agora!</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button2} onPress={()=>{navegar.navigate('Register')}}>
+                    <Text style={styles.buttonText2}> Fazer o login</Text>
+        </TouchableOpacity>
+
     </View>
 
   );
 }
 
-export default Splash;
+export default Choice;
