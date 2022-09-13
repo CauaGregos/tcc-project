@@ -1,5 +1,5 @@
 import React,{ useState } from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Alert,TextInput, ActivityIndicator} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Alert,TextInput, ActivityIndicator, Image, ImageBackgroundBase, ImageBackground} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import CheckBox from 'react-native-custom-checkbox';
 import { useNavigation } from '@react-navigation/native';
@@ -40,11 +40,13 @@ const Singin = () => {
     return (
         <View style={styles.container}>
            <Animatable.View animation="fadeInLeft" delay={500} style={styles.containerHeader}>
-               <Text style={styles.message}>Bem vindo(a)</Text>
             </Animatable.View> 
-
+            
             <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-                <Text style={styles.title}>Email</Text>
+                <Image
+                style={{left:'21%'}}
+                source={require('../assets/SaturnoBilinguo.png')}></Image>
+                <Text style={styles.title}></Text>
                 <TextInput
                 placeholder='Digite seu Email..'
                 value={email}
@@ -52,10 +54,10 @@ const Singin = () => {
                 onChangeText = {text => setEmail(text)}
                 />
                 
-                <Text style={styles.title}>Senha</Text>
+                <Text style={styles.title}></Text>
                 <TextInput
                 passwordRules='number'
-                placeholder='Sua senha...'
+                placeholder='Senha:'
                 value={password}
                 style={styles.input}
                 onChangeText = {text => setPassword(text)}

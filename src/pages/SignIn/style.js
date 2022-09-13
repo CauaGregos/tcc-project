@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         alignSelf:'center'
     },
     registerText:{
-        color:'#a1a1a1a1'
+        color:'black'
     },
     textVisible:{
         color:'#a1a1a1aa',

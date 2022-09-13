@@ -55,6 +55,11 @@ const Settings = (props) => {
                     </View>
                 </View>
 
+                <View>
+                    <Text style={{top: '-40%'}}
+                    >NOME</Text>
+                </View>
+
             
             </Animatable.View>
 
