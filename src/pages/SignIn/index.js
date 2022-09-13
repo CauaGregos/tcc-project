@@ -47,6 +47,7 @@ const Singin = () => {
                 style={{left:'21%'}}
                 source={require('../assets/SaturnoBilinguo.png')}></Image>
                 <Text style={styles.title}></Text>
+                
                 <TextInput
                 placeholder='Digite seu Email..'
                 value={email}
