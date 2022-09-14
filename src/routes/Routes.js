@@ -18,6 +18,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Splash from '../pages/Splash';
 import CamScreen from '../pages/CamScreen';
 
+
 // tipos de navigations
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -81,7 +82,7 @@ function Routes() {
   return (
       <Stack.Navigator>
         <Stack.Screen name="Splash" initialParams={{screen:'Welcome'}} component={Splash} options={{headerShown: false}} />
-        <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false, gestureEnabled: false}} />
+        <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
         <Stack.Screen name="WaitConfirm" component={WaitConfirm} options={{headerShown: false}} />
         <Stack.Screen name="Singin" component={Singin} options={{headerShown: false}} />
         <Stack.Screen name="Register" component={Register} options={{headerShown: false}} />

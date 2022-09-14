@@ -13,12 +13,6 @@ const SplashForgot = (props) => {
   const navigate = useNavigation()
   const animationProgress = useRef(new Animated.Value(0))
 
-    useEffect(() => {
-        BackHandler.addEventListener('hardwareBackPress', () => {
-            return true
-        })
-    })
-  
   return (
     
        <View style = {{backgroundColor:'#ffffff'}}>

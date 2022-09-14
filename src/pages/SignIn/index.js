@@ -1,11 +1,11 @@
 import React,{ useState,useEffect } from 'react';
-import {View, StyleSheet, BackHandler,Text, TouchableOpacity, Alert,TextInput, ActivityIndicator, Image, ImageBackgroundBase, ImageBackground} from 'react-native';
+import {View,StyleSheet, BackHandler,Text, TouchableOpacity, Alert,TextInput, ActivityIndicator, Image, ImageBackgroundBase, ImageBackground} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import CheckBox from 'react-native-custom-checkbox';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, StackActions } from '@react-navigation/native';
 import styles from './style';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const Singin = () => {
@@ -19,10 +19,11 @@ const Singin = () => {
         loadingLogin: false
       }])
 
-      useEffect(() => {
-        BackHandler.addEventListener('hardwareBackPress', () => false)
-        return () => BackHandler.removeEventListener('backPress', () => false)
-      }, [])
+     
+
+      const setLogin = (key, value) => {
+        AsyncStorage.setItem(key,value)
+      }
 
     async function signInUser(){
         // aqui tenho minha função de logar
@@ -32,8 +33,14 @@ const Singin = () => {
             axios.get('https://app-tc.herokuapp.com/getAlunoExistente/'+email).then(res => {
             // Usando oque vem de resposta da minha promisse consigo descobrir se a pessoa tem o email 
             // confirmado ou nao
-            
-            res1.data[0].confirmado == 1 ? navegar.navigate('Home',{nome:res.data[0].nome}) : navegar.navigate('WaitConfirm')
+            let jsonData = {
+                email: email,
+                state: 'isLogin'
+            }
+            setLogin('@User',JSON.stringify(jsonData));
+            res1.data[0].confirmado == 1 ? navegar.dispatch(
+                StackActions.replace('Home',{nome:res.data[0].nome})
+              ) : navegar.navigate('WaitConfirm')
             setLoading({loadingLogin:false})   
             }).catch(err => {})
             

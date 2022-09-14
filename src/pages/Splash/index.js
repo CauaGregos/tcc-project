@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation,StackActions } from '@react-navigation/native';
 import LottieView from 'lottie-react-native';
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Dimensions, Easing,Image,Modal,TouchableOpacity, Text } from 'react-native';
@@ -7,6 +7,7 @@ import styles from './style';
 import stylesModal from './styleModal';
 import Logo from '../assets/logo.png';
 import * as Animatable from 'react-native-animatable';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Splash = () => {
 
@@ -14,6 +15,12 @@ const Splash = () => {
   const animationProgress = useRef(new Animated.Value(0))
   const size = Dimensions.get('window').width
   const [animStoped, setanimStoped] = useState(false);
+
+  const checkLogin = async () => {
+    const user = await AsyncStorage.getItem('@User');
+    user ? navegar.dispatch(StackActions.replace('Home')): setanimStoped(true);
+  }
+
 
  
   useEffect(() => {
@@ -39,7 +46,7 @@ const Splash = () => {
           <LottieView style={{ width:size,height: 150, top: '-10%',alignSelf: 'center' }}
             source={require('../assets/loopPlanet.json')}
             progress={animationProgress.current}
-            onAnimationFinish={() => setanimStoped(true)}
+            onAnimationFinish={() => checkLogin()}
             loop={false}
             autoPlay
           />
@@ -59,10 +66,10 @@ const Splash = () => {
             style={styles.containerLogo2}
             resizeMode="contain"
         />
-            <TouchableOpacity style={stylesModal.button1} onPress={()=>{navegar.navigate('Singin')}}>
+            <TouchableOpacity style={stylesModal.button1} onPress={()=>{navegar.dispatch(StackActions.replace('Singin'))}}>
                         <Text style={stylesModal.buttonText}>Começar agora!</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={stylesModal.button2} onPress={()=>{navegar.navigate('Singin')}}>
+            <TouchableOpacity style={stylesModal.button2} onPress={()=>{navegar.dispatch(StackActions.replace('Singin'))}}>
                         <Text style={stylesModal.buttonText2}> Fazer o login</Text>
             </TouchableOpacity>
         </Animatable.View>

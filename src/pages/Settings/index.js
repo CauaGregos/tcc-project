@@ -21,10 +21,7 @@ const Settings = (props) => {
     const [imagePerfil,setImagePerfil] = useState(null)
     const size = Dimensions.get('window').height
 
-    useEffect(() => {
-        BackHandler.addEventListener('hardwareBackPress', () => false)
-        return () => BackHandler.removeEventListener('backPress', () => false)
-      }, [])
+   
 
 
     // Vai pegar todas as informacoes do user antes de renderizar o componente
