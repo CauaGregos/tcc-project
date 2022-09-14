@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Welcome from '../pages/Welcome';
@@ -53,7 +54,7 @@ function TabNav(props) {
           headerShown: false,
           // Configuração dos icones que aparecem na tabBar
           tabBarIcon: ({ color, size, focused }) => {
-           return focused ? <Icon name="rocket" size={30} color="#6b6080" /> : <Icon name="rocket" size={30} color="#525252" />
+           return focused ? <Image source={require('../pages/assets/iconMain.png')}/> : <Image source={require('../pages/assets/iconMain.png')}/>
           }
         }} />
 
@@ -61,7 +62,7 @@ function TabNav(props) {
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size, focused }) => {
-           return focused ? <FontAwesome5 name="user" size={30} color="#6b6080" /> : <FontAwesome5 name="user" size={30} color="#525252" />;
+           return focused ? <Image source={require('../pages/assets/iconProfile.png')}/> : <Image source={require('../pages/assets/iconProfile.png')}/>
           }
         }} />
     </Tab.Navigator>

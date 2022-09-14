@@ -66,21 +66,21 @@ const Home = (props) => {
             autoPlay
           />  
           <View style={{top:'50%'}}>
-          <TouchableOpacity onPress={()=> interInPlanet('Mars')} style={{ top:'20%' }}>
+          <TouchableOpacity onPress={()=> interInPlanet('Mars')} style={{ top:'45%' }}>
           <LottieView style={{width:'30%', left:'45%' }}
             source={require('../assets/marte.json')}
             loop={true}
             autoPlay
           />
           </TouchableOpacity>
-        <TouchableOpacity onPress={()=> interInPlanet('Neptune')} style={{ top:'50%' }} >
+        <TouchableOpacity onPress={()=> interInPlanet('Neptune')} style={{ top:'-60%', left: '8%' }} >
           <LottieView style={{width:'30%', left:'2%' }}
             source={require('../assets/netuno.json')}
             loop={true}
             autoPlay
           />
           </TouchableOpacity>
-           <TouchableOpacity onPress={()=> interInPlanet('Earth')} style={{ top:'50%' }}>
+           <TouchableOpacity onPress={()=> interInPlanet('Earth')} style={{ top:'50%', left: '-55%' }}>
           <LottieView style={{width:'30%',alignSelf:'flex-end',right:'3%'}}
             source={require('../assets/terra.json')}
             loop={true}
