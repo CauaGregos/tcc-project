@@ -18,6 +18,8 @@ const Home = (props) => {
     
    
     const navigate = useNavigation()
+
+   
   
       useEffect(()=>{
         axios.get('https://app-tc.herokuapp.com/alunos')
