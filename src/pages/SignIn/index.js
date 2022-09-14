@@ -1,9 +1,10 @@
-import React,{ useState } from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Alert,TextInput, ActivityIndicator, Image, ImageBackgroundBase, ImageBackground} from 'react-native';
+import React,{ useState, useEffect } from 'react';
+import {View, StyleSheet, Text, TouchableOpacity, Alert,TextInput, ActivityIndicator, Image, ImageBackgroundBase, ImageBackground,BackHandler} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import CheckBox from 'react-native-custom-checkbox';
 import { useNavigation } from '@react-navigation/native';
 import styles from './style';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 
 
@@ -17,6 +18,12 @@ const Singin = () => {
     const [loading, setLoading] = useState([{
         loadingLogin: false
       }])
+
+      useEffect(() => {
+        BackHandler.addEventListener('hardwareBackPress', () => {
+            return null
+        })
+      }, []);
 
     
 
@@ -72,7 +79,7 @@ const Singin = () => {
                
 
                     <TouchableOpacity onPress={() => {signInUser()}} style={styles.button}>
-                                {loading.loadingLogin ? <ActivityIndicator size={"small"} color ={"white"}/> :<Text style={styles.buttonText}>Acessar</Text>}
+                                {loading.loadingLogin ? <ActivityIndicator size={"small"} color ={"#3b44f2"}/> :<Text style={styles.buttonText}>{<FontAwesome name="angle-right" size={30} color="#3C3C3C"/>}</Text>}
                     </TouchableOpacity>
             
                <TouchableOpacity style={styles.buttonRegister} onPress={()=>{navegar.navigate('Register')}}>

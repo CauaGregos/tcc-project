@@ -37,18 +37,24 @@ const styles = StyleSheet.create({
         borderRadius:5,
         height:40,
         fontSize:16,
-        marginTop:10,
+        marginTop:10
     },
     button:{
-        marginTop:30,
-        backgroundColor:'#5A4FCF',
-        borderRadius:10,
+        top:330,
+        position:'absolute',
+        backgroundColor:'#E9EDF0',
+        borderRadius:370,
         paddingVertical:8,
-        width:'50%',
-        bottom:'1%',
+        width:50,
+        right:20,
+        height:50,
         alignItems:'center',
         justifyContent:'center',
-        alignSelf:'center'
+        alignSelf:'flex-end',
+        elevation:11,
+        borderWidth:0.5,
+        borderColor:'#FEFEFF',
+        shadowColor:'#000'
     },
     buttonText:{
         color:'#fff',
@@ -56,15 +62,18 @@ const styles = StyleSheet.create({
         fontSize:18,
     },
     buttonRegister:{
+        top:'42%',
         marginTop:14,
         alignSelf:'center'
     },
     registerText:{
-        color:'black'
+        color:'#a1a1a1a1'
     },
     textVisible:{
         color:'#a1a1a1aa',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        elevation:10,
+        shadowColor:'#000'
     },
     CheckBox: {
         color:'#5A4FCF',
