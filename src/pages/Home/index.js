@@ -29,7 +29,7 @@ const Home = (props) => {
         const teste = await AsyncStorage.getItem('@User')
         if (teste) {setTest(teste)}
         const data = JSON.parse(teste)
-        console.log(data.email);
+    
       }  
 
 
@@ -85,6 +85,7 @@ const Home = (props) => {
             source={require('../assets/terra.json')}
             loop={true}
             autoPlay
+            speed={0.4}
           />
           </TouchableOpacity>
           </View>
