@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity,TextInput,ScrollView, Alert, Dimensions} from 'react-native';
+import {View, BackHandler,StyleSheet, Text, TouchableOpacity,TextInput,ScrollView, Alert, Dimensions} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {LinearGradient} from 'expo-linear-gradient';
 import { useState,useEffect } from 'react';
@@ -20,6 +20,11 @@ const Settings = (props) => {
     const [password, setPassword] = useState(null);
     const [imagePerfil,setImagePerfil] = useState(null)
     const size = Dimensions.get('window').height
+
+    useEffect(() => {
+        BackHandler.addEventListener('hardwareBackPress', () => false)
+        return () => BackHandler.removeEventListener('backPress', () => false)
+      }, [])
 
 
     // Vai pegar todas as informacoes do user antes de renderizar o componente

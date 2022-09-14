@@ -32,13 +32,7 @@ const Mars = (props) => {
             
           })
       },[])
-      // bloquear a volta da pagina 
-      useEffect(() => {
-        BackHandler.addEventListener('hardwareBackPress',() => true)
-        return() =>{
-          BackHandler.addEventListener('hardwareBackPress',() => true)
-        }
-      }, []);
+
 
       const logout = () =>{
         setLogado(false)

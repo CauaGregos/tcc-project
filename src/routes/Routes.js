@@ -25,6 +25,7 @@ const Tab = createBottomTabNavigator();
 //minha navegacao por tabs
 // consigo receber as props, se eu chamar e passar elas
 function TabNav(props) {
+  
  
   return (
     <Tab.Navigator
@@ -80,7 +81,7 @@ function Routes() {
   return (
       <Stack.Navigator>
         <Stack.Screen name="Splash" initialParams={{screen:'Welcome'}} component={Splash} options={{headerShown: false}} />
-        <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
+        <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false, gestureEnabled: false}} />
         <Stack.Screen name="WaitConfirm" component={WaitConfirm} options={{headerShown: false}} />
         <Stack.Screen name="Singin" component={Singin} options={{headerShown: false}} />
         <Stack.Screen name="Register" component={Register} options={{headerShown: false}} />

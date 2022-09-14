@@ -15,11 +15,7 @@ const Splash = () => {
   const size = Dimensions.get('window').width
   const [animStoped, setanimStoped] = useState(false);
 
-    useEffect(() => {
-        BackHandler.addEventListener('hardwareBackPress', () => {
-            return true
-        })
-    })
+ 
   useEffect(() => {
     Animated.timing(animationProgress.current, {
       toValue: 1,

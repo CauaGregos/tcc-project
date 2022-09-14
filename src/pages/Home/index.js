@@ -19,7 +19,10 @@ const Home = (props) => {
    
     const navigate = useNavigation()
 
-   
+    useEffect(() => {
+      BackHandler.addEventListener('hardwareBackPress', () => false)
+      return () => BackHandler.removeEventListener('backPress', () => false)
+    }, [])
   
       useEffect(()=>{
         axios.get('https://app-tc.herokuapp.com/alunos')
@@ -34,13 +37,7 @@ const Home = (props) => {
             
           })
       },[])
-      // bloquear a volta da pagina 
-      useEffect(() => {
-        BackHandler.addEventListener('hardwareBackPress',() => true)
-        return() =>{
-          BackHandler.addEventListener('hardwareBackPress',() => true)
-        }
-      }, []);
+      
 
       const logout = () =>{
         setLogado(false)

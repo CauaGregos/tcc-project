@@ -1,5 +1,5 @@
-import React,{ useState } from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Alert,TextInput, ActivityIndicator, Image, ImageBackgroundBase, ImageBackground} from 'react-native';
+import React,{ useState,useEffect } from 'react';
+import {View, StyleSheet, BackHandler,Text, TouchableOpacity, Alert,TextInput, ActivityIndicator, Image, ImageBackgroundBase, ImageBackground} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import CheckBox from 'react-native-custom-checkbox';
 import { useNavigation } from '@react-navigation/native';
@@ -18,6 +18,11 @@ const Singin = () => {
     const [loading, setLoading] = useState([{
         loadingLogin: false
       }])
+
+      useEffect(() => {
+        BackHandler.addEventListener('hardwareBackPress', () => false)
+        return () => BackHandler.removeEventListener('backPress', () => false)
+      }, [])
 
     async function signInUser(){
         // aqui tenho minha função de logar
