@@ -17,6 +17,10 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Splash from '../pages/Splash';
 import CamScreen from '../pages/CamScreen';
+import Earth from '../pages/InPlanets/earth';
+import Mars from '../pages/InPlanets/mars';
+import Neptune from '../pages/InPlanets/neptune';
+
 
 
 // tipos de navigations
@@ -90,6 +94,10 @@ function Routes() {
         <Stack.Screen name="ForgotAcsses" component={ForgotAcsses} options={{headerShown: false}} />
         <Stack.Screen name="InfoForgot" component={InfoForgot} options={{headerShown: false}} />
         <Stack.Screen name="SplashForgot" initialParams={{screen:'InfoForgot'}} component={SplashForgot} options={{headerShown: false}} />
+        <Stack.Screen name="Earth" component={Earth} options={{headerShown: false}} />
+        <Stack.Screen name="Mars" component={Mars} options={{headerShown: false}} />
+        <Stack.Screen name="Neptune" component={Neptune} options={{headerShown: false}} />
+
       </Stack.Navigator>
   );
 }

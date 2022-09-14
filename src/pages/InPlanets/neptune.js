@@ -4,7 +4,7 @@ import LottieView from 'lottie-react-native';
 import { useState,useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import styles from './style'
+
 
 
 

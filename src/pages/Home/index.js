@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
-import {View, BackHandler, Dimensions, Touchable, Pressable,Text} from 'react-native';
+import {View, BackHandler, Dimensions, Touchable, Pressable,Text, Button, TouchableOpacity} from 'react-native';
 import LottieView from 'lottie-react-native';
 import { useState,useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+
 import styles from './style'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -17,6 +17,11 @@ const Home = (props) => {
     const [logado,setLogado] = useState([true]);
     const width = Dimensions.get('screen').width;
     const [test,setTest] = useState('');
+    const interInPlanet = (planet) => {
+       if(planet){
+         navigate.navigate(planet);
+       } 
+    }
    
     const navigate = useNavigation()
 
@@ -54,44 +59,36 @@ const Home = (props) => {
     return (
         
         <View>
-          <LottieView style={{width:width, backgroundColor:'#241d28'}}
+         
+          <LottieView style={{position:'absolute',width:width,scaleX:1.05,backgroundColor:'#241d28'}}
             source={require('../assets/background.json')}
             loop={true}
             autoPlay
-          />
-          
-          <LottieView style={{top:'-40%', width:'30%', left:'45%' }}
+          />  
+          <View style={{top:'50%'}}>
+          <TouchableOpacity onPress={()=> interInPlanet('Mars')} style={{ top:'20%' }}>
+          <LottieView style={{width:'30%', left:'45%' }}
             source={require('../assets/marte.json')}
             loop={true}
             autoPlay
-            />
-            
-
-            <LottieView style={{top:'-65%', width:'30%', left:'10%' }}
+          />
+          </TouchableOpacity>
+        <TouchableOpacity onPress={()=> interInPlanet('Neptune')} style={{ top:'50%' }} >
+          <LottieView style={{width:'30%', left:'2%' }}
             source={require('../assets/netuno.json')}
             loop={true}
             autoPlay
-            />
-           
-            
-           
-            <LottieView style={{top:'-40%', width:'30%', left:'10%' }}
+          />
+          </TouchableOpacity>
+           <TouchableOpacity onPress={()=> interInPlanet('Earth')} style={{ top:'50%' }}>
+          <LottieView style={{width:'30%',alignSelf:'flex-end',right:'3%'}}
             source={require('../assets/terra.json')}
             loop={true}
             autoPlay
-            />
-
-           
-       
-           
-           
-
-        </View>
-
-      
-        
-
-        
+          />
+          </TouchableOpacity>
+          </View>
+        </View>        
     );
 }
 
