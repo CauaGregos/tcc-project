@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity,TextInput,ScrollView, Alert} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity,TextInput,ScrollView, Alert,Image} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {LinearGradient} from 'expo-linear-gradient';
 import { useState } from 'react';
@@ -13,7 +13,7 @@ const Register = () => {
     const axios = require('axios');
 
     const [nome, setNome] = useState(null);
-    const [sobrenome, setSobrenome] = useState(null);
+    const [nickName, setnickName] = useState(null);
     const [idade, setIdade] = useState(null);
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
@@ -22,14 +22,13 @@ const Register = () => {
     async function createUser() {
         await axios.post('https://app-tc.herokuapp.com/registerStudent',{
             nome:nome,
-            sobrenome:sobrenome,
             email: email,
             idade:idade
         })
         .then(res =>{
             axios.post('https://app-tc.herokuapp.com/registerPerfil',{
                 nome:nome,
-                sobrenome:sobrenome,
+                nickName:nickName,
                 email: email,
                 senha:password
             }).then((res) =>{
@@ -51,25 +50,22 @@ const Register = () => {
         <View style={styles.container}>
 
             <Animatable.View animation="fadeInRight" delay={500} style={styles.containerHeader}>
-                <Text style={styles.message}>Crie sua nova conta</Text>
+                
             </Animatable.View>
 
             <Animatable.View animation="fadeInUp" style={styles.containerForm}>
+                
+            <Image
+                style={{alignSelf: 'center'}}
+                source={require('../assets/SaturnoBilinguo.png')}></Image>
                 <ScrollView>
+
                     <Text style={styles.title}>Nome</Text>
                     <TextInput
                         style={styles.input}
                         value={nome}
                         onChangeText={text => setNome(text)}
-                        placeholder='Digite seu Nome..'
-                    />
-
-                    <Text style={styles.title}>Seu Sobrenome</Text>
-                    <TextInput
-                        style={styles.input}
-                        value={sobrenome}
-                        onChangeText={text => setSobrenome(text)}
-                        placeholder='Digite seu Sobrenome..'
+                        placeholder='Digite seu nome completo..'
                     />
 
                     <Text style={styles.title}>Sua idade</Text>
@@ -86,6 +82,14 @@ const Register = () => {
                         value={email}
                         style={styles.input}
                         onChangeText={text => setEmail(text)}
+                    />
+
+                    <Text style={styles.title}>Seu Usuário</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={nickName}
+                        onChangeText={text => setnickName(text)}
+                        placeholder='Digite seu Usuário..'
                     />
 
                     <Text style={styles.title}>Cadastre sua senha</Text>

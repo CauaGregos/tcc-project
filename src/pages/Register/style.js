@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#202020'
     },
     containerHeader:{
-        marginTop:'14%',
+        marginTop:'10%',
         marginBottom:'8%',
         paddingStart:'5%',
     },

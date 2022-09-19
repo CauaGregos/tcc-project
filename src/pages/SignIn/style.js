@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         backgroundColor:'#202020',
-       
+
     },
     containerHeader:{
         marginTop:'14%',
@@ -31,13 +31,13 @@ const styles = StyleSheet.create({
         color: '#838089',
     },
     input:{
-        padding:5,
-        borderWidth:1,
+        padding:10,
         borderColor:'#79797953',
-        borderRadius:5,
+        borderBottomWidth:1,
+        borderRadius:10,
         height:40,
         fontSize:16,
-        marginTop:10
+        marginTop:10,
     },
     button:{
         top:330,
@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
         color:'#a1a1a1a1'
     },
     textVisible:{
+        
         color:'#a1a1a1aa',
         flexDirection: 'row',
         elevation:10,
