@@ -49,7 +49,7 @@ function TabNav(props) {
       }}
     >
       {/*Aqui passo minhas props para o componente home no initialParams*/}
-      <Tab.Screen name="Home" initialParams={{ nome: props.route.params?.nome }} component={Home}
+      <Tab.Screen name="Home" initialParams={{ nome: props.route.params?.nome }} component={planetsNav}
         options={{
           headerShown: false,
           // Configuração dos icones que aparecem na tabBar
@@ -66,6 +66,7 @@ function TabNav(props) {
           }
         }} />
 
+      
     </Tab.Navigator>
     
   );
@@ -84,6 +85,19 @@ function SettingsNav(props) {
   );
 }
 
+// stack navigator para a aba de configurações
+function planetsNav(props) {
+ 
+  return (
+  <Stack.Navigator>
+    <Stack.Screen name="Earth" initialParams={{planet: 'Mars'}} component={Earth} options={{headerShown: false}} />
+    <Stack.Screen name="Mars" component={Mars} options={{headerShown: false}} />
+    <Stack.Screen name="Neptune" component={Neptune} options={{headerShown: false}} />
+  </Stack.Navigator>
+    
+  );
+}
+
 function Routes() {
   // Aqui esta a navegacao estatica 
   return (
@@ -97,10 +111,6 @@ function Routes() {
         <Stack.Screen name="ForgotAcsses" component={ForgotAcsses} options={{headerShown: false}} />
         <Stack.Screen name="InfoForgot" component={InfoForgot} options={{headerShown: false}} />
         <Stack.Screen name="SplashForgot" initialParams={{screen:'InfoForgot'}} component={SplashForgot} options={{headerShown: false}} />
-        <Stack.Screen name="Earth" initialParams={{planet: 'Mars'}} component={Earth} options={{headerShown: false}} />
-        <Stack.Screen name="Mars" component={Mars} options={{headerShown: false}} />
-        <Stack.Screen name="Neptune" component={Neptune} options={{headerShown: false}} />
-
       </Stack.Navigator>
   );
 }
