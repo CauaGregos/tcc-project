@@ -1,9 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions } from 'react-native';
 
 
+const size =  Dimensions.get("window").width;
 
 
 const Header = (props) => {
@@ -17,7 +17,7 @@ const Header = (props) => {
         </TouchableOpacity> 
        
        
-        <Text style={style.title}>earth</Text>
+        <Text style={style.title}>{props.actualplanet}</Text>
        
         
        
@@ -37,12 +37,12 @@ const Header = (props) => {
 const style = StyleSheet.create({
     container: {
         position:'absolute',
-        backgroundColor: '#202020',
+        backgroundColor: '#000',
         alignSelf: 'center',
         top:70,
         width: '90%',
-        height: 50,
-        borderRadius: 50,
+        height: 60,
+        borderRadius: 20,
         
         
     },
@@ -51,20 +51,21 @@ const style = StyleSheet.create({
         fontSize: 30,
         color: '#fff',
         textAlign: 'center',
-        bottom: 27
+        bottom: 23
     },
 
     leftButton:{
         
         left: 20,
-        top: 10
+        alignSelf: 'flex-start',
+        top: 14
         
     },
 
     rightButton:{
-        
-        left: 305,
-        bottom: 59
+        right: 20,
+        alignSelf: 'flex-end',
+        bottom: 55.3
 
     }
 });

@@ -52,7 +52,7 @@ const Earth = (props) => {
             autoPlay
           />
           
-          <Header planet='Mars' oldplanet='Neptune'/> 
+          <Header planet='Mars' actualplanet = 'Earth' oldplanet='Neptune'/> 
 
           
           <LottieView style={{top:'-23%', width:'300%', right:'25%' }}

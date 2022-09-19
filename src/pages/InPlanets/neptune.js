@@ -51,7 +51,7 @@ const Neptune = (props) => {
             autoPlay
           />
           
-          <Header planet='Earth' oldplanet='Mars'/>
+          <Header planet='Earth' actualplanet = 'Neptune' oldplanet='Mars'/>
 
            
           
