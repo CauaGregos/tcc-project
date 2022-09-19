@@ -30,13 +30,17 @@ const styles = StyleSheet.create({
         color: '#838089'
     },
     input:{
-        padding:5,
-        borderWidth:1,
-        borderColor:'#79797953',
-        borderRadius:5,
-        height:40,
-        marginBottom:12,
-        fontSize:16,
+         top: "-70%",
+         padding:5,
+         borderWidth:1,
+         borderColor:'#79797953',
+         borderRadius:5,
+         height:30,
+         width: 150,
+         textAlign: 'center',
+         left: 115,
+         fontSize:16,
+         marginTop:10
     },
     button:{
         backgroundColor:'#5A4FCF',

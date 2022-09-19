@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
-import {View, BackHandler, Dimensions, Touchable, Pressable} from 'react-native';
+import {View, BackHandler, Dimensions, Touchable, Pressable, Image} from 'react-native';
 import LottieView from 'lottie-react-native';
 import { useState,useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import Header from '../../components/Header';
 
 
 
@@ -45,30 +45,26 @@ const Earth = (props) => {
         
         <View>
 
+         
           <LottieView style={{width:width, scaleX:1.3,scaleY:1.3, backgroundColor:'#241d28'}}
             source={require('../assets/background.json')}
             loop={true}
             autoPlay
           />
           
-          
-           
-          
-            <LottieView style={{top:'-23%', width:'300%', right:'25%' }}
-            source={require('../assets/terra.json')}
-            loop={true}
-            autoPlay
-            />
+          <Header planet='Mars' oldplanet='Neptune'/> 
 
-           
-       
-           
-           
+          
+          <LottieView style={{top:'-23%', width:'300%', right:'25%' }}
+          source={require('../assets/terra.json')}
+          loop={true}
+          autoPlay
+          />
+
+                
+                
 
         </View>
-
-      
-        
 
         
     );

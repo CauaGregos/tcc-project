@@ -56,16 +56,17 @@ const Settings = (props) => {
                         </TouchableOpacity>
                     </View>
                 </View>
-
-                <View>
-                    <Text style={{top: '-40%'}}
-                    >NOME</Text>
-                </View>
-
-            
             </Animatable.View>
 
-        
+            <TextInput
+                placeholder='Usuário'
+                style={styles.input}
+                value={nome}
+                onChangeText = {text => setNome(text)}
+            />
+
+            
+                    
         </View>
     );
 }
