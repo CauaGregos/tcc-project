@@ -65,10 +65,12 @@ function TabNav(props) {
            return focused ? <Image source={require('../pages/assets/iconProfile.png')}/> : <Image source={require('../pages/assets/iconProfileFocused.png')}/>
           }
         }} />
+
     </Tab.Navigator>
     
   );
 }
+
 
 // stack navigator para a aba de configurações
 function SettingsNav(props) {
@@ -95,7 +97,7 @@ function Routes() {
         <Stack.Screen name="ForgotAcsses" component={ForgotAcsses} options={{headerShown: false}} />
         <Stack.Screen name="InfoForgot" component={InfoForgot} options={{headerShown: false}} />
         <Stack.Screen name="SplashForgot" initialParams={{screen:'InfoForgot'}} component={SplashForgot} options={{headerShown: false}} />
-        <Stack.Screen name="Earth" component={Earth} options={{headerShown: false}} />
+        <Stack.Screen name="Earth" initialParams={{planet: 'Mars'}} component={Earth} options={{headerShown: false}} />
         <Stack.Screen name="Mars" component={Mars} options={{headerShown: false}} />
         <Stack.Screen name="Neptune" component={Neptune} options={{headerShown: false}} />
 

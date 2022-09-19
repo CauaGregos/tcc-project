@@ -19,7 +19,7 @@ const Home = (props) => {
     const [test,setTest] = useState('');
     const interInPlanet = (planet) => {
        if(planet){
-         navigate.navigate(planet);
+         navigate.navigate(planet, {planet: toString(planet)});
        } 
     }
    

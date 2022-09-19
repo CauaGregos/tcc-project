@@ -4,7 +4,7 @@ import LottieView from 'lottie-react-native';
 import { useState,useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import Header from '../../components/Header';
 
 
 
@@ -51,7 +51,8 @@ const Neptune = (props) => {
             autoPlay
           />
           
-          
+          <Header planet='Earth' oldplanet='Mars'/>
+
            
           
             <LottieView style={{top:'-23%', width:'300%', right:'25%' }}
