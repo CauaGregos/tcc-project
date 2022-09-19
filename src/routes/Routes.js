@@ -54,7 +54,7 @@ function TabNav(props) {
           headerShown: false,
           // Configuração dos icones que aparecem na tabBar
           tabBarIcon: ({ color, size, focused }) => {
-           return focused ? <Image source={require('../pages/assets/iconMain.png')}/> : <Image source={require('../pages/assets/iconMain.png')}/>
+           return focused ? <Image source={require('../pages/assets/iconMain.png')}/> : <Image source={require('../pages/assets/iconMainFocused.png')}/>
           }
         }} />
 
@@ -62,7 +62,7 @@ function TabNav(props) {
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size, focused }) => {
-           return focused ? <Image source={require('../pages/assets/iconProfile.png')}/> : <Image source={require('../pages/assets/iconProfile.png')}/>
+           return focused ? <Image source={require('../pages/assets/iconProfile.png')}/> : <Image source={require('../pages/assets/iconProfileFocused.png')}/>
           }
         }} />
     </Tab.Navigator>

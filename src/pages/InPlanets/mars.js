@@ -45,7 +45,7 @@ const Mars = (props) => {
         
         <View>
 
-          <LottieView style={{width:width, scaleX:1.05, backgroundColor:'#241d28'}}
+          <LottieView style={{width:width, scaleX:1.3,scaleY:1.3, backgroundColor:'#241d28'}}
             source={require('../assets/background.json')}
             loop={true}
             autoPlay
