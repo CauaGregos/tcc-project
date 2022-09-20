@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
-import {View, BackHandler, Dimensions, Touchable, Pressable} from 'react-native';
+import {View, BackHandler, Dimensions, Touchable, Pressable, Text} from 'react-native';
 import LottieView from 'lottie-react-native';
 import { useState,useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Header from '../../components/Header';
-
+import styles from './style';
 
 
 
@@ -55,12 +55,26 @@ const Neptune = (props) => {
 
            
           
-            <LottieView style={{top:'-23%', width:'300%', right:'25%' }}
+            <LottieView style={{top:'-20%', width:'300%', right:'25%' }}
             source={require('../assets/netuno.json')}
             loop={true}
             autoPlay
             />
 
+          <LottieView style={{top:'-67%', alignSelf: 'center', width:150}}
+          source={require('../assets/rocketPurple.json')}
+          loop={true}
+          autoPlay
+          />
+
+          <LottieView style={{top:'-70%', alignSelf: 'center', width:150, }}
+          source={require('../assets/buttonLaunch.json')}
+            
+          loop={true}
+          autoPlay
+          />
+
+          <Text style={styles.launch}> Launch </Text>
            
 
         </View>
