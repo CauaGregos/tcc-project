@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image } from 'react-native';
+import { Image, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Welcome from '../pages/Welcome';
@@ -27,9 +27,32 @@ import Neptune from '../pages/InPlanets/neptune';
 // tipos de navigations
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-
+const plataforma = Platform.OS
 //minha navegacao por tabs
 // consigo receber as props, se eu chamar e passar elas
+
+const jsonStyleAndroid = {
+  backgroundColor: '#202020',
+  borderTopWidth: 0,
+  borderRadius: 10,
+  position: 'absolute',
+  left: 10,
+  right: 10,
+  bottom:15
+}
+
+const jsonStyleIos = {
+  backgroundColor: '#202020',
+  borderTopWidth: 0,
+  borderRadius: 10,
+  position: 'absolute',
+  left: 10,
+  right: 10,
+  bottom:15,
+  height: 50,
+  top: 14,
+}
+
 function TabNav(props) {
   
  
@@ -38,13 +61,17 @@ function TabNav(props) {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
-          backgroundColor: '#202020',
-          borderTopWidth: 0,
-          borderRadius: 10,
-          position: 'absolute',
-          left: 10,
-          right: 10,
-          bottom:15
+          backgroundColor: plataforma == 'ios' ? jsonStyleIos.backgroundColor :jsonStyleAndroid.backgroundColor,
+          borderTopWidth: plataforma == 'ios' ? jsonStyleIos.borderTopWidth :jsonStyleAndroid.borderTopWidth,
+          borderRadius: plataforma == 'ios' ? jsonStyleIos.borderRadius :jsonStyleAndroid.borderRadius,
+          position: plataforma == 'ios' ? jsonStyleIos.position :jsonStyleAndroid.position,
+          left: plataforma == 'ios' ? jsonStyleIos.left :jsonStyleAndroid.left,
+          right: plataforma == 'ios' ? jsonStyleIos.right :jsonStyleAndroid.right,
+          bottom:plataforma == 'ios' ? jsonStyleIos.bottom :jsonStyleAndroid.bottom,
+          height: plataforma == 'ios' ? jsonStyleIos.height :jsonStyleAndroid.height
+        },
+        tabBarIconStyle: {
+          top: plataforma == 'ios' ? jsonStyleIos.top :jsonStyleAndroid.top
         }
       }}
     >
