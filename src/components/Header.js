@@ -12,18 +12,18 @@ const Header = (props) => {
     <View style={style.container}>
         
         
+        
+
         <TouchableOpacity onPress={() => navigate.navigate(props.oldplanet)}>
         <Image style={style.leftButton} source={require('../pages/assets/buttonArrowleft.png')}></Image>
         </TouchableOpacity> 
-       
-       
-        <Text style={style.title}>{props.actualplanet}</Text>
-       
         
        
         <TouchableOpacity onPress={() => navigate.navigate(props.planet)}>
         <Image style={style.rightButton} source={require('../pages/assets/buttonArrow.png')}></Image>
         </TouchableOpacity> 
+
+        <Text style={style.title}>{props.actualplanet}</Text>
 
 
         
@@ -39,33 +39,36 @@ const style = StyleSheet.create({
         position:'absolute',
         backgroundColor: '#000',
         alignSelf: 'center',
-        top:70,
+        top:50,
         width: '90%',
-        height: 60,
+        height: 50,
         borderRadius: 20,
         
         
     },
 
     title: {
-        fontSize: 30,
+        fontSize: 25,
         color: '#fff',
-        textAlign: 'center',
-        bottom: 23
+        alignSelf: 'center',
+        top: "-100%",
+       
+        
+        
     },
 
     leftButton:{
         
-        left: 20,
+        left: 10,
         alignSelf: 'flex-start',
-        top: 14
+        top: "30%"
         
     },
 
     rightButton:{
-        right: 20,
+        right: 10,
         alignSelf: 'flex-end',
-        bottom: 55.3
+        top: "-65%"
 
     }
 });
