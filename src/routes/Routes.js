@@ -77,7 +77,7 @@ function TabNav(props) {
       }}
     >
       {/*Aqui passo minhas props para o componente home no initialParams*/}
-      <Tab.Screen name="Home" initialParams={{ nome: props.route.params?.nome }} component={planetsNav}
+      <Tab.Screen name="Home" initialParams={{ nome: props.route.params?.nome }} component={PlanetsNav}
         options={{
           headerShown: false,
           // Configuração dos icones que aparecem na tabBar
@@ -114,7 +114,7 @@ function SettingsNav(props) {
 }
 
 // stack navigator para a aba de configurações
-function planetsNav(props) {
+function PlanetsNav(props) {
  
   return (
   <Stack.Navigator>
