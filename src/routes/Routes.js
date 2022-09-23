@@ -38,7 +38,8 @@ const jsonStyleAndroid = {
   position: 'absolute',
   left: 10,
   right: 10,
-  bottom:15
+  bottom:'3%',
+  height:50
 }
 
 const jsonStyleIos = {
