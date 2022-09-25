@@ -25,22 +25,52 @@ const styles = StyleSheet.create({
         paddingEnd:'5%'
     },
     title:{
-        fontSize:20,
-        marginTop:28,
-        color: '#838089'
+        fontSize:14,
+        alignSelf:'flex-start',
+        paddingTop:'1%',
+        position:'absolute',
+        textAlign:'left',
+        top:'2%',
+    },
+    title2:{
+        fontSize:14,
+        alignSelf:'flex-start',
+        paddingTop:'1%',
+        position:'absolute',
+        textAlign:'left',
+        top:'27.4%',
+    },
+    title3:{
+        fontSize:14,
+        alignSelf:'flex-start',
+        paddingTop:'1%',
+        position:'absolute',
+        textAlign:'left',
+        top:'53.2%',
+    },
+    title4:{
+        fontSize:14,
+        alignSelf:'flex-start',
+        paddingTop:'1%',
+        position:'absolute',
+        textAlign:'left',
+        top:'77.2%',
+    },
+    separetor:{
+        width:'100%',
+        borderTopWidth:1,
+        borderColor:'#79797953',
     },
     input:{
-         top: "-70%",
-         padding:5,
-         borderWidth:1,
-         borderColor:'#79797953',
-         borderRadius:5,
-         height:30,
-         width: 150,
-         textAlign: 'center',
-         left: 115,
-         fontSize:16,
-         marginTop:10
+        padding:5,
+        borderColor:'#79797953',
+        borderRadius:5,
+        marginBottom:12,
+        fontSize:16,
+        position:'relative',
+        alignSelf:'flex-end',
+        width:"60%",
+        textAlign: "right",
     },
     button:{
         backgroundColor:'#5A4FCF',
@@ -55,10 +85,6 @@ const styles = StyleSheet.create({
         color:'#fff',
         fontWeight:'bold',
         fontSize:18,
-    },
-    imagePerfil:{
-       justifyContent:'center',
-       alignItems:'center'
     },
     buttonRegister:{
         marginTop:3,

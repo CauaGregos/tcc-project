@@ -21,8 +21,8 @@ const Singin = () => {
 
      
 
-      const setLogin = (key, value) => {
-        AsyncStorage.setItem(key,value)
+      const setLogin = async (key, value) => {
+        await AsyncStorage.setItem(key,value)
       }
 
     async function signInUser(){
@@ -35,7 +35,7 @@ const Singin = () => {
             // confirmado ou nao
             let jsonData = {
                 email: email,
-                state: 'isLogin'
+                password: password,
             }
             setLogin('@User',JSON.stringify(jsonData));
             res1.data[0].confirmado == 1 ? navegar.dispatch(

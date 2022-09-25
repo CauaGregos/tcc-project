@@ -22,7 +22,7 @@ const Home = (props) => {
          navigate.navigate(planet, {planet: toString(planet)});
        } 
     }
-   
+
     const navigate = useNavigation()
 
       async function getData() {

@@ -77,7 +77,7 @@ function TabNav(props) {
       }}
     >
       {/*Aqui passo minhas props para o componente home no initialParams*/}
-      <Tab.Screen name="Home" initialParams={{ nome: props.route.params?.nome }} component={PlanetsNav}
+      <Tab.Screen name="Home" component={PlanetsNav}
         options={{
           headerShown: false,
           // Configuração dos icones que aparecem na tabBar
@@ -86,7 +86,7 @@ function TabNav(props) {
           }
         }} />
 
-      <Tab.Screen name="Settings" component={SettingsNav}
+      <Tab.Screen name="Settings" component={SettingsNav} initialParams={{user:props.route.params?.user}}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size, focused }) => {
@@ -106,7 +106,7 @@ function SettingsNav(props) {
  
   return (
   <Stack.Navigator>
-    <Stack.Screen name="SettingsScreen" component={Settings} options={{headerShown: false}} />
+    <Stack.Screen name="SettingsScreen" initialParams={{user:props.route.params?.user}} component={Settings} options={{headerShown: false}} />
     <Stack.Screen name="CamScreen" component={CamScreen} options={{headerShown: false}} />
   </Stack.Navigator>
     

@@ -18,7 +18,7 @@ const Splash = () => {
 
   const checkLogin = async () => {
     const user = await AsyncStorage.getItem('@User');
-    user ? navegar.dispatch(StackActions.replace('Home')): setanimStoped(true);
+    user ? navegar.dispatch(StackActions.replace('Home',{user:user})): setanimStoped(true);
   }
 
 
