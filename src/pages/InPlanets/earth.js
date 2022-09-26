@@ -19,6 +19,10 @@ const Earth = (props) => {
   const width = Dimensions.get("screen").width;
   const plataforma = Platform.OS;
 
+  const navigacaoFase = useNavigation();
+
+
+
   const navigate = useNavigation();
   console.log(props.route.params?.object)
   useEffect(() => {
@@ -50,7 +54,7 @@ const Earth = (props) => {
       <Header planet="Mars" actualplanet="Earth" oldplanet="Neptune" />
 
       {plataforma == "ios" ? (
-        <TouchableOpacity style={{bottom:"13%"}}>
+        <TouchableOpacity onPress={() => navigacaoFase.navigate("earthGame")} style={{bottom:"13%"}}>
           <LottieView
           style={styles.IOSearth}
           source={require("../assets/terra.json")}
@@ -59,7 +63,7 @@ const Earth = (props) => {
         />
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity style={{bottom:"10%"}}>
+        <TouchableOpacity onPress={() => navigacaoFase.navigate("earthGame")} style={{bottom:"10%"}}>
           <LottieView
           style={styles.ANDROIDearth}
           source={require("../assets/terra.json")}

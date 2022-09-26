@@ -21,6 +21,8 @@ import CamScreen from '../pages/CamScreen';
 import Earth from '../pages/InPlanets/earth';
 import Mars from '../pages/InPlanets/mars';
 import Neptune from '../pages/InPlanets/neptune';
+import earthGame from '../pages/GameScreens/earthGame';
+import marsGame from '../pages/GameScreens/marsGame';
 
 
 
@@ -120,6 +122,8 @@ function PlanetsNav(props) {
     <Stack.Screen name="Earth" initialParams={{planet: 'Mars'}} component={Earth} options={{headerShown: false}} />
     <Stack.Screen name="Mars" component={Mars} options={{headerShown: false}} />
     <Stack.Screen name="Neptune" component={Neptune} options={{headerShown: false}} />
+    <Stack.Screen name="earthGame" component={earthGame} options={{headerShown: false}} />
+    <Stack.Screen name="marsGame" component={marsGame} options={{headerShown: false}} />
   </Stack.Navigator>
     
   );

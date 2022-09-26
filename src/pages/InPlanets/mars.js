@@ -13,6 +13,7 @@ const Mars = (props) => {
   const width = Dimensions.get("screen").width;
   const plataforma = Platform.OS;
 
+  const navigacaoFase = useNavigation();
   const navigate = useNavigation();
 
   useEffect(() => {
@@ -44,7 +45,7 @@ const Mars = (props) => {
       <Header planet="Neptune" actualplanet="Mars" oldplanet="Earth" />
 
       {plataforma == "ios" ? (
-        <TouchableOpacity style={{bottom:"15%"}}>
+        <TouchableOpacity onPress={() => navigacaoFase.navigate("marsGame")} style={{bottom:"15%"}}>
           <LottieView
           style={styles.IOSmars}
           source={require("../assets/marte.json")}
@@ -53,7 +54,7 @@ const Mars = (props) => {
         />
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity style={{bottom:"10%"}}>
+        <TouchableOpacity onPress={() => navigacaoFase.navigate("marsGame")} style={{bottom:"10%"}}>
           <LottieView
           style={styles.ANDROIDmars}
           source={require("../assets/marte.json")}
