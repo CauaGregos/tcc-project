@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Dimensions, Platform } from "react-native";
+import { View, Dimensions, Platform, TouchableOpacity } from "react-native";
 import LottieView from "lottie-react-native";
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -47,7 +47,7 @@ const Mars = (props) => {
         <TouchableOpacity style={{bottom:"10%"}}>
           <LottieView
           style={styles.IOSmars}
-          source={require("../assets/terra.json")}
+          source={require("../assets/marte.json")}
           loop={true}
           autoPlay
         />
@@ -56,7 +56,7 @@ const Mars = (props) => {
         <TouchableOpacity style={{bottom:"10%"}}>
           <LottieView
           style={styles.ANDROIDmars}
-          source={require("../assets/terra.json")}
+          source={require("../assets/marte.json")}
           loop={true}
           autoPlay
         />
