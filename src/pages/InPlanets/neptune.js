@@ -44,7 +44,7 @@ const Neptune = (props) => {
       <Header planet="Earth" actualplanet="Neptune" oldplanet="Mars" />
 
       {plataforma == "ios" ? (
-        <TouchableOpacity style={{bottom:"10%"}}>
+        <TouchableOpacity style={{bottom:"15%"}}>
           <LottieView
           style={styles.IOSneptune}
           source={require("../assets/netuno.json")}

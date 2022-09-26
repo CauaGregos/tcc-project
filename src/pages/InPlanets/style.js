@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     IOSrocket:{
-        top:'-46%',
+        top:'-53%',
         alignSelf: 'center',
         width: 150
     },

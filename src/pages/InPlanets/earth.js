@@ -50,7 +50,7 @@ const Earth = (props) => {
       <Header planet="Mars" actualplanet="Earth" oldplanet="Neptune" />
 
       {plataforma == "ios" ? (
-        <TouchableOpacity style={{bottom:"10%"}}>
+        <TouchableOpacity style={{bottom:"13%"}}>
           <LottieView
           style={styles.IOSearth}
           source={require("../assets/terra.json")}
