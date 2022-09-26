@@ -21,8 +21,6 @@ const Splash = () => {
     user ? navegar.dispatch(StackActions.replace('Home',{user:user})): setanimStoped(true);
   }
 
-
- 
   useEffect(() => {
     Animated.timing(animationProgress.current, {
       toValue: 1,

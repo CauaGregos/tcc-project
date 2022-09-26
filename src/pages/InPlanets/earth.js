@@ -3,6 +3,7 @@ import {
   View,
   Dimensions,
   Platform,
+  TouchableOpacity,
 } from "react-native";
 import LottieView from "lottie-react-native";
 import { useState, useEffect } from "react";
@@ -49,19 +50,24 @@ const Earth = (props) => {
       <Header planet="Mars" actualplanet="Earth" oldplanet="Neptune" />
 
       {plataforma == "ios" ? (
-        <LottieView
+        <TouchableOpacity style={{bottom:"10%"}}>
+          <LottieView
           style={styles.IOSearth}
           source={require("../assets/terra.json")}
           loop={true}
           autoPlay
         />
+        </TouchableOpacity>
       ) : (
-        <LottieView
+        <TouchableOpacity style={{bottom:"10%"}}>
+          <LottieView
           style={styles.ANDROIDearth}
           source={require("../assets/terra.json")}
           loop={true}
           autoPlay
         />
+        </TouchableOpacity>
+        
       )}
 
       {plataforma == "ios" ? (
