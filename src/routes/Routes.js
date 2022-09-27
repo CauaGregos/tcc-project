@@ -23,7 +23,7 @@ import Mars from '../pages/InPlanets/mars';
 import Neptune from '../pages/InPlanets/neptune';
 import earthGame from '../pages/GameScreens/earthGame';
 import marsGame from '../pages/GameScreens/marsGame';
-
+import DailyGoal from '../pages/DailyGoal';
 
 
 // tipos de navigations
@@ -133,6 +133,7 @@ function Routes() {
   // Aqui esta a navegacao estatica 
   return (
       <Stack.Navigator>
+        <Stack.Screen name="DailyGoal" initialParams={{screen:'Welcome'}} component={DailyGoal} options={{headerShown: false}} />
         <Stack.Screen name="Splash" initialParams={{screen:'Welcome'}} component={Splash} options={{headerShown: false}} />
         <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
         <Stack.Screen name="WaitConfirm" component={WaitConfirm} options={{headerShown: false}} />

@@ -52,13 +52,19 @@ const styles = StyleSheet.create({
         fontSize:18,
     },
     button:{
-        backgroundColor:'#FFF',
-        borderRadius:10,
+        marginTop:10,
+        backgroundColor:'#E9EDF0',
+        borderRadius:370,
         paddingVertical:8,
-        width:'42%',
+        width:'55%',
+        height:50,
         alignItems:'center',
         justifyContent:'center',
         alignSelf:'center',
+        elevation:11,
+        borderWidth:0.5,
+        borderColor:'#FEFEFF',
+        shadowColor:'#000',
         
     },
     buttonAceppt:{

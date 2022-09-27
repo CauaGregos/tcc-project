@@ -47,9 +47,15 @@ const DailyGoal = (props) => {
           
           <View>
             <TouchableOpacity style={styles.button}>
-              <Text>Casual   5min / Dia</Text>
+              <Text style={{fontWeight:'bold'}}>Casual   5min / Dia</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {signInUser()}} style={styles.buttonAceppt}>
+            <TouchableOpacity style={styles.button}>
+              <Text style={{fontWeight:'bold'}}>Casual   5min / Dia</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
+              <Text style={{fontWeight:'bold'}}>Casual   5min / Dia</Text>
+            </TouchableOpacity>
+            <TouchableOpacity  style={styles.buttonAceppt}>
               <Text style={styles.buttonText}>{<FontAwesome name="angle-right" size={30} color="#3C3C3C"/>}</Text>
             </TouchableOpacity>
 
