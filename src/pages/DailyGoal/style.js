@@ -17,6 +17,9 @@ const styles = StyleSheet.create({
          width:'30%',
           left:'10%' 
     },
+    containerOptions:{
+        marginBottom:'73%'
+    },
     containerForm:{
         top:100,
         backgroundColor:'#FFF',
@@ -32,7 +35,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         alignSelf:'center',
         width:'70%',
-        bottom:220
+        bottom:20
     },
     neptuneButton:{
         top:'-65%',
@@ -47,16 +50,16 @@ const styles = StyleSheet.create({
         
     },
     buttonText:{
-        color:'#fff',
+        color:'#000',
         fontWeight:'bold',
         fontSize:18,
     },
     button:{
-        marginTop:10,
+        marginTop:24,
         backgroundColor:'#E9EDF0',
         borderRadius:370,
         paddingVertical:8,
-        width:'55%',
+        width:'77%',
         height:50,
         alignItems:'center',
         justifyContent:'center',
