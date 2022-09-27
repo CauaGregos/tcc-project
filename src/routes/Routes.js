@@ -18,11 +18,11 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Splash from '../pages/Splash';
 import CamScreen from '../pages/CamScreen';
-import Earth from '../pages/InPlanets/Earth';
-import Mars from '../pages/InPlanets/Mars';
-import Neptune from '../pages/InPlanets/Neptune';
-import EarthGame from '../pages/GameScreens/EarthGame';
-import MarsGame from '../pages/GameScreens/MarsGame';
+import Earth from '../pages/InPlanets/earth';
+import Mars from '../pages/InPlanets/mars';
+import Neptune from '../pages/InPlanets/neptune';
+import EarthGame from '../pages/GameScreens/earthGame';
+import MarsGame from '../pages/GameScreens/marsGame';
 import DailyGoal from '../pages/DailyGoal';
 
 
