@@ -3,7 +3,8 @@ import {
     Dimensions,
     Platform,
     Image,
-    View
+    View,
+    Button
 } from "react-native";
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -42,8 +43,7 @@ const earthGame = (props) => {
             {plataforma == "ios" ? (
                 <ScrollView>
                     <Image source={require('../assets/earthGame.png')}
-                        style={styles.IOSearthGame}
-                    ></Image>
+                        style={styles.IOSearthGame}></Image>
                 </ScrollView>
             ) : (
                 <ScrollView>
