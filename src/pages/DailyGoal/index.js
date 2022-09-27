@@ -45,7 +45,7 @@ const DailyGoal = (props) => {
             resizeMode="contain"
           />
           
-          <View style={styles.containerOptions}>
+          <Animatable.View animation={"fadeInRight"} delay={500} style={styles.containerOptions}>
             <TouchableOpacity style={styles.button}>
               <Text style={styles.buttonText}>Casual   5min / Dia</Text>
             </TouchableOpacity>
@@ -62,7 +62,7 @@ const DailyGoal = (props) => {
               <Text style={styles.buttonText}>{<FontAwesome name="angle-right" size={30} color="#3C3C3C"/>}</Text>
             </TouchableOpacity>
 
-          </View>
+          </Animatable.View>
       </Animatable.View>
 
 
