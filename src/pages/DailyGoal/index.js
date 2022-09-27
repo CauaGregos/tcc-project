@@ -25,6 +25,7 @@ const DailyGoal = (props) => {
     }
 
     const navigate = useNavigation()
+    const navegacaoSplash = useNavigation()
     
 
     return (
@@ -58,7 +59,7 @@ const DailyGoal = (props) => {
             <TouchableOpacity style={styles.button}>
               <Text style={styles.buttonText}>Puxada   20min / Dia</Text>
             </TouchableOpacity>
-            <TouchableOpacity  style={styles.buttonAceppt}>
+            <TouchableOpacity onPress={() => navegacaoSplash.navigate("Splash")}  style={styles.buttonAceppt}>
               <Text style={styles.buttonText}>{<FontAwesome name="angle-right" size={30} color="#3C3C3C"/>}</Text>
             </TouchableOpacity>
 

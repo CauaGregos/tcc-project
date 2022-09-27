@@ -45,7 +45,7 @@ const Mars = (props) => {
       <Header planet="Neptune" actualplanet="Mars" oldplanet="Earth" />
 
       {plataforma == "ios" ? (
-        <TouchableOpacity onPress={() => navigacaoFase.navigate("marsGame")} style={{bottom:"15%"}}>
+        <TouchableOpacity onPress={() => navigacaoFase.navigate("MarsGame")} style={{bottom:"15%"}}>
           <LottieView
           style={styles.IOSmars}
           source={require("../assets/marte.json")}
@@ -54,7 +54,7 @@ const Mars = (props) => {
         />
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity onPress={() => navigacaoFase.navigate("marsGame")} style={{bottom:"10%"}}>
+        <TouchableOpacity onPress={() => navigacaoFase.navigate("MarsGame")} style={{bottom:"10%"}}>
           <LottieView
           style={styles.ANDROIDmars}
           source={require("../assets/marte.json")}

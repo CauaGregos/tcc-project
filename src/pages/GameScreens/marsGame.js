@@ -1,17 +1,12 @@
 import React from "react";
-import {
-  Dimensions,
-  Platform,
-  Image,
-  View
-} from "react-native";
+import { Dimensions, Platform, Image, View, TouchableOpacity } from "react-native";
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import styles from "./style";
+import stylesAndroid from "./styleAndroid";
 
-
-const marsGame = (props) => {
+const MarsGame = (props) => {
   const [alunos, setAlunos] = useState([]);
   const axios = require("axios");
   const [logado, setLogado] = useState([true]);
@@ -19,7 +14,7 @@ const marsGame = (props) => {
   const plataforma = Platform.OS;
 
   const navigate = useNavigation();
-  console.log(props.route.params?.object)
+  console.log(props.route.params?.object);
   useEffect(() => {
     axios
       .get("https://app-tc.herokuapp.com/alunos")
@@ -39,21 +34,53 @@ const marsGame = (props) => {
 
   return (
     <View>
-            {plataforma == "ios" ? (
-                <ScrollView>
-                    <Image source={require('../assets/marsGame.png')}
-                        style={styles.IOSmarsGame}
-                    ></Image>
-                </ScrollView>
-            ) : (
-                <ScrollView>
-                    <Image source={require('../assets/marsGame.png')}
-                        style={styles.ANDROIDmarsGame}
-                    ></Image>
-                </ScrollView>
-            )
-            }</View>
-    )
+      {plataforma == "ios" ? (
+        <ScrollView>
+          <Image
+            source={require("../assets/marsGame.png")}
+            style={styles.IOSmarsGame}
+          ></Image>
+        </ScrollView>
+      ) : (
+        <ScrollView>
+          <Image
+            source={require("../assets/marsGame.png")}
+            style={styles.ANDROIDmarsGame}
+          ></Image>
+          <TouchableOpacity style={stylesAndroid.ButtonOne}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesAndroid.ButtonTwo}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesAndroid.ButtonThree}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesAndroid.ButtonFour}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesAndroid.ButtonFive}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesAndroid.ButtonSix}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesAndroid.ButtonSeven}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesAndroid.ButtonEight}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesAndroid.ButtonNine}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesAndroid.ButtonTen}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+        </ScrollView>
+      )}
+    </View>
+  );
 };
 
-export default marsGame;
+export default MarsGame;

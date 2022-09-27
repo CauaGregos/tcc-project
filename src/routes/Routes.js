@@ -18,11 +18,11 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Splash from '../pages/Splash';
 import CamScreen from '../pages/CamScreen';
-import Earth from '../pages/InPlanets/earth';
-import Mars from '../pages/InPlanets/mars';
-import Neptune from '../pages/InPlanets/neptune';
-import earthGame from '../pages/GameScreens/earthGame';
-import marsGame from '../pages/GameScreens/marsGame';
+import Earth from '../pages/InPlanets/Earth';
+import Mars from '../pages/InPlanets/Mars';
+import Neptune from '../pages/InPlanets/Neptune';
+import EarthGame from '../pages/GameScreens/EarthGame';
+import MarsGame from '../pages/GameScreens/MarsGame';
 import DailyGoal from '../pages/DailyGoal';
 
 
@@ -122,8 +122,8 @@ function PlanetsNav(props) {
     <Stack.Screen name="Earth" initialParams={{planet: 'Mars'}} component={Earth} options={{headerShown: false}} />
     <Stack.Screen name="Mars" component={Mars} options={{headerShown: false}} />
     <Stack.Screen name="Neptune" component={Neptune} options={{headerShown: false}} />
-    <Stack.Screen name="earthGame" component={earthGame} options={{headerShown: false}} />
-    <Stack.Screen name="marsGame" component={marsGame} options={{headerShown: false}} />
+    <Stack.Screen name="EarthGame" component={EarthGame} options={{headerShown: false}} />
+    <Stack.Screen name="MarsGame" component={MarsGame} options={{headerShown: false}} />
   </Stack.Navigator>
     
   );
