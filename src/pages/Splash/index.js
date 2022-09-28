@@ -14,7 +14,7 @@ const Splash = () => {
   const navegar = useNavigation()
   const animationProgress = useRef(new Animated.Value(0))
   const size = Dimensions.get('window').width
-  const [animStoped, setanimStoped] = useState(false);
+  const [animStoped, setanimStoped] = useState(true);
 
   const checkLogin = async () => {
     const user = await AsyncStorage.getItem('@User');

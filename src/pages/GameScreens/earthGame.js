@@ -11,6 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import styles from "./style";
 import stylesAndroid from "./styleAndroid";
+import stylesIOS from "./styleIOS";
 
 const EarthGame = (props) => {
   const [alunos, setAlunos] = useState([]);
@@ -47,6 +48,36 @@ const EarthGame = (props) => {
             source={require("../assets/earthGame.png")}
             style={styles.IOSearthGame}
           ></Image>
+          <TouchableOpacity style={stylesIOS.ButtonOne}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesIOS.ButtonTwo}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesIOS.ButtonThree}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesIOS.ButtonFour}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesIOS.ButtonFive}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesIOS.ButtonSix}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesIOS.ButtonSeven}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesIOS.ButtonEight}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesIOS.ButtonNine}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesIOS.ButtonTen}>
+            <Image source={require("../assets/BotaoFase.png")}></Image>
+          </TouchableOpacity>
         </ScrollView>
       ) : (
         <ScrollView showsVerticalScrollIndicator={false} >

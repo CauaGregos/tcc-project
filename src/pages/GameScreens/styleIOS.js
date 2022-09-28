@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Dimensions } from "react-native";
 
-const stylesAndroid = StyleSheet.create({
+const stylesIOS = StyleSheet.create({
   ButtonOne: {top: "6.4%",right: "56%",width: 10,alignSelf: "center",position: "absolute" },
   ButtonTwo: {top: "18.6%",right:"41%",width: 10, alignSelf: "center",position: "absolute"},
   ButtonThree: {top: "18.6%",right:"70.6%",width: 10, alignSelf: "center",position: "absolute"},
@@ -14,4 +14,4 @@ const stylesAndroid = StyleSheet.create({
   ButtonTen: { top: "80.5%",right:"56%", width: 10, alignSelf: "center" ,position: "absolute"},
 });
 
-export default stylesAndroid;
+export default stylesIOS;
