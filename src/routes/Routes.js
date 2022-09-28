@@ -25,7 +25,6 @@ import EarthGame from '../pages/GameScreens/earthGame';
 import MarsGame from '../pages/GameScreens/marsGame';
 import DailyGoal from '../pages/DailyGoal';
 
-
 // tipos de navigations
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -59,6 +58,7 @@ function TabNav(props) {
   
  
   return (
+    
     <Tab.Navigator
       screenOptions={{
         tabBarShowLabel: false,
@@ -119,6 +119,7 @@ function PlanetsNav(props) {
  
   return (
   <Stack.Navigator>
+    
     <Stack.Screen name="Earth" initialParams={{planet: 'Mars'}} component={Earth} options={{headerShown: false}} />
     <Stack.Screen name="Mars" component={Mars} options={{headerShown: false}} />
     <Stack.Screen name="Neptune" component={Neptune} options={{headerShown: false}} />
