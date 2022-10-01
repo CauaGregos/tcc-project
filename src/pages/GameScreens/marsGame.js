@@ -15,7 +15,7 @@ const MarsGame = (props) => {
   const plataforma = Platform.OS;
 
   const navigate = useNavigation();
-  console.log(props.route.params?.object);
+
   useEffect(() => {
     axios
       .get("https://app-tc.herokuapp.com/alunos")

@@ -18,9 +18,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Splash from '../pages/Splash';
 import CamScreen from '../pages/CamScreen';
-import Earth from '../pages/InPlanets/Earth';
-import Mars from '../pages/InPlanets/Mars';
-import Neptune from '../pages/InPlanets/Neptune';
+import Earth from '../pages/InPlanets/earth';
+import Mars from '../pages/InPlanets/mars';
+import Neptune from '../pages/InPlanets/neptune';
 import EarthGame from '../pages/GameScreens/earthGame';
 import MarsGame from '../pages/GameScreens/marsGame';
 import DailyGoal from '../pages/DailyGoal';
@@ -134,10 +134,10 @@ function Routes() {
   // Aqui esta a navegacao estatica 
   return (
       <Stack.Navigator>
-        <Stack.Screen name="DailyGoal" initialParams={{screen:'Welcome'}} component={DailyGoal} options={{headerShown: false}} />
         <Stack.Screen name="Splash" initialParams={{screen:'Welcome'}} component={Splash} options={{headerShown: false}} />
         <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
         <Stack.Screen name="WaitConfirm" component={WaitConfirm} options={{headerShown: false}} />
+        <Stack.Screen name="DailyGoal" initialParams={{screen:'Welcome'}} component={DailyGoal} options={{headerShown: false}} />
         <Stack.Screen name="Singin" component={Singin} options={{headerShown: false}} />
         <Stack.Screen name="Register" component={Register} options={{headerShown: false}} />
         <Stack.Screen name="Home" component={TabNav} options={{headerShown: false}} />

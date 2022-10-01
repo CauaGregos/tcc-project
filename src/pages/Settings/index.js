@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import styles from './style';
+import { StackActions } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // import sendEmail from '../../services/sendEmail';
 
@@ -38,8 +40,25 @@ const Settings = (props) => {
             setUsuario(res.data[0].nickName)
             setPassword(res.data[0].senha)
         }).catch(err =>{Alert.alert("Ocorreu um problema ao buscar seus dados...")})
+    }else{
+    AsyncStorage.getItem('@User').then((res) => { 
+        const info = JSON.parse(res);
+        axios.get('https://app-tc.herokuapp.com/getAluno/'+info.email+'/'+info.password).then(res =>{
+           
+            setNome(res.data[0].nome)
+            setIdade(res.data[0].idade)
+            setEmail(res.data[0].email)
+            setUsuario(res.data[0].nickName)
+            setPassword(res.data[0].senha)
+        }).catch(err =>{Alert.alert("Ocorreu um problema ao buscar seus dados...")})
+     })
+    }}, []);
+
+    
+    const logout = () => {
+    navegar.navigate("Splash");
+    AsyncStorage.clear();
     }
-    }, []);
 
 
     return (
@@ -94,8 +113,12 @@ const Settings = (props) => {
                             />
                             </TouchableOpacity>
                             <Text style={styles.separetor}></Text>
+                        
                         </ScrollView>
                     </View>
+                    <TouchableOpacity onPress={e=>logout()}>
+                    <Text>Sair da conta?</Text>
+                    </TouchableOpacity>
                 </View>
             </Animatable.View>
 
