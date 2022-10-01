@@ -49,34 +49,34 @@ const EarthGame = (props) => {
             style={styles.IOSearthGame}
           ></Image>
           <TouchableOpacity style={stylesIOS.ButtonOne}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesIOS.ButtonTwo}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesIOS.ButtonThree}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesIOS.ButtonFour}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesIOS.ButtonFive}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesIOS.ButtonSix}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesIOS.ButtonSeven}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesIOS.ButtonEight}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesIOS.ButtonNine}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesIOS.ButtonTen}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
         </ScrollView>
       ) : (
@@ -86,34 +86,34 @@ const EarthGame = (props) => {
             style={styles.ANDROIDearthGame}
           ></Image>
           <TouchableOpacity style={stylesAndroid.ButtonOne}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesAndroid.ButtonTwo}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesAndroid.ButtonThree}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesAndroid.ButtonFour}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesAndroid.ButtonFive}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesAndroid.ButtonSix}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesAndroid.ButtonSeven}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesAndroid.ButtonEight}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesAndroid.ButtonNine}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesAndroid.ButtonTen}>
-            <Image source={require("../assets/BotaoFase.png")}></Image>
+            <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
         </ScrollView>
       )}

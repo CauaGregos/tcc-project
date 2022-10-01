@@ -54,6 +54,14 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         fontSize:18,
     },
+    headerText:{
+        color:'#000',
+        fontWeight:'bold',
+        fontSize:18,
+        alignSelf: 'center',
+        bottom: 20 
+    },
+
     button:{
         marginTop:24,
         backgroundColor:'#E9EDF0',

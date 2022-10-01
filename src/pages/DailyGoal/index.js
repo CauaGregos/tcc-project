@@ -47,6 +47,7 @@ const DailyGoal = (props) => {
           />
           
           <Animatable.View animation={"fadeInRight"} delay={500} style={styles.containerOptions}>
+            <Text style={styles.headerText}> Escolha sua Meta Diária </Text>
             <TouchableOpacity style={styles.button}>
               <Text style={styles.buttonText}>Casual   5min / Dia</Text>
             </TouchableOpacity>
@@ -54,7 +55,7 @@ const DailyGoal = (props) => {
               <Text style={styles.buttonText}>Regular   10min / Dia</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Itensa   15min / Dia</Text>
+              <Text style={styles.buttonText}>Intensa   15min / Dia</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
               <Text style={styles.buttonText}>Puxada   20min / Dia</Text>
