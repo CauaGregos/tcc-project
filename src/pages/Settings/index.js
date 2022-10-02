@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, BackHandler, StyleSheet, Text, TouchableOpacity, TextInput, ScrollView, Alert, Dimensions } from 'react-native';
+import { View, BackHandler, StyleSheet, Text, TouchableOpacity, TextInput, ScrollView, Alert, Dimensions,Image } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState, useEffect } from 'react';
@@ -30,7 +30,7 @@ const Settings = (props) => {
 
     // Vai pegar todas as informacoes do user antes de renderizar o componente
     useEffect(() => {
-        if (userObj!=null || userObj!=undefined) {
+        if (userObj!=null && userObj!=undefined) {
             
         axios.get('https://app-tc.herokuapp.com/getAluno/'+userObj.email+'/'+userObj.password).then(res =>{
            
@@ -52,11 +52,17 @@ const Settings = (props) => {
             setPassword(res.data[0].senha)
         }).catch(err =>{Alert.alert("Ocorreu um problema ao buscar seus dados...")})
      })
-    }}, []);
+    }
+    AsyncStorage.getItem('@Image').then((res) => { 
+        const info = JSON.parse(res);
+        setImagePerfil(info.img)
+        
+     })
+}, []);
 
     
     const logout = () => {
-    navegar.navigate("Splash");
+    navegar.dispatch(StackActions.replace('Splash'))
     AsyncStorage.clear();
     }
 
@@ -71,7 +77,7 @@ const Settings = (props) => {
                 <View style={styles.containerInfos}>
                     <View>
                         <TouchableOpacity style={{ top: size * -0.05, borderRadius: 3,justifyContent:'center',alignItems:'center' }} onPress={() => navegar.navigate('CamScreen')}>
-                            <FontAwesome5 name="user" size={100} color="#848484" />
+                            {imagePerfil != null? <Image style={{width:150,height:150,borderRadius:30}} source={{uri:imagePerfil}}/>:<FontAwesome5 name="user" size={100} color="#848484" />}
                         </TouchableOpacity>
                         <ScrollView> 
                             <Text style={styles.title}>Alterar Nome</Text>

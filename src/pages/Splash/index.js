@@ -64,7 +64,7 @@ const Splash = () => {
             style={styles.containerLogo2}
             resizeMode="contain"
         />
-            <TouchableOpacity style={stylesModal.button1} onPress={()=>{navegar.dispatch(StackActions.replace('Singin'))}}>
+            <TouchableOpacity style={stylesModal.button1}>
                         <Text style={stylesModal.buttonText}>Começar agora!</Text>
             </TouchableOpacity>
             <TouchableOpacity style={stylesModal.button2} onPress={()=>{navegar.dispatch(StackActions.replace('Singin'))}}>

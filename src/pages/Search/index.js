@@ -11,7 +11,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 
 
-const DailyGoal = (props) => {
+const Search = (props) => {
 
     const [alunos, setAlunos] = useState([]);
     const axios = require('axios');
@@ -47,18 +47,12 @@ const DailyGoal = (props) => {
           />
           
           <Animatable.View animation={"fadeInRight"} delay={500} style={styles.containerOptions}>
-            <Text style={styles.headerText}> Escolha sua meta diária: </Text>
+            <Text style={styles.headerText}> Escolha uma opção: </Text>
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Casual   5min / Dia</Text>
+              <Text style={styles.buttonText}>Comece do zero!</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Regular   10min / Dia</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Intensa   15min / Dia</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Puxada   20min / Dia</Text>
+              <Text style={styles.buttonText}>Descubra o seu nível aqui!</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navegacaoSplash.navigate("Splash")}  style={styles.buttonAceppt}>
               <Text style={styles.buttonText}>{<FontAwesome name="angle-right" size={30} color="#3C3C3C"/>}</Text>
@@ -73,4 +67,4 @@ const DailyGoal = (props) => {
 }
 
 
-export default DailyGoal;
+export default Search;

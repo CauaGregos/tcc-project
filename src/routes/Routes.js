@@ -24,6 +24,7 @@ import Neptune from '../pages/InPlanets/neptune';
 import EarthGame from '../pages/GameScreens/earthGame';
 import MarsGame from '../pages/GameScreens/marsGame';
 import DailyGoal from '../pages/DailyGoal';
+import Search from '../pages/Search';
 
 // tipos de navigations
 const Stack = createNativeStackNavigator();
@@ -137,9 +138,10 @@ function Routes() {
         <Stack.Screen name="Splash" initialParams={{screen:'Welcome'}} component={Splash} options={{headerShown: false}} />
         <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
         <Stack.Screen name="WaitConfirm" component={WaitConfirm} options={{headerShown: false}} />
-        <Stack.Screen name="DailyGoal" initialParams={{screen:'Welcome'}} component={DailyGoal} options={{headerShown: false}} />
         <Stack.Screen name="Singin" component={Singin} options={{headerShown: false}} />
         <Stack.Screen name="Register" component={Register} options={{headerShown: false}} />
+        <Stack.Screen name="Search" initialParams={{screen:'Welcome'}} component={Search} options={{headerShown: false}} />
+        <Stack.Screen name="DailyGoal" initialParams={{screen:'Welcome'}} component={DailyGoal} options={{headerShown: false}} />
         <Stack.Screen name="Home" component={TabNav} options={{headerShown: false}} />
         <Stack.Screen name="ForgotAcsses" component={ForgotAcsses} options={{headerShown: false}} />
         <Stack.Screen name="InfoForgot" component={InfoForgot} options={{headerShown: false}} />

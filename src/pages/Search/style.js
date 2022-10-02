@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
           left:'10%' 
     },
     containerOptions:{
-        marginBottom:'73%'
+        marginBottom:'93%'
     },
     containerForm:{
         top:100,
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         
     },
     buttonAceppt:{
-        top:375,
+        top:265,
         position:'absolute',
         backgroundColor:'#E9EDF0',
         borderRadius:370,

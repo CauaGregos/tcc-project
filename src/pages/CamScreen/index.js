@@ -5,7 +5,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome4Icon from 'react-native-vector-icons/FontAwesome';
 import * as MediaLibrary from 'expo-media-library';
 import * as ImagePicker from 'expo-image-picker';
-
+import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function Profile() {
   const camReg = useRef(null)
   const [type, setType] = useState(CameraType.back);
@@ -13,7 +14,7 @@ export default function Profile() {
   const [capturedPhoto,setCapturedPhoto] = useState(null)
   const [libraryPermission,setLibraryPermission] = useState(null);
   const [open,setOpen] = useState(false)
-
+  const navegar = useNavigation();
   useEffect(() => {
     (async () => {
       const galleryStatus = await ImagePicker.requestCameraPermissionsAsync();
@@ -31,16 +32,19 @@ export default function Profile() {
     return (
       <View style={styles.container}>
         <Text style={{ textAlign: 'center' }}>
-          We need your permission to show the camera
+         Precisamos de sua permissão para acessar a camera.
         </Text>
-        <Button onPress={requestPermission} title="grant permission" />
+        <Button onPress={requestPermission} title="Temos sua permissão?" />
 
         <Text style={{ textAlign: 'center' }}>
-          Acesso a galeria
+        Precisamos de sua permissão para acessar a galeria.
         </Text>
-        <Button onPress={setLibraryPermission} title="grant permission" />
+        <Button onPress={setLibraryPermission} title="Temos sua permissão?" />
       </View>
     );
+  }
+  const setLogin = async (key, value) => {
+    await AsyncStorage.setItem(key,value)
   }
 
   //usando o expo-camera para pegar uma foto vinda da camera
@@ -49,7 +53,10 @@ export default function Profile() {
       const data = await camReg.current.takePictureAsync();
       setCapturedPhoto(data.uri)
       setOpen(true)
-      
+      let jsonData = {
+        img : data.uri
+    }
+    setLogin('@Image',JSON.stringify(jsonData));
      }
   }
   // usando o imagePicker para pegar as fotos do album da pessoa
@@ -65,6 +72,7 @@ export default function Profile() {
    if(!(await result).cancelled){
     setCapturedPhoto(result.uri)
     setOpen(true)
+    
    }
  }
 
