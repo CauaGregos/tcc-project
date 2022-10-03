@@ -136,18 +136,17 @@ function Routes() {
   // Aqui esta a navegacao estatica 
   return (
       <Stack.Navigator>
-                <Stack.Screen name="SelectLanguage" initialParams={{screen:'Welcome'}} component={SelectLanguage} options={{headerShown: false}} />
-
-        <Stack.Screen name="Search" initialParams={{screen:'Welcome'}} component={Search} options={{headerShown: false}} />
-        <Stack.Screen name="DailyGoal" initialParams={{screen:'Welcome'}} component={DailyGoal} options={{headerShown: false}} />
         <Stack.Screen name="Splash" initialParams={{screen:'Welcome'}} component={Splash} options={{headerShown: false}} />
         <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
         <Stack.Screen name="WaitConfirm" component={WaitConfirm} options={{headerShown: false}} />
+        <Stack.Screen name="Search" component={Search} options={{headerShown: false}} />
+        <Stack.Screen name="DailyGoal" component={DailyGoal} options={{headerShown: false}} />
         <Stack.Screen name="Singin" component={Singin} options={{headerShown: false}} />
         <Stack.Screen name="Register" component={Register} options={{headerShown: false}} />
         <Stack.Screen name="Home" component={TabNav} options={{headerShown: false}} />
         <Stack.Screen name="ForgotAcsses" component={ForgotAcsses} options={{headerShown: false}} />
         <Stack.Screen name="InfoForgot" component={InfoForgot} options={{headerShown: false}} />
+        <Stack.Screen name="SelectLanguage"  component={SelectLanguage} options={{headerShown: false}} />
         <Stack.Screen name="SplashForgot" initialParams={{screen:'InfoForgot'}} component={SplashForgot} options={{headerShown: false}} />
       </Stack.Navigator>
   );

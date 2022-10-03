@@ -41,8 +41,8 @@ const Register = () => {
         axios.post('https://app-tc.herokuapp.com/sendEmailConfirm',{
                     email: email
                 }).then(res =>{}).catch(err =>{console.log(err)})
-
-                navegar.navigate("WaitConfirm")
+                
+        navegar.navigate('SelectLanguage')
     }
 
     return (

@@ -48,16 +48,12 @@ const Search = (props) => {
           
           <Animatable.View animation={"fadeInRight"} delay={500} style={styles.containerOptions}>
             <Text style={styles.headerText}> Escolha uma opção: </Text>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity onPress={() => navegacaoSplash.navigate("Splash")} style={styles.button}>
               <Text style={styles.buttonText}>Comece do zero!</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
               <Text style={styles.buttonText}>Descubra o seu nível aqui!</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navegacaoSplash.navigate("Splash")}  style={styles.buttonAceppt}>
-              <Text style={styles.buttonText}>{<FontAwesome name="angle-right" size={30} color="#3C3C3C"/>}</Text>
-            </TouchableOpacity>
-
           </Animatable.View>
       </Animatable.View>
 

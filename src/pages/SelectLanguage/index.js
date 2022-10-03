@@ -26,6 +26,10 @@ const SelectLanguage = (props) => {
 
     const navigate = useNavigation()
     const navegacaoSplash = useNavigation()
+
+    const next = ()=>{
+      navigate.navigate('DailyGoal')
+    }
     
     const table = [
       {
@@ -69,7 +73,7 @@ const SelectLanguage = (props) => {
             showsHorizontalScrollIndicator={false}
             horizontal
             renderItem={({item}) => 
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity style={styles.button} onPress={e=>next()}>
                {item.img}
               </TouchableOpacity>
             }/>
