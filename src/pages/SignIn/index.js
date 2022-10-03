@@ -38,9 +38,14 @@ const Singin = () => {
                 password: password,
                 firstLogin:true 
             }
-            setLogin('@User',JSON.stringify(jsonData));
-
-            res1.data[0].confirmado == 1 ? navegar.dispatch(StackActions.replace('Home')) : navegar.navigate('WaitConfirm');
+           
+            if (res1.data[0].confirmado == 1){
+                navegar.dispatch(StackActions.replace('Home')) 
+                setLogin('@User',JSON.stringify(jsonData))
+            }
+            else{
+                navegar.navigate('WaitConfirm')
+            }
             setLoading({loadingLogin:false})   
             }).catch(err => {})
             

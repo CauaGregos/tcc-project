@@ -48,7 +48,7 @@ const Search = (props) => {
           
           <Animatable.View animation={"fadeInRight"} delay={500} style={styles.containerOptions}>
             <Text style={styles.headerText}> Escolha uma opção: </Text>
-            <TouchableOpacity onPress={() => navegacaoSplash.navigate("Splash")} style={styles.button}>
+            <TouchableOpacity onPress={() => navegacaoSplash.navigate("WaitConfirm")} style={styles.button}>
               <Text style={styles.buttonText}>Comece do zero!</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>

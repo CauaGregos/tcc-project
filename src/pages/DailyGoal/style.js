@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     },
     containerForm:{
         top:100,
-        backgroundColor:'#FFF',
+        backgroundColor:'#FEFEFF',
         flex:1,
         borderTopLeftRadius:25,
         borderTopRightRadius:25,

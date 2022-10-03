@@ -20,7 +20,7 @@ const WaitConfirm = () => {
             <Animatable.View delay={1500} animation="fadeInUp" style={styles.containerForm}>
                 <Text style={styles.title}>Está quase tudo pronto... confirme seu email.</Text>
                 <Text style={styles.text}>Esperando a confirmação do email para primeiros passos no app.</Text>
-                <TouchableOpacity onPress={()=>{navegar.navigate('Welcome')}} style={styles.button}>
+                <TouchableOpacity onPress={()=>{navegar.navigate('Splash')}} style={styles.button}>
                     <Text style={styles.buttonText}>Voltar</Text>
                 </TouchableOpacity>
             </Animatable.View>
