@@ -1,5 +1,6 @@
 import React from "react"
-import { StyleSheet } from "react-native"
+import { StyleSheet,Dimensions } from "react-native"
+const height = Dimensions.get('screen').height
 
 const styles = StyleSheet.create({
     container:{
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor:'#3841F2',
         borderRadius: 25,
-        bottom: '24%'
+        bottom: height*0.20
     },
     title:{
         top:'-26%',

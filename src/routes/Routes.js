@@ -123,7 +123,6 @@ function PlanetsNav(props) {
  
   return (
   <Stack.Navigator>
-    
     <Stack.Screen name="Earth" initialParams={{planet: 'Mars'}} component={Earth} options={{headerShown: false}} />
     <Stack.Screen name="Mars" component={Mars} options={{headerShown: false}} />
     <Stack.Screen name="Neptune" component={Neptune} options={{headerShown: false}} />

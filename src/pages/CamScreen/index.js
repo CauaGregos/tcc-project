@@ -7,6 +7,7 @@ import * as MediaLibrary from 'expo-media-library';
 import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 export default function Profile() {
   const camReg = useRef(null)
   const [type, setType] = useState(CameraType.back);
@@ -15,6 +16,7 @@ export default function Profile() {
   const [libraryPermission,setLibraryPermission] = useState(null);
   const [open,setOpen] = useState(false)
   const navegar = useNavigation();
+  const axios = require('axios');
   useEffect(() => {
     (async () => {
       const galleryStatus = await ImagePicker.requestCameraPermissionsAsync();
@@ -59,15 +61,34 @@ export default function Profile() {
     setLogin('@Image',JSON.stringify(jsonData));
      }
   }
+
+  const headers = {
+    'headers':{
+      'Content-Type': 'application/json'
+    }
+  }
+
+  function upload(){
+    const formdata = new FormData();
+      formdata.append('image',{
+        fileName : 'teste',
+        uri : capturedPhoto,
+      })
+      // axios.post('http://192.168.1.105:3000/uploadFile',formdata,headers)
+  }
+
   // usando o imagePicker para pegar as fotos do album da pessoa
   async function takePictureFromAlbum(){
+    
    let result = await ImagePicker.launchImageLibraryAsync({
     mediaTypes: ImagePicker.MediaTypeOptions.Images,
     allowsEditing:true,
     aspect: [4,3],
     quality:1
    })
- 
+
+   console.log(result)
+   axios.post('http://192.168.1.105:3000/uploadFile',result.uri)
 
    if(!(await result).cancelled){
     setCapturedPhoto(result.uri)
@@ -114,6 +135,9 @@ export default function Profile() {
           <View style={{flex:1,justifyContent:'center',alignItems:'center',margin:20}}>
             <TouchableOpacity style={{margin:10}} onPress={()=>setOpen(false)}>
             <FontAwesome name="window-close" size={30} color="#FF0000"/>
+            </TouchableOpacity>
+            <TouchableOpacity style={{margin:10}} onPress={()=>upload()}>
+            <FontAwesome name="check" size={30} color="#F00000"/>
             </TouchableOpacity>
 
             <Image
