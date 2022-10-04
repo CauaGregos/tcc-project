@@ -26,6 +26,7 @@ import MarsGame from '../pages/GameScreens/marsGame';
 import DailyGoal from '../pages/DailyGoal';
 import Search from '../pages/Search';
 import SelectLanguage from '../pages/SelectLanguage';
+import PerfilScreen from '../pages/Perfil';
 
 // tipos de navigations
 const Stack = createNativeStackNavigator();
@@ -109,6 +110,7 @@ function SettingsNav(props) {
  
   return (
   <Stack.Navigator>
+    <Stack.Screen name="PerfilScreen" initialParams={{user:props.route.params?.user}} component={PerfilScreen} options={{headerShown: false}} />
     <Stack.Screen name="SettingsScreen" initialParams={{user:props.route.params?.user}} component={Settings} options={{headerShown: false}} />
     <Stack.Screen name="CamScreen" component={CamScreen} options={{headerShown: false}} />
   </Stack.Navigator>
@@ -135,6 +137,8 @@ function PlanetsNav(props) {
 function Routes() {
   // Aqui esta a navegacao estatica 
   return (
+    <NavigationContainer>
+      <StatusBar backgroundColor='#ffffff00' style="light"  />
       <Stack.Navigator>
         <Stack.Screen name="Splash" initialParams={{screen:'Welcome'}} component={Splash} options={{headerShown: false}} />
         <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
@@ -149,6 +153,7 @@ function Routes() {
         <Stack.Screen name="SelectLanguage"  component={SelectLanguage} options={{headerShown: false}} />
         <Stack.Screen name="SplashForgot" initialParams={{screen:'InfoForgot'}} component={SplashForgot} options={{headerShown: false}} />
       </Stack.Navigator>
+      </NavigationContainer>
   );
 }
 

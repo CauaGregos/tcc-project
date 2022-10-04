@@ -6,10 +6,9 @@ import { StatusBar } from 'expo-status-bar';
 export default function App() {
   // minhas rotas dentro do container de navegacao
   return (
-    <NavigationContainer>
-      <StatusBar backgroundColor='#202020' style="light"  />
+    
       <Routes />
-    </NavigationContainer>
+  
   );
 }
 
