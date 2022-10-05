@@ -84,20 +84,22 @@ const Perfil = (props) => {
                         <View style={styles.progressView}></View>
                         <View style={{bottom:'20%'}}>
                         <Text style={styles.titleProgress}>Progresso</Text>
-                        <FontAwesome5 name="cog" style={styles.titleSetting} size={29} color="#848484" />
+                        <TouchableOpacity style={{bottom:10}} onPress={() => {navegar.navigate('SettingsScreen')}}>
+                            <FontAwesome5 name="cog" style={styles.titleSetting} size={29} color="#848484" />
+                        </TouchableOpacity>
                         </View>
                         <ScrollView showsVerticalScrollIndicator={false} style={{bottom:150,height:'50%'}}>
                             <View style={styles.card}>
                                 <Image style={{top:'23%'}} source={require('../assets/smallEarth.png')}/>
                                 <Text style={styles.titleCard}>Course A1</Text>
                                 <Text style={styles.numberData}>0%</Text>
-                                <ProgressBar data={0}/>
+                                <ProgressBar data={70}/>
                             </View>
                             <View style={styles.card}>
                                 <Image style={{top:'25%',left:10}} source={require('../assets/smallMars.png')}/>
                                 <Text style={styles.titleCard}>Course A2</Text>
                                 <Text style={styles.numberData}>0%</Text>
-                                <ProgressBar data={0}/>
+                                <ProgressBar data={35}/>
                             </View>
                         </ScrollView>
                     </View>

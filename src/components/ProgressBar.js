@@ -8,8 +8,11 @@ const ProgressBar = (props) => {
     return(
     <View style={style.cam1}>
         <View style={{ 
+        bottom: 1,
+        right:1,
         borderWidth:6.2,
         width:`${props.data}%`,
+        borderRadius:30,
         borderColor: "#3841F2"}}></View>        
     </View>
     )

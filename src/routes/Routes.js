@@ -55,6 +55,7 @@ const jsonStyleIos = {
   right: 10,
   bottom:15,
   height: 50,
+  top: 15,
 }
 
 function TabNav(props) {
