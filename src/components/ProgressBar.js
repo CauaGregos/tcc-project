@@ -10,10 +10,10 @@ const ProgressBar = (props) => {
         <View style={{ 
         bottom: 1,
         right:1,
-        borderWidth:6.2,
+        backgroundColor:"#3841F2",
+        height: 12.6,
         width:`${props.data}%`,
-        borderRadius:30,
-        borderColor: "#3841F2"}}></View>        
+        borderRadius:30}}></View>        
     </View>
     )
     
