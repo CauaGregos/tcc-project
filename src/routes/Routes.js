@@ -27,6 +27,7 @@ import DailyGoal from '../pages/DailyGoal';
 import Search from '../pages/Search';
 import SelectLanguage from '../pages/SelectLanguage';
 import PerfilScreen from '../pages/Perfil';
+import Levels from '../components/Levels';
 
 // tipos de navigations
 const Stack = createNativeStackNavigator();
@@ -129,6 +130,8 @@ function PlanetsNav(props) {
     <Stack.Screen name="Neptune" component={Neptune} options={{headerShown: false}} />
     <Stack.Screen name="EarthGame" component={EarthGame} options={{headerShown: false}} />
     <Stack.Screen name="MarsGame" component={MarsGame} options={{headerShown: false}} />
+    <Stack.Screen name="Levels" component={Levels} options={{headerShown: false}} />
+    
   </Stack.Navigator>
     
   );

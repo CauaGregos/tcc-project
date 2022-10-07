@@ -22,6 +22,8 @@ const EarthGame = (props) => {
   const plataforma = Platform.OS;
 
   const navigate = useNavigation();
+
+
  
   useEffect(() => {
     axios
@@ -48,7 +50,7 @@ const EarthGame = (props) => {
             source={require("../assets/earthGame.png")}
             style={styles.IOSearthGame}
           ></Image>
-          <TouchableOpacity style={stylesIOS.ButtonOne}>
+          <TouchableOpacity style={stylesIOS.ButtonOne} onPress={e=> navigate.navigate('Levels',{question:1})}>
             <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesIOS.ButtonTwo}>
@@ -85,10 +87,10 @@ const EarthGame = (props) => {
             source={require("../assets/earthGame.png")}
             style={styles.ANDROIDearthGame}
           ></Image>
-          <TouchableOpacity style={stylesAndroid.ButtonOne}>
+          <TouchableOpacity style={stylesAndroid.ButtonOne} onPress={e=> navigate.navigate('Levels',{question:1})}>
             <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
-          <TouchableOpacity style={stylesAndroid.ButtonTwo}>
+          <TouchableOpacity style={stylesAndroid.ButtonTwo}onPress={e=> navigate.navigate('Levels',{question:2})}>
             <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesAndroid.ButtonThree}>
