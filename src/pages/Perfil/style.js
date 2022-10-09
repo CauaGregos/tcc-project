@@ -35,6 +35,9 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         bottom: height*0.20
     },
+    description:{
+        alignSelf:'center'
+    },
     title:{
         top:'-26%',
         color:'#FFF',
@@ -147,7 +150,20 @@ const styles = StyleSheet.create({
         borderTopRightRadius:25,
         paddingStart:'5%',
         paddingEnd:'5%'
-    }
+    },
+    button2:{
+        top:150,
+        position:'absolute',
+        backgroundColor:'#3841F2',
+        shadowColor:'#0008A4',
+        shadowOpacity:1,
+        borderRadius:50,
+        paddingVertical:8,
+        width:'60%',
+        alignItems:'center',
+        justifyContent:'center',
+        alignSelf:'center'
+    },
 })
 
 export default styles

@@ -12,6 +12,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import styles from "./style";
 import stylesAndroid from "./styleAndroid";
 import stylesIOS from "./styleIOS";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const EarthGame = (props) => {
   const [alunos, setAlunos] = useState([]);
@@ -19,6 +20,7 @@ const EarthGame = (props) => {
   const [logado, setLogado] = useState([true]);
   const width = Dimensions.get("screen").width;
   const height = Dimensions.get("screen").height;
+  const [startedNow, setStartedNow] = useState(false);
   const plataforma = Platform.OS;
 
   const navigate = useNavigation();
@@ -35,12 +37,19 @@ const EarthGame = (props) => {
         }
       })
       .catch((err) => {});
+
+      AsyncStorage.getItem('@state').then((e) => {
+        const data = JSON.parse(e);
+        setStartedNow(data.startedNow);
+      });
   }, []);
 
   const logout = () => {
     setLogado(false);
     navigate.navigate("Singin");
   };
+
+ 
 
   return (
     <View>
@@ -102,19 +111,19 @@ const EarthGame = (props) => {
           <TouchableOpacity style={stylesAndroid.ButtonFive}>
             <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
-          <TouchableOpacity style={stylesAndroid.ButtonSix}>
+          <TouchableOpacity disabled={startedNow} style={stylesAndroid.ButtonSix}>
             <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
-          <TouchableOpacity style={stylesAndroid.ButtonSeven}>
+          <TouchableOpacity disabled={startedNow} style={stylesAndroid.ButtonSeven}>
             <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
-          <TouchableOpacity style={stylesAndroid.ButtonEight}>
+          <TouchableOpacity disabled={startedNow} style={stylesAndroid.ButtonEight}>
             <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
-          <TouchableOpacity style={stylesAndroid.ButtonNine}>
+          <TouchableOpacity disabled={startedNow} style={stylesAndroid.ButtonNine}>
             <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
-          <TouchableOpacity style={stylesAndroid.ButtonTen}>
+          <TouchableOpacity disabled={startedNow} style={stylesAndroid.ButtonTen}>
             <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
         </ScrollView>

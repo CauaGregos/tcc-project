@@ -5,14 +5,15 @@ import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../../components/Header";
 import styles from "./style";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const Mars = (props) => {
   const [alunos, setAlunos] = useState([]);
   const axios = require("axios");
   const [logado, setLogado] = useState([true]);
   const width = Dimensions.get("screen").width;
   const plataforma = Platform.OS;
-
+  // logica de como 
+  const [startedNow,setStartedNow] = useState(false);
   const navigacaoFase = useNavigation();
   const navigate = useNavigation();
 
@@ -26,6 +27,11 @@ const Mars = (props) => {
         }
       })
       .catch((err) => {});
+
+      AsyncStorage.getItem('@state').then((e) => {
+        const data = JSON.parse(e);
+        setStartedNow(data.startedNow);
+      });
   }, []);
 
   const logout = () => {
@@ -45,7 +51,7 @@ const Mars = (props) => {
       <Header planet="Neptune" actualplanet="Mars" oldplanet="Earth" />
 
       {plataforma == "ios" ? (
-        <TouchableOpacity onPress={() => navigacaoFase.navigate("MarsGame")} style={{bottom:"15%"}}>
+        <TouchableOpacity disabled={startedNow} onPress={() => navigacaoFase.navigate("MarsGame")} style={{bottom:"15%"}}>
           <LottieView
           style={styles.IOSmars}
           source={require("../assets/marte.json")}
@@ -54,7 +60,7 @@ const Mars = (props) => {
         />
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity onPress={() => navigacaoFase.navigate("MarsGame")} style={{bottom:"10%"}}>
+        <TouchableOpacity disabled={startedNow} onPress={() => navigacaoFase.navigate("MarsGame")} style={{bottom:"10%"}}>
           <LottieView
           style={styles.ANDROIDmars}
           source={require("../assets/marte.json")}

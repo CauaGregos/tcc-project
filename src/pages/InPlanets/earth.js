@@ -9,8 +9,8 @@ import LottieView from "lottie-react-native";
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../../components/Header";
-
 import styles from "./style";
+
 
 const Earth = (props) => {
   const [alunos, setAlunos] = useState([]);

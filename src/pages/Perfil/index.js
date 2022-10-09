@@ -23,6 +23,7 @@ const Perfil = (props) => {
     const [usuario, setUsuario] = useState(null);
     const [password, setPassword] = useState(null);
     const [imagePerfil, setImagePerfil] = useState(null)
+    const [startedNow, setStartedNow] = useState(false);
     const size = Dimensions.get('window').height
     const userObj = props.route.params?.user ? JSON.parse(props.route.params?.user) : undefined;
     
@@ -59,6 +60,11 @@ const Perfil = (props) => {
         setImagePerfil(info.img)
         
      })
+
+     AsyncStorage.getItem('@state').then((e) => {
+        const data = JSON.parse(e);
+        setStartedNow(data.startedNow);
+      });
 }, []);
 
     
@@ -73,8 +79,9 @@ const Perfil = (props) => {
         <View style={styles.container}>
              <Image style={{position:'absolute',width:'100%'}} source={require('../assets/backgroundBi.png')}/>
 
-            <Animatable.View animation="fadeInUp" style={styles.container}>
-
+           {
+            !startedNow ?
+           <Animatable.View animation="fadeInUp" style={styles.container}>
                 <View style={styles.containerInfos}>
                     <View>
                         <TouchableOpacity style={{ top: size * -0.23, borderRadius: 3,justifyContent:'center',alignItems:'center' }} onPress={() => navegar.navigate('CamScreen')}>
@@ -104,12 +111,25 @@ const Perfil = (props) => {
                         </ScrollView>
                     </View>
                 </View>
-            </Animatable.View>
+            </Animatable.View>:
 
-
-
-
-
+            // quando ele estiver em estado nao logado
+            <Animatable.View animation="fadeInUp" style={styles.container}>
+            <View style={styles.containerInfos}>
+                <View>
+                    <TouchableOpacity disabled style={{ top: size * -0.23, borderRadius: 3,justifyContent:'center',alignItems:'center' }} onPress={() => navegar.navigate('CamScreen')}>
+                        {imagePerfil != null? <Image style={{width:150,height:150,borderRadius:30}} source={{uri:imagePerfil}}/>:<FontAwesome5 name="user" size={100} color="#848484" />}
+                    </TouchableOpacity>
+                    
+                    <View style={styles.description}>
+                        <Text style={{fontSize:20}}>Gostou da plataforma? Realize o login!</Text>
+                        <TouchableOpacity style={styles.button2} onPress={()=>{navegar.dispatch(StackActions.replace('Singin')); AsyncStorage.clear();}}>
+                        <Text style={{color:'#FFF',fontSize:30}}> Fazer o login</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </View>
+        </Animatable.View>}
         </View>
     );
 }

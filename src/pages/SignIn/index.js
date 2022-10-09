@@ -35,8 +35,7 @@ const Singin = () => {
             // confirmado ou nao
             let jsonData = {
                 email: email,
-                password: password,
-                firstLogin:true 
+                password: password 
             }
            
             if (res1.data[0].confirmado == 1){

@@ -5,14 +5,14 @@ import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../../components/Header";
 import styles from "./style";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const Neptune = (props) => {
   const [alunos, setAlunos] = useState([]);
   const axios = require("axios");
   const [logado, setLogado] = useState([true]);
   const width = Dimensions.get("screen").width;
   const plataforma = Platform.OS;
-
+  const [startedNow, setStartedNow] = useState(true);
   const navigate = useNavigation();
 
   useEffect(() => {
@@ -25,6 +25,12 @@ const Neptune = (props) => {
         }
       })
       .catch((err) => {});
+
+      AsyncStorage.getItem('@state').then((e) => {
+        const data = JSON.parse(e);
+        setStartedNow(data.startedNow);
+      });
+
   }, []);
 
   const logout = () => {
@@ -44,7 +50,7 @@ const Neptune = (props) => {
       <Header planet="Earth" actualplanet="Neptune" oldplanet="Mars" />
 
       {plataforma == "ios" ? (
-        <TouchableOpacity style={{bottom:"15%"}}>
+        <TouchableOpacity disabled={startedNow} style={{bottom:"15%"}}>
           <LottieView
           style={styles.IOSneptune}
           source={require("../assets/netuno.json")}
@@ -53,7 +59,7 @@ const Neptune = (props) => {
         />
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity style={{bottom:"10%"}}>
+        <TouchableOpacity disabled={startedNow} style={{bottom:"10%"}}>
           <LottieView
           style={styles.ANDROIDneptune}
           source={require("../assets/netuno.json")}
