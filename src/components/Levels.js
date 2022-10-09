@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions,Alert, Modal } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions,Alert, Modal, FlatList } from 'react-native';
 import { useState,useEffect } from 'react';
 import { TextInput } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -12,10 +12,15 @@ const Levels = (props) => {
     const [question, setQuestion] = useState('');
     const [isSelect, setIsSelect] = useState(false);
     const [option, setOption] = useState('');
+    const [options, setOptions] = useState([{}]);
+
+
     useEffect(() => {
        const resp = SourceQuestions((props.route.params?.question)-1);
        setResponseCorrect(resp.resp);
        setQuestion(resp.question);
+       setOptions({op1:resp.op1, op2:resp.op2,op3:resp.op3,op4:resp.op4});
+       setIsSelect(resp.hasOptions); 
     }, []);
 
     const compareResp = (resp) => {
@@ -28,26 +33,27 @@ const Levels = (props) => {
         Alert.alert("Resposta incorreta");
     }
 
+    const renderOptions = (parms) => { 
+        return (
+        <View>
+        <TouchableOpacity style={style.option} onPress={e=>setOption(parms)}>
+        <Text style={style.textOption}>{parms}</Text>
+        </TouchableOpacity>
+        </View>
+        );
+    }
+
     return(
     <View style={style.container}> 
         <Text style={style.question}>{question+` ${option}`}</Text>
         
     {
       isSelect ?
-        <View>
-        
-        <TouchableOpacity style={style.option} onPress={e=>setOption('Hello')}>
-            <Text style={style.textOption}>Hello!</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={style.option} onPress={e=>setOption('Olá')}>
-            <Text style={style.textOption}>Olá</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={style.option}>
-            <Text style={style.textOption}>Café</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={style.option}>
-            <Text style={style.textOption}>Pão</Text>
-        </TouchableOpacity>
+        <View>   
+        {options.op1 ? renderOptions(options.op1):null}
+        {options.op2 ? renderOptions(options.op2):null}
+        {options.op3 ? renderOptions(options.op3):null}
+        {options.op4 ? renderOptions(options.op4):null}
       </View>
       :
         <View>

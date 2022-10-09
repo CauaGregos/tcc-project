@@ -93,7 +93,7 @@ const EarthGame = (props) => {
           <TouchableOpacity style={stylesAndroid.ButtonTwo}onPress={e=> navigate.navigate('Levels',{question:2})}>
             <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
-          <TouchableOpacity style={stylesAndroid.ButtonThree}>
+          <TouchableOpacity style={stylesAndroid.ButtonThree} onPress={e=> navigate.navigate('Levels',{question:3})}>
             <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesAndroid.ButtonFour}>

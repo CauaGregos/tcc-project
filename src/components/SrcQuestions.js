@@ -283,7 +283,7 @@ const SourceQuestions = (props) => {
         }, 
         { // fase 31
             question:'Escreva *Eu estou com fome* em inglês:',
-            resp: 'Im Hungry',
+            resp: 'I am Hungry',
 
             hasOptions: false,
         }, 
