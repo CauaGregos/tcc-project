@@ -13,6 +13,7 @@ import styles from "./style";
 import stylesAndroid from "./styleAndroid";
 import stylesIOS from "./styleIOS";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import SourceQuestions from "../../components/SrcQuestions";
 
 const EarthGame = (props) => {
   const [alunos, setAlunos] = useState([]);
@@ -20,6 +21,8 @@ const EarthGame = (props) => {
   const [logado, setLogado] = useState([true]);
   const width = Dimensions.get("screen").width;
   const height = Dimensions.get("screen").height;
+  const [progress,setProgress] = useState('');
+  const [email,setEmail] = useState('');
   const [startedNow, setStartedNow] = useState(false);
   const plataforma = Platform.OS;
 
@@ -42,6 +45,19 @@ const EarthGame = (props) => {
         const data = JSON.parse(e);
         setStartedNow(data.startedNow);
       });
+
+      AsyncStorage.getItem('@User').then((e) => {
+        const data = JSON.parse(e);
+        setEmail(data.email);
+        
+      });
+      axios
+      .get("https://app-tc.herokuapp.com/getProgress/"+email+"/earth")
+      .then((res) => {
+        const data = res.data;
+      setProgress(data.progresso);
+      })
+      .catch((err) => {});
   }, []);
 
   const logout = () => {
@@ -49,8 +65,19 @@ const EarthGame = (props) => {
     navigate.navigate("Singin");
   };
 
- 
+  const enter = (parms) => {
+    const resp = SourceQuestions((parms)-1);
+    
+    if (resp.reqProgres!==null && resp.reqProgres !== undefined) {
+      const progresso = resp.reqProgres;
+      if (progress == progresso){
+      navigate.navigate('Levels',{question:parms})
+      }
+    }
+    else alert('Você não possui nivel suficiente')
+  };
 
+ 
   return (
     <View>
       {plataforma == "ios" ? (
@@ -96,13 +123,13 @@ const EarthGame = (props) => {
             source={require("../assets/earthGame.png")}
             style={styles.ANDROIDearthGame}
           ></Image>
-          <TouchableOpacity style={stylesAndroid.ButtonOne} onPress={e=> navigate.navigate('Levels',{question:1})}>
+          <TouchableOpacity style={stylesAndroid.ButtonOne} onPress={e=> enter(1)}>
             <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
-          <TouchableOpacity style={stylesAndroid.ButtonTwo}onPress={e=> navigate.navigate('Levels',{question:2})}>
+          <TouchableOpacity style={stylesAndroid.ButtonTwo}onPress={e=> enter(2)}>
             <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
-          <TouchableOpacity style={stylesAndroid.ButtonThree} onPress={e=> navigate.navigate('Levels',{question:3})}>
+          <TouchableOpacity style={stylesAndroid.ButtonThree} onPress={e=> enter(3)}>
             <Image source={require("../assets/BotaoTerra.png")}></Image>
           </TouchableOpacity>
           <TouchableOpacity style={stylesAndroid.ButtonFour}>
