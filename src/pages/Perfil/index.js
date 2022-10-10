@@ -69,20 +69,20 @@ const Perfil = (props) => {
         setStartedNow(data.startedNow);
       });
 
-      axios.get("https://app-tc.herokuapp.com/getProgress/"+email+"/earth").then((res) => {
-        const data = res.data;
-        setProgress(data[0].progresso);
-        })
-    .catch((err) => {});
+      
 
      
 }, []);
 
     
-    const logout = () => {
-    navegar.dispatch(StackActions.replace('Splash'))
-    AsyncStorage.clear();
+    const updateDate = () => {
+        axios.get("https://app-tc.herokuapp.com/getProgress/"+email+"/earth").then((res) => {
+        const data = res.data;
+        setProgress(data[0].progresso);
+        })
+        .catch((err) => {});
     }
+    updateDate();
 
     return (
 

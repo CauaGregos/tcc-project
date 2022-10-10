@@ -58,7 +58,7 @@ const EarthGame = (props) => {
 
     if (resp.reqProgres!==null && resp.reqProgres !== undefined) {
       const progresso = resp.reqProgres;
-      console.log(progress,progresso);
+      
       if (progress > progresso){
       return true;
       }else return false;
@@ -68,17 +68,21 @@ const EarthGame = (props) => {
   
 // ao entrar na fase, fazer a req do nivel necessario
   const enter = (parms) => {
+    console.log('Buttons',parms);
     const resp = SourceQuestions((parms)-1);
     
     if (resp.reqProgres!==null && resp.reqProgres !== undefined) {
       const progresso = resp.reqProgres;
+      
       if (progress == progresso){
+      
       navigate.navigate('Levels',{question:parms})
       }
     }
   };
 
   const Buttons = (parms) => {
+    
     return (
       <TouchableOpacity style={parms.style} onPress={e => enter(parms.level)}>
         <Image source={require("../assets/BotaoTerra.png")}></Image>
