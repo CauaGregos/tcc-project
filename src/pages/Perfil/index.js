@@ -22,6 +22,7 @@ const Perfil = (props) => {
     const [email, setEmail] = useState(null);
     const [usuario, setUsuario] = useState(null);
     const [password, setPassword] = useState(null);
+    const [progress, setProgress] = useState(0);
     const [imagePerfil, setImagePerfil] = useState(null)
     const [startedNow, setStartedNow] = useState(false);
     const size = Dimensions.get('window').height
@@ -52,6 +53,8 @@ const Perfil = (props) => {
             setEmail(res.data[0].email)
             setUsuario(res.data[0].nickName)
             setPassword(res.data[0].senha)
+
+          
         }).catch(err =>{Alert.alert("Ocorreu um problema ao buscar seus dados...")})
      })
     }
@@ -65,6 +68,14 @@ const Perfil = (props) => {
         const data = JSON.parse(e);
         setStartedNow(data.startedNow);
       });
+
+      axios.get("https://app-tc.herokuapp.com/getProgress/"+email+"/earth").then((res) => {
+        const data = res.data;
+        setProgress(data[0].progresso);
+        })
+    .catch((err) => {});
+
+     
 }, []);
 
     
@@ -73,7 +84,6 @@ const Perfil = (props) => {
     AsyncStorage.clear();
     }
 
-
     return (
 
         <View style={styles.container}>
@@ -81,6 +91,7 @@ const Perfil = (props) => {
 
            {
             !startedNow ?
+            
            <Animatable.View animation="fadeInUp" style={styles.container}>
                 <View style={styles.containerInfos}>
                     <View>
@@ -99,8 +110,8 @@ const Perfil = (props) => {
                             <View style={styles.card}>
                                 <Image style={{top:'23%'}} source={require('../assets/smallEarth.png')}/>
                                 <Text style={styles.titleCard}>Course A1</Text>
-                                <Text style={styles.numberData}>0%</Text>
-                                <ProgressBar data={70}/>
+                                <Text style={styles.numberData}>{progress}%</Text>
+                                <ProgressBar data={progress}/>
                             </View>
                             <View style={styles.card}>
                                 <Image style={{top:'25%',left:10}} source={require('../assets/smallMars.png')}/>

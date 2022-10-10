@@ -4,7 +4,6 @@ import {
   Dimensions,
   Platform,
   TouchableOpacity,
-Alert,
 } from "react-native";
 import LottieView from "lottie-react-native";
 import { useState, useEffect } from "react";
@@ -36,7 +35,6 @@ const Earth = (props) => {
         }
       })
       .catch((err) => {});
-      alert('Hello viajante, desative as notificações antes de viajar!');
   }, []);
 
   const logout = () => {

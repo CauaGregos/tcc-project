@@ -29,42 +29,44 @@ const EarthGame = (props) => {
   const navigate = useNavigation();
 
 
- 
-  useEffect(() => {
-    axios
-      .get("https://app-tc.herokuapp.com/alunos")
-      .then((res) => {
-        const data = res.data;
-        for (let i = 0; i < data.length; i++) {
-          setAlunos(data[i]);
-        }
-      })
-      .catch((err) => {});
-
-      AsyncStorage.getItem('@state').then((e) => {
-        const data = JSON.parse(e);
-        setStartedNow(data.startedNow);
-      });
-
-      AsyncStorage.getItem('@User').then((e) => {
-        const data = JSON.parse(e);
-        setEmail(data.email);
-        
-      });
-      axios
-      .get("https://app-tc.herokuapp.com/getProgress/"+email+"/earth")
-      .then((res) => {
-        const data = res.data;
-      setProgress(data.progresso);
-      })
-      .catch((err) => {});
-  }, []);
 
   const logout = () => {
     setLogado(false);
     navigate.navigate("Singin");
   };
 
+
+  // ver se a fase que chega como parametro ja foi completa
+  const isCompleted =(parms) =>{
+    AsyncStorage.getItem('@state').then((e) => {
+      const data = JSON.parse(e);
+      setStartedNow(data.startedNow);
+    });
+
+    AsyncStorage.getItem('@User').then((e) => {
+      const data = JSON.parse(e);
+      setEmail(data.email);
+      
+    });
+    axios.get("https://app-tc.herokuapp.com/getProgress/"+email+"/earth").then((res) => {
+      const data = res.data;
+      setProgress(data[0].progresso);
+    })
+    .catch((err) => {});
+
+    const resp = SourceQuestions((parms)-1);
+
+    if (resp.reqProgres!==null && resp.reqProgres !== undefined) {
+      const progresso = resp.reqProgres;
+      console.log(progress,progresso);
+      if (progress > progresso){
+      return true;
+      }else return false;
+      
+    }
+  }
+  
+// ao entrar na fase, fazer a req do nivel necessario
   const enter = (parms) => {
     const resp = SourceQuestions((parms)-1);
     
@@ -74,8 +76,23 @@ const EarthGame = (props) => {
       navigate.navigate('Levels',{question:parms})
       }
     }
-    else alert('Você não possui nivel suficiente')
   };
+
+  const Buttons = (parms) => {
+    return (
+      <TouchableOpacity style={parms.style} onPress={e => enter(parms.level)}>
+        <Image source={require("../assets/BotaoTerra.png")}></Image>
+      </TouchableOpacity>
+    )
+  }
+
+  const ButtonsCompleted = (parms) => {
+    return (
+      <TouchableOpacity style={parms.style}>
+        <Image source={require("../assets/iconCheck.png")}></Image>
+      </TouchableOpacity>
+    )
+  }
 
  
   return (
@@ -86,36 +103,16 @@ const EarthGame = (props) => {
             source={require("../assets/earthGame.png")}
             style={styles.IOSearthGame}
           ></Image>
-          <TouchableOpacity style={stylesIOS.ButtonOne} onPress={e=> navigate.navigate('Levels',{question:1})}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity style={stylesIOS.ButtonTwo}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity style={stylesIOS.ButtonThree}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity style={stylesIOS.ButtonFour}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity style={stylesIOS.ButtonFive}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity style={stylesIOS.ButtonSix}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity style={stylesIOS.ButtonSeven}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity style={stylesIOS.ButtonEight}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity style={stylesIOS.ButtonNine}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity style={stylesIOS.ButtonTen}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
+          {!isCompleted(1) ? <Buttons style={stylesIOS.ButtonOne} level={1}/> : <ButtonsCompleted style={stylesIOS.ButtonOne}/>}
+           {!isCompleted(4) ? <Buttons style={stylesIOS.ButtonTwo} level={2}/> : <ButtonsCompleted style={stylesIOS.ButtonTwo}/>}
+           {!isCompleted(7) ? <Buttons style={stylesIOS.ButtonThree} level={3}/> : <ButtonsCompleted style={stylesIOS.ButtonThree}/>}
+           {!isCompleted(10) ? <Buttons style={stylesIOS.ButtonFour} level={4}/> : <ButtonsCompleted style={stylesIOS.ButtonFour}/>}
+           {!isCompleted(13) ? <Buttons style={stylesIOS.ButtonFive} level={5}/> : <ButtonsCompleted style={stylesIOS.ButtonFive}/>}
+           {!isCompleted(16) ? <Buttons style={stylesIOS.ButtonSix} level={6}/> : <ButtonsCompleted style={stylesIOS.ButtonSix}/>}
+           {!isCompleted(19) ? <Buttons style={stylesIOS.ButtonSeven} level={7}/> : <ButtonsCompleted style={stylesIOS.ButtonSeven}/>}
+           {!isCompleted(22) ? <Buttons style={stylesIOS.ButtonEight} level={8}/> : <ButtonsCompleted style={stylesIOS.ButtonEight}/>}
+           {!isCompleted(25) ? <Buttons style={stylesIOS.ButtonNine} level={9}/> : <ButtonsCompleted style={stylesIOS.ButtonNine}/>}
+           {!isCompleted(28) ? <Buttons style={stylesIOS.ButtonTen} level={10}/> : <ButtonsCompleted style={stylesIOS.ButtonTen}/>}
         </ScrollView>
       ) : (
         <ScrollView showsVerticalScrollIndicator={false} >
@@ -123,36 +120,16 @@ const EarthGame = (props) => {
             source={require("../assets/earthGame.png")}
             style={styles.ANDROIDearthGame}
           ></Image>
-          <TouchableOpacity style={stylesAndroid.ButtonOne} onPress={e=> enter(1)}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity style={stylesAndroid.ButtonTwo}onPress={e=> enter(2)}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity style={stylesAndroid.ButtonThree} onPress={e=> enter(3)}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity style={stylesAndroid.ButtonFour}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity style={stylesAndroid.ButtonFive}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity disabled={startedNow} style={stylesAndroid.ButtonSix}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity disabled={startedNow} style={stylesAndroid.ButtonSeven}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity disabled={startedNow} style={stylesAndroid.ButtonEight}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity disabled={startedNow} style={stylesAndroid.ButtonNine}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity disabled={startedNow} style={stylesAndroid.ButtonTen}>
-            <Image source={require("../assets/BotaoTerra.png")}></Image>
-          </TouchableOpacity>
+           {!isCompleted(1) ? <Buttons style={stylesAndroid.ButtonOne} level={1}/> : <ButtonsCompleted style={stylesAndroid.ButtonOne}/>}
+           {!isCompleted(4) ? <Buttons style={stylesAndroid.ButtonTwo} level={2}/> : <ButtonsCompleted style={stylesAndroid.ButtonTwo}/>}
+           {!isCompleted(7) ? <Buttons style={stylesAndroid.ButtonThree} level={3}/> : <ButtonsCompleted style={stylesAndroid.ButtonThree}/>}
+           {!isCompleted(10) ? <Buttons style={stylesAndroid.ButtonFour} level={4}/> : <ButtonsCompleted style={stylesAndroid.ButtonFour}/>}
+           {!isCompleted(13) ? <Buttons style={stylesAndroid.ButtonFive} level={5}/> : <ButtonsCompleted style={stylesAndroid.ButtonFive}/>}
+           {!isCompleted(16) ? <Buttons style={stylesAndroid.ButtonSix} level={6}/> : <ButtonsCompleted style={stylesAndroid.ButtonSix}/>}
+           {!isCompleted(19) ? <Buttons style={stylesAndroid.ButtonSeven} level={7}/> : <ButtonsCompleted style={stylesAndroid.ButtonSeven}/>}
+           {!isCompleted(22) ? <Buttons style={stylesAndroid.ButtonEight} level={8}/> : <ButtonsCompleted style={stylesAndroid.ButtonEight}/>}
+           {!isCompleted(25) ? <Buttons style={stylesAndroid.ButtonNine} level={9}/> : <ButtonsCompleted style={stylesAndroid.ButtonNine}/>}
+           {!isCompleted(28) ? <Buttons style={stylesAndroid.ButtonTen} level={10}/> : <ButtonsCompleted style={stylesAndroid.ButtonTen}/>}
         </ScrollView>
       )}
     </View>
