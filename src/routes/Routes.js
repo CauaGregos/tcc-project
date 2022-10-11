@@ -59,28 +59,36 @@ const jsonStyleIos = {
   top: 15,
 }
 
+
+export function whileTabBarVisible(route){
+  return(
+    {
+      backgroundColor: plataforma == 'ios' ? jsonStyleIos.backgroundColor :jsonStyleAndroid.backgroundColor,
+      borderTopWidth: plataforma == 'ios' ? jsonStyleIos.borderTopWidth :jsonStyleAndroid.borderTopWidth,
+      borderRadius: plataforma == 'ios' ? jsonStyleIos.borderRadius :jsonStyleAndroid.borderRadius,
+      position: plataforma == 'ios' ? jsonStyleIos.position :jsonStyleAndroid.position,
+      left: plataforma == 'ios' ? jsonStyleIos.left :jsonStyleAndroid.left,
+      right: plataforma == 'ios' ? jsonStyleIos.right :jsonStyleAndroid.right,
+      bottom:plataforma == 'ios' ? jsonStyleIos.bottom :jsonStyleAndroid.bottom,
+      height: plataforma == 'ios' ? jsonStyleIos.height :jsonStyleAndroid.height
+    }
+  )
+}
+
 function TabNav(props) {
   
  
   return (
     
     <Tab.Navigator
-      screenOptions={{
+      screenOptions={({route}) =>({
         tabBarShowLabel: false,
-        tabBarStyle: {
-          backgroundColor: plataforma == 'ios' ? jsonStyleIos.backgroundColor :jsonStyleAndroid.backgroundColor,
-          borderTopWidth: plataforma == 'ios' ? jsonStyleIos.borderTopWidth :jsonStyleAndroid.borderTopWidth,
-          borderRadius: plataforma == 'ios' ? jsonStyleIos.borderRadius :jsonStyleAndroid.borderRadius,
-          position: plataforma == 'ios' ? jsonStyleIos.position :jsonStyleAndroid.position,
-          left: plataforma == 'ios' ? jsonStyleIos.left :jsonStyleAndroid.left,
-          right: plataforma == 'ios' ? jsonStyleIos.right :jsonStyleAndroid.right,
-          bottom:plataforma == 'ios' ? jsonStyleIos.bottom :jsonStyleAndroid.bottom,
-          height: plataforma == 'ios' ? jsonStyleIos.height :jsonStyleAndroid.height
-        },
+        tabBarStyle:whileTabBarVisible(),
         tabBarIconStyle: {
           top: plataforma == 'ios' ? jsonStyleIos.top :jsonStyleAndroid.top
-        }
-      }}
+        },
+        tabBarVisibilityAnimationConfig: true
+      })}
     >
       {/*Aqui passo minhas props para o componente home no initialParams*/}
       <Tab.Screen name="Home" component={PlanetsNav}

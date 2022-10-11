@@ -6,6 +6,9 @@ import { TextInput } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SourceQuestions from './SrcQuestions';
 import * as Animatable from 'react-native-animatable';
+import { whileTabBarVisible } from '../routes/Routes';
+import { listenerCount } from 'events';
+
 const Levels = (props) => {
     const [response, setResponse] = useState('');
     const [responseCorrect, setResponseCorrect] = useState('Fé');
@@ -14,14 +17,41 @@ const Levels = (props) => {
     const [option, setOption] = useState('');
     const [options, setOptions] = useState([{}]);
     const [startAnim, setStartAnim] = useState(false);
-
+    const size = Dimensions.get('screen').width
+    // estado de opção selecionada
+    const [isSelected, setIsSelected] = useState(false);
+    const [color, setColor] = useState('#FEFEFF');
+    const [color2, setColor2] = useState('#FEFEFF');
+    const [color3, setColor3] = useState('#FEFEFF');
+    const [color4, setColor4] = useState('#FEFEFF');
+    
     useEffect(() => {
+      props.navigation.getParent().setOptions({tabBarStyle:{display: 'none'}});
       const resp = SourceQuestions((props.route.params?.question)-1);
        setResponseCorrect(resp.resp);
        setQuestion(resp.question);
        setOptions({op1:resp.op1, op2:resp.op2,op3:resp.op3,op4:resp.op4});
        setIsSelect(resp.hasOptions); 
+       
+       return () =>{
+        props.navigation.getParent().setOptions({tabBarStyle:whileTabBarVisible()});
+       }
     }, []);
+
+    const listenerEvent = (parms,op) => {
+      setOption(parms)
+      select(op);
+    };
+
+    const renderOptions = (parms,op,style) => { 
+      return (
+      <View >
+      <TouchableOpacity style={style} onPress={e=>listenerEvent(parms,op)}>
+      <Text style={styles.textOption}>{parms}</Text>
+      </TouchableOpacity>
+      </View>
+      );
+  }
 
     const compareResp = (resp) => {
         if(resp) {
@@ -33,18 +63,35 @@ const Levels = (props) => {
         Alert.alert("Resposta incorreta");
     }
 
-    const renderOptions = (parms) => { 
-        return (
-        <View >
-        <TouchableOpacity style={style.option} onPress={e=>setOption(parms)}>
-        <Text style={style.textOption}>{parms}</Text>
-        </TouchableOpacity>
-        </View>
-        );
+    const select = (e) => {
+      if(!isSelected){
+        
+        if(e == 1){setColor('#C3C6FC')}
+        if(e == 2){setColor2('#C3C6FC')}
+        if(e == 3){setColor3('#C3C6FC')}
+        if(e == 4){setColor4('#C3C6FC')}
+        setIsSelected(true);
+        
+      }
+      else {
+        resetColors();
+        setOption('')
+        setIsSelected(false)
+      }
+      
     }
 
+    const resetColors = ()=>{
+      setColor('#FEFEFF')
+      setColor2('#FEFEFF')
+      setColor3('#FEFEFF')
+      setColor4('#FEFEFF')
+    }
+
+
+
     return(
-    <View style={style.container}> 
+    <View style={styles.container}> 
       <Image style={{position:'absolute',width:'100%'}} source={require('../pages/assets/backgroundBi.png')}/>
 
         
@@ -52,25 +99,83 @@ const Levels = (props) => {
     {
       isSelect ?
       
-        <View style= {style.containerFade}>   
-        <Text style={style.question}>{question+` ${option}`}</Text>
-        {options.op1 ? renderOptions(options.op1):null}
-        {options.op2 ? renderOptions(options.op2):null}
-        {options.op3 ? renderOptions(options.op3):null}
-        {options.op4 ? renderOptions(options.op4):null}
-        <TouchableOpacity style={style.verify}><Text style={style.verifyText}>Verify</Text></TouchableOpacity>
-        
+        <View style= {styles.containerFade}>   
+        <Text style={styles.question}>{question+` ${option}`}</Text>
+              {options.op1 ? renderOptions(options.op1, 1, {
+                marginTop: 10,
+                top: 250,
+                backgroundColor: color,
+                fontSize: 30,
+                textAlign: 'center',
+                alignSelf: 'center',
+                borderRadius: 20,
+                width: 300,
+                height: 50,
+                elevation: 11,
+                shadowColor: '#000',
+              }) : null}
+
+              {options.op2 ? renderOptions(options.op2, 2, {
+                marginTop: 10,
+                top: 250,
+                backgroundColor: color2,
+                fontSize: 30,
+                textAlign: 'center',
+                alignSelf: 'center',
+                borderRadius: 20,
+                width: 300,
+                height: 50,
+                elevation: 11,
+                shadowColor: '#000',
+              }) : null}
+
+              {options.op3 ? renderOptions(options.op3, 3, {
+                marginTop: 10,
+                top: 250,
+                backgroundColor: color3,
+                fontSize: 30,
+                textAlign: 'center',
+                alignSelf: 'center',
+                borderRadius: 20,
+                width: 300,
+                height: 50,
+                elevation: 11,
+                shadowColor: '#000',
+              }) : null}
+
+              {options.op4 ? renderOptions(options.op4, 4, {
+                marginTop: 10,
+                top: 250,
+                backgroundColor: color4,
+                fontSize: 30,
+                textAlign: 'center',
+                alignSelf: 'center',
+                borderRadius: 20,
+                width: 300,
+                height: 50,
+                elevation: 11,
+                shadowColor: '#000',
+              }) : null}
+
+        <TouchableOpacity onPress={e=>compareResp(option)} style={styles.verify}><Text style={styles.verifyText}>Verify</Text></TouchableOpacity>
+        {
+          startAnim &&
+          <Animatable.Image
+          animation={'fadeInUp'}
+            style={{width:size,height:220,right:19,top:220}}
+            source={require('../pages/assets/robotGreen.png')}
+            />}
        
       </View>
       :
-        <View style= {style.containerFade}>
-          <Text style={style.question}>{question+` ${option}`}</Text>
+        <View style= {styles.containerFade}>
+          <Text style={styles.question}>{question+` ${option}`}</Text>
           <TextInput
         placeholder='Digite seu Email..'
-        style={style.input}
+        style={styles.input}
         onChangeText = {text => setResponse(text)}
         />
-        <TouchableOpacity onPress={() => {compareResp(response)}} style={style.button}>
+        <TouchableOpacity onPress={() => {compareResp(response)}} style={styles.button}>
             <FontAwesome name="angle-right" size={30} color="#3C3C3C"/>
         </TouchableOpacity>
         {
@@ -89,7 +194,7 @@ const Levels = (props) => {
 
 /*Style*/
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
    container:{
     flex: 1,
    },
@@ -123,7 +228,46 @@ const style = StyleSheet.create({
    option: {
     marginTop:10,
     top:250,
-    backgroundColor:'#fff',
+    backgroundColor:'#FEFEFF',
+    fontSize: 30,
+    textAlign: 'center',
+    alignSelf: 'center',
+    borderRadius:20,
+    width:300,
+    height: 50,
+    elevation:11,
+    shadowColor: '#000',
+   },
+   option2: {
+    marginTop:10,
+    top:250,
+    backgroundColor:'#FEFEFF',
+    fontSize: 30,
+    textAlign: 'center',
+    alignSelf: 'center',
+    borderRadius:20,
+    width:300,
+    height: 50,
+    elevation:11,
+    shadowColor: '#000',
+   },
+   option3: {
+    marginTop:10,
+    top:250,
+    backgroundColor:'#FEFEFF',
+    fontSize: 30,
+    textAlign: 'center',
+    alignSelf: 'center',
+    borderRadius:20,
+    width:300,
+    height: 50,
+    elevation:11,
+    shadowColor: '#000',
+   },
+   option4: {
+    marginTop:10,
+    top:250,
+    backgroundColor:'#FEFEFF',
     fontSize: 30,
     textAlign: 'center',
     alignSelf: 'center',

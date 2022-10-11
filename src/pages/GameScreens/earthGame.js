@@ -38,22 +38,6 @@ const EarthGame = (props) => {
 
   // ver se a fase que chega como parametro ja foi completa
   const isCompleted =(parms) =>{
-    AsyncStorage.getItem('@state').then((e) => {
-      const data = JSON.parse(e);
-      setStartedNow(data.startedNow);
-    });
-
-    AsyncStorage.getItem('@User').then((e) => {
-      const data = JSON.parse(e);
-      setEmail(data.email);
-      
-    });
-    axios.get("https://app-tc.herokuapp.com/getProgress/"+email+"/earth").then((res) => {
-      const data = res.data;
-      setProgress(data[0].progresso);
-    })
-    .catch((err) => {});
-
     const resp = SourceQuestions((parms)-1);
 
     if (resp.reqProgres!==null && resp.reqProgres !== undefined) {
@@ -65,12 +49,28 @@ const EarthGame = (props) => {
       
     }
   }
+
+  const updateDate = async () =>  {
+    AsyncStorage.getItem('@state').then((e) => {
+      const data = JSON.parse(e);
+      setStartedNow(data.startedNow);
+    });
+
+     AsyncStorage.getItem('@User').then((e) => {
+      const data = JSON.parse(e);
+      setEmail(data.email);
+      
+    });
+     axios.get("https://app-tc.herokuapp.com/getProgress/"+email+"/earth").then((res) => {
+      const data = res.data;
+      setProgress(data[0].progresso);
+    })
+    .catch((err) => {});
+  }
   
 // ao entrar na fase, fazer a req do nivel necessario
   const enter = (parms) => {
-    console.log('Buttons',parms);
     const resp = SourceQuestions((parms)-1);
-    
     if (resp.reqProgres!==null && resp.reqProgres !== undefined) {
       const progresso = resp.reqProgres;
       
@@ -98,7 +98,7 @@ const EarthGame = (props) => {
     )
   }
 
- 
+  updateDate();
   return (
     <View>
       {plataforma == "ios" ? (
@@ -108,15 +108,15 @@ const EarthGame = (props) => {
             style={styles.IOSearthGame}
           ></Image>
           {!isCompleted(1) ? <Buttons style={stylesIOS.ButtonOne} level={1}/> : <ButtonsCompleted style={stylesIOS.ButtonOne}/>}
-           {!isCompleted(4) ? <Buttons style={stylesIOS.ButtonTwo} level={2}/> : <ButtonsCompleted style={stylesIOS.ButtonTwo}/>}
-           {!isCompleted(7) ? <Buttons style={stylesIOS.ButtonThree} level={3}/> : <ButtonsCompleted style={stylesIOS.ButtonThree}/>}
-           {!isCompleted(10) ? <Buttons style={stylesIOS.ButtonFour} level={4}/> : <ButtonsCompleted style={stylesIOS.ButtonFour}/>}
-           {!isCompleted(13) ? <Buttons style={stylesIOS.ButtonFive} level={5}/> : <ButtonsCompleted style={stylesIOS.ButtonFive}/>}
-           {!isCompleted(16) ? <Buttons style={stylesIOS.ButtonSix} level={6}/> : <ButtonsCompleted style={stylesIOS.ButtonSix}/>}
-           {!isCompleted(19) ? <Buttons style={stylesIOS.ButtonSeven} level={7}/> : <ButtonsCompleted style={stylesIOS.ButtonSeven}/>}
-           {!isCompleted(22) ? <Buttons style={stylesIOS.ButtonEight} level={8}/> : <ButtonsCompleted style={stylesIOS.ButtonEight}/>}
-           {!isCompleted(25) ? <Buttons style={stylesIOS.ButtonNine} level={9}/> : <ButtonsCompleted style={stylesIOS.ButtonNine}/>}
-           {!isCompleted(28) ? <Buttons style={stylesIOS.ButtonTen} level={10}/> : <ButtonsCompleted style={stylesIOS.ButtonTen}/>}
+           {!isCompleted(4) ? <Buttons style={stylesIOS.ButtonTwo} level={4}/> : <ButtonsCompleted style={stylesIOS.ButtonTwo}/>}
+           {!isCompleted(7) ? <Buttons style={stylesIOS.ButtonThree} level={7}/> : <ButtonsCompleted style={stylesIOS.ButtonThree}/>}
+           {!isCompleted(10) ? <Buttons style={stylesIOS.ButtonFour} level={10}/> : <ButtonsCompleted style={stylesIOS.ButtonFour}/>}
+           {!isCompleted(13) ? <Buttons style={stylesIOS.ButtonFive} level={13}/> : <ButtonsCompleted style={stylesIOS.ButtonFive}/>}
+           {!isCompleted(16) ? <Buttons style={stylesIOS.ButtonSix} level={16}/> : <ButtonsCompleted style={stylesIOS.ButtonSix}/>}
+           {!isCompleted(19) ? <Buttons style={stylesIOS.ButtonSeven} level={19}/> : <ButtonsCompleted style={stylesIOS.ButtonSeven}/>}
+           {!isCompleted(22) ? <Buttons style={stylesIOS.ButtonEight} level={22}/> : <ButtonsCompleted style={stylesIOS.ButtonEight}/>}
+           {!isCompleted(25) ? <Buttons style={stylesIOS.ButtonNine} level={25}/> : <ButtonsCompleted style={stylesIOS.ButtonNine}/>}
+           {!isCompleted(28) ? <Buttons style={stylesIOS.ButtonTen} level={28}/> : <ButtonsCompleted style={stylesIOS.ButtonTen}/>}
         </ScrollView>
       ) : (
         <ScrollView showsVerticalScrollIndicator={false} >
