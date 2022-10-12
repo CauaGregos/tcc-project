@@ -23,22 +23,14 @@ const SplashBLevel = (props) => {
   useEffect(() => {
     Animated.timing(animationProgress.current, {
       toValue: 1,
-      duration: 3000,
+      duration: 700,
       useNativeDriver: true
     }).start();
   }, [])
   return (
-    <View style={styles.container}>
-      
-        <View style={styles.container}>
-           <Animatable.Image
-            delay={500}
-            animation="flipInX"
-            source={require('../assets/logoPlanetWhite.png')}
-            style={styles.containerLogo}
-            resizeMode="contain"
-          />
-          <LottieView style={{ width:size,height: 150, top: '-10%',alignSelf: 'center' }}
+    <View style={styles.container}>   
+        <View style={styles.container}>         
+          <LottieView style={{ width:size,height: 150, top: '100%',alignSelf: 'center' }}
             source={require('../assets/loopPlanet.json')}
             progress={animationProgress.current}
             onAnimationFinish={() => nextLevel()}
@@ -47,9 +39,6 @@ const SplashBLevel = (props) => {
           />
         </View>
     </View>
-
-    
-
   );
 }
 

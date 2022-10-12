@@ -128,7 +128,7 @@ const Levels = (props) => {
     {
       isSelect ?
       
-        <View style= {styles.containerFade}>   
+        <Animatable.View animation={'fadeInLeft'} style= {styles.containerFade}>   
         <Text style={styles.question}>{question+` ${option}`}</Text>
               {options.op1 ? renderOptions(options.op1, 1, {
                 marginTop: 10,
@@ -209,7 +209,7 @@ const Levels = (props) => {
             </TouchableWithoutFeedback>
         }
        
-      </View>
+      </Animatable.View>
       :
         <View style= {styles.containerFade}>
           <Text style={styles.question}>{question+` ${option}`}</Text>
