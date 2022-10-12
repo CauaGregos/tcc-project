@@ -26,7 +26,7 @@ const SourceQuestions = (props) => {
         },
         { // fase 3 
             question:'* Hello *,  Significa " Olá " em português',
-            resp: 'TRUE',
+            resp: 'True',
             hasOptions: true,
             op1:'True',
             op2:"False",

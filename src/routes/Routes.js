@@ -28,6 +28,7 @@ import Search from '../pages/Search';
 import SelectLanguage from '../pages/SelectLanguage';
 import PerfilScreen from '../pages/Perfil';
 import Levels from '../components/Levels';
+import SplashBLevel from '../pages/SplashBLevel';
 
 // tipos de navigations
 const Stack = createNativeStackNavigator();
@@ -139,7 +140,7 @@ function PlanetsNav(props) {
     <Stack.Screen name="EarthGame" component={EarthGame} options={{headerShown: false}} />
     <Stack.Screen name="MarsGame" component={MarsGame} options={{headerShown: false}} />
     <Stack.Screen name="Levels" component={Levels} options={{headerShown: false}} />
-    
+    <Stack.Screen name="SplashBLevel" component={SplashBLevel} options={{headerShown: false}} />
   </Stack.Navigator>
     
   );
@@ -163,6 +164,7 @@ function Routes() {
         <Stack.Screen name="InfoForgot" component={InfoForgot} options={{headerShown: false}} />
         <Stack.Screen name="SelectLanguage"  component={SelectLanguage} options={{headerShown: false}} />
         <Stack.Screen name="SplashForgot" initialParams={{screen:'InfoForgot'}} component={SplashForgot} options={{headerShown: false}} />
+        
       </Stack.Navigator>
       </NavigationContainer>
   );

@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions,Alert, Modal, FlatList } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions,Alert, Modal, FlatList,TouchableWithoutFeedback } from 'react-native';
 import { useState,useEffect } from 'react';
 import { TextInput } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -16,7 +16,8 @@ const Levels = (props) => {
     const [isSelect, setIsSelect] = useState(false);
     const [option, setOption] = useState('');
     const [options, setOptions] = useState([{}]);
-    const [startAnim, setStartAnim] = useState(false);
+    const [isCorrect, setIsCorrect] = useState(false);
+    const [isInCorrect, setIsInCorrect] = useState(false);
     const size = Dimensions.get('screen').width
     // estado de opção selecionada
     const [isSelected, setIsSelected] = useState(false);
@@ -24,19 +25,44 @@ const Levels = (props) => {
     const [color2, setColor2] = useState('#FEFEFF');
     const [color3, setColor3] = useState('#FEFEFF');
     const [color4, setColor4] = useState('#FEFEFF');
+    // respondido
+    const [answered,setAnswered] =  useState(false);
+    const navegate = useNavigation();
     
+   
+
+    const resetParams = () =>{
+      setResponse('')
+      setResponseCorrect('')
+      setQuestion('')
+      setIsSelect(false)
+      setOption('')
+      setOptions([{}])
+      setIsCorrect(false)
+      setIsInCorrect(false);
+      setIsSelected(false)
+      setColor('#FEFEFF')
+      setColor2('#FEFEFF')
+      setColor3('#FEFEFF')
+      setColor4('#FEFEFF')
+      setAnswered(false)
+    }
+    
+
+
     useEffect(() => {
-      props.navigation.getParent().setOptions({tabBarStyle:{display: 'none'}});
+      resetParams(); 
       const resp = SourceQuestions((props.route.params?.question)-1);
-       setResponseCorrect(resp.resp);
-       setQuestion(resp.question);
-       setOptions({op1:resp.op1, op2:resp.op2,op3:resp.op3,op4:resp.op4});
-       setIsSelect(resp.hasOptions); 
-       
+      setResponseCorrect(resp.resp);
+      setQuestion(resp.question);
+      setOptions({op1:resp.op1, op2:resp.op2,op3:resp.op3,op4:resp.op4});
+      setIsSelect(resp.hasOptions); 
+      
+      props.navigation.getParent().setOptions({tabBarStyle:{display: 'none'}});
        return () =>{
         props.navigation.getParent().setOptions({tabBarStyle:whileTabBarVisible()});
        }
-    }, []);
+    }, [props.route.params?.question]);
 
     const listenerEvent = (parms,op) => {
       setOption(parms)
@@ -46,7 +72,7 @@ const Levels = (props) => {
     const renderOptions = (parms,op,style) => { 
       return (
       <View >
-      <TouchableOpacity style={style} onPress={e=>listenerEvent(parms,op)}>
+      <TouchableOpacity disabled={answered} style={style} onPress={e=>listenerEvent(parms,op)}>
       <Text style={styles.textOption}>{parms}</Text>
       </TouchableOpacity>
       </View>
@@ -55,12 +81,15 @@ const Levels = (props) => {
 
     const compareResp = (resp) => {
         if(resp) {
-            return resp == responseCorrect ? setStartAnim(true) : setError();
+            setAnswered(true);
+            return resp == responseCorrect ? setIsCorrect(true) : setError();
         } Alert.alert("Não foi possivel encontrar sua resposta!!");
     }
 
     const setError = () => { 
-        Alert.alert("Resposta incorreta");
+        // Alert.alert("Resposta incorreta");
+        // navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:'EarthGame'})
+        setIsInCorrect(true);
     }
 
     const select = (e) => {
@@ -159,12 +188,26 @@ const Levels = (props) => {
 
         <TouchableOpacity onPress={e=>compareResp(option)} style={styles.verify}><Text style={styles.verifyText}>Verify</Text></TouchableOpacity>
         {
-          startAnim &&
+          isCorrect &&
+          // o nome da props planet vai ser a fase que ele vai voltar quando finalizar as 3 questoes
+          <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:'EarthGame'})}}>
           <Animatable.Image
           animation={'fadeInUp'}
-            style={{width:size,height:220,right:19,top:220}}
+            style={{width:size,height:220,top:582,position:'absolute'}}
             source={require('../pages/assets/robotGreen.png')}
-            />}
+            />
+            </TouchableWithoutFeedback>
+        }
+        {
+            isInCorrect &&
+            <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:'EarthGame'})}}>
+              <Animatable.Image
+              animation={'fadeInUp'}
+                style={{width:size,height:220,top:582,position:'absolute'}}
+                source={require('../pages/assets/robotRed.png')}
+                />
+            </TouchableWithoutFeedback>
+        }
        
       </View>
       :
@@ -179,7 +222,7 @@ const Levels = (props) => {
             <FontAwesome name="angle-right" size={30} color="#3C3C3C"/>
         </TouchableOpacity>
         {
-          startAnim &&
+          isCorrect &&
           <Animatable.Image
           animation={'fadeInUp'}
             style={{width:438,height:199,right:15,top:243}}
