@@ -1,39 +1,39 @@
 import React from 'react';
 
-const SourceQuestions = (props) => {
+const SourceQuestions = (props, planet) => {
 
-    const json = [
-        { // fase 1
-            question:'Traduza : * Hello * para o Inglês',
+    const json = {
+        'Earth': [{ // fase 1
+            question: 'Traduza : * Hello * para o Inglês',
             resp: 'Olá',
             hasOptions: true,
             op1: "Olá",
             op2: "Tchau",
             op3: "Tudo bem?",
             op4: "Kitty",
-            reqProgres:0
-        } ,
+            reqProgres: 0
+        },
         { // fase 2
-            question:'Traduza: * Tudo bem? * para o Inglês',
+            question: 'Traduza: * Tudo bem? * para o Inglês',
             resp: 'Are you ok?',
             hasOptions: true,
             op1: "Im Fine",
             op2: "Are you ok?",
             op3: "Im Sad",
             op4: "Do you need a hug?",
-            reqProgres:0
+            reqProgres: 0
 
         },
         { // fase 3 
-            question:'* Hello *,  Significa " Olá " em português',
+            question: '* Hello *,  Significa " Olá " em português',
             resp: 'True',
             hasOptions: true,
-            op1:'True',
-            op2:"False",
-            reqProgres:0
+            op1: 'True',
+            op2: "False",
+            reqProgres: 0
         },
         { // fase 4 
-            question:'Traduza: * Qual o seu nome? * para o Inglês',
+            question: 'Traduza: * Qual o seu nome? * para o Inglês',
             resp: 'Whats your name?',
 
 
@@ -42,10 +42,10 @@ const SourceQuestions = (props) => {
             op2: "How are you?",
             op3: "Are you married?",
             op4: "Whats your name?",
-            reqProgres:10
+            reqProgres: 10
         },
         { // fase 5
-            question:'Traduza: * Qual a sua idade? * para o inglês',
+            question: 'Traduza: * Qual a sua idade? * para o inglês',
             resp: 'Whats your age?',
 
 
@@ -54,10 +54,10 @@ const SourceQuestions = (props) => {
             op2: "How are you?",
             op3: "Im fine, and you?",
             op4: "Whats your age?",
-            reqProgres:10
-        }   ,
+            reqProgres: 10
+        },
         { // fase 6
-            question:'Complete a frase em Inglês: \n + A) ~ Hi, How are you? \n B) _______, Thanks. And you? ',
+            question: 'Complete a frase em Inglês: \n + A) ~ Hi, How are you? \n B) _______, Thanks. And you? ',
             resp: 'Im Fine',
 
 
@@ -66,10 +66,10 @@ const SourceQuestions = (props) => {
             op2: "My name is",
             op3: "Im Fine",
             op4: "I have money",
-            reqProgres:10
-        }   ,
+            reqProgres: 10
+        },
         { // fase 7
-            question:'*I´m fine*, em Inglês significa:',
+            question: '*I´m fine*, em Inglês significa:',
             resp: 'Estou bem',
 
 
@@ -78,10 +78,10 @@ const SourceQuestions = (props) => {
             op2: "Meu nome é...",
             op3: "Estou bem",
             op4: "Obrigado",
-            reqProgres:20
-        }   ,
+            reqProgres: 20
+        },
         {// 8 fase
-            question:'*Casado*, em Inglês é:',
+            question: '*Casado*, em Inglês é:',
             resp: 'Married',
 
 
@@ -90,10 +90,10 @@ const SourceQuestions = (props) => {
             op2: "Married",
             op3: "Thanks",
             op4: "Alone",
-            reqProgres:20
-        }   ,
+            reqProgres: 20
+        },
         { // fase 9
-            question:'* Família * em Inglês é:',
+            question: '* Família * em Inglês é:',
             resp: 'Family',
 
 
@@ -102,10 +102,10 @@ const SourceQuestions = (props) => {
             op2: "Fine",
             op3: "Family",
             op4: "Home",
-            reqProgres:20
-        }   ,
+            reqProgres: 20
+        },
         { // fase 10
-            question:'O que é * God * em Inglês:',
+            question: 'O que é * God * em Inglês:',
             resp: 'Deus',
 
 
@@ -114,10 +114,10 @@ const SourceQuestions = (props) => {
             op2: "Mal",
             op3: "Bom",
             op4: "Bem",
-            reqProgres:30
-        }   ,
+            reqProgres: 30
+        },
         { // fase 11 
-            question:'* Estudo * em Inglês:',
+            question: '* Estudo * em Inglês:',
             resp: 'Study',
 
 
@@ -126,33 +126,33 @@ const SourceQuestions = (props) => {
             op2: "Study",
             op3: "Run",
             op4: "God",
-            reqProgres:30
-        }  ,
+            reqProgres: 30
+        },
         { // fase 12
-            question:'Escreva * Estou bem * em Inglês',
+            question: 'Escreva * Estou bem * em Inglês',
             resp: 'Im fine',
 
             hasOptions: false,
-            reqProgres:30
-        
-        }   ,
+            reqProgres: 30
+
+        },
         { // fase 13
-            question:'Escreva * Estou bem * em Inglês',
+            question: 'Escreva * Estou bem * em Inglês',
             resp: 'Im fine',
 
             hasOptions: false,
-            reqProgres:30
-        }   ,   
-        ,
+            reqProgres: 30
+        },
+            ,
         { // fase 14
-            question:'Escreva * Família * em Inglês',
+            question: 'Escreva * Família * em Inglês',
             resp: 'Family',
 
             hasOptions: false,
-            reqProgres:40
-        }   ,   
+            reqProgres: 40
+        },
         { // fase 15
-            question:'Complete a frase em Inglês: \n + A) How old are you? \n B) ___________, And you? ',
+            question: 'Complete a frase em Inglês: \n + A) How old are you? \n B) ___________, And you? ',
             resp: 'My age is 18,',
 
 
@@ -161,10 +161,10 @@ const SourceQuestions = (props) => {
             op2: "My Name is:",
             op3: "I will go to",
             op4: "Hello!",
-            reqProgres:40
-        }, 
+            reqProgres: 40
+        },
         { // fase 16
-            question:'O que significa * Computer * em Inglês?',
+            question: 'O que significa * Computer * em Inglês?',
             resp: 'Computador',
 
 
@@ -173,10 +173,10 @@ const SourceQuestions = (props) => {
             op2: "Computador",
             op3: "Programação",
             op4: "Desenvolvedor",
-            reqProgres:50
-        }, 
+            reqProgres: 50
+        },
         { // fase 17
-            question:'O que significa * Monster * em Inglês?',
+            question: 'O que significa * Monster * em Inglês?',
             resp: 'Monstro',
 
 
@@ -185,18 +185,18 @@ const SourceQuestions = (props) => {
             op2: "Monstro",
             op3: "Pessoa",
             op4: "Feliz",
-            reqProgres:50
-        }, 
+            reqProgres: 50
+        },
         { // fase 18
-            question:'* Posso ir ao banheiro? *, Escreva em Inglês:',
+            question: '* Posso ir ao banheiro? *, Escreva em Inglês:',
             resp: 'Can I go to the bathroom?',
 
 
             hasOptions: false,
-            reqProgres:50
-        }, 
+            reqProgres: 50
+        },
         { // fase 19
-            question:'Como é * Banheiro * em Inglês:',
+            question: 'Como é * Banheiro * em Inglês:',
             resp: 'Bathroom',
 
 
@@ -205,10 +205,10 @@ const SourceQuestions = (props) => {
             op2: "Home",
             op3: "Bedroom",
             op4: "Bathroom",
-            reqProgres:60
-        }, 
+            reqProgres: 60
+        },
         { // fase 20
-            question:'O que é * Bathroom * em Inglês:',
+            question: 'O que é * Bathroom * em Inglês:',
             resp: 'Banheiro',
 
 
@@ -217,10 +217,10 @@ const SourceQuestions = (props) => {
             op2: "Casa",
             op3: "Banheiro",
             op4: "Cozinha",
-            reqProgres:60
-        }, 
+            reqProgres: 60
+        },
         { // fase 21
-            question:'* Café * em Inglês é ?',
+            question: '* Café * em Inglês é ?',
             resp: 'Coffee',
 
 
@@ -229,10 +229,10 @@ const SourceQuestions = (props) => {
             op2: "Coffee",
             op3: "Beer",
             op4: "Water",
-            reqProgres:60
-        }, 
+            reqProgres: 60
+        },
         { // fase 22
-            question:'* Eu quero beber um café * em Inglês é:',
+            question: '* Eu quero beber um café * em Inglês é:',
             resp: 'I want to drink a coffee',
 
 
@@ -241,10 +241,10 @@ const SourceQuestions = (props) => {
             op2: "I want to drink some water",
             op3: "I want to drink a coffee",
             op4: "I want to drink some Wine",
-            reqProgres:70
-        }, 
+            reqProgres: 70
+        },
         { // fase 23 
-            question:'* Play video-game is my favorite hobbie * traduzindo pro português é:',
+            question: '* Play video-game is my favorite hobbie * traduzindo pro português é:',
             resp: 'Jogar Video-game é meu hobbie favorito',
 
 
@@ -253,52 +253,52 @@ const SourceQuestions = (props) => {
             op2: "Jogar cartas é meu hobbie favorito",
             op3: "Jogar Video-game é meu hobbie favorito",
             op4: "Tocar violão é meu hobbie favorito",
-            reqProgres:70
-        }, 
+            reqProgres: 70
+        },
         { // fase 24
-            question:'Escreva * Água * em Inglês :',
+            question: 'Escreva * Água * em Inglês :',
             resp: 'Water',
 
             hasOptions: false,
-            reqProgres:70
-        }, 
+            reqProgres: 70
+        },
         { // fase 25
-            question:'Escreva * Jogar * em Inglês:',
+            question: 'Escreva * Jogar * em Inglês:',
             resp: 'Play',
 
             hasOptions: false,
-            reqProgres:80
-        }, 
+            reqProgres: 80
+        },
         { // fase 26
-            question:'Escreva * beber * em Inglês:',
+            question: 'Escreva * beber * em Inglês:',
             resp: 'Drink',
 
             hasOptions: false,
-            reqProgres:80
-        }, 
+            reqProgres: 80
+        },
         { // fase 27
-            question:'Escreva * Inglês * em Inglês:',
+            question: 'Escreva * Inglês * em Inglês:',
             resp: 'English',
 
             hasOptions: false,
-            reqProgres:80
-        }, 
+            reqProgres: 80
+        },
         { // fase 28
-            question:'Escreva * Eu quero beber água * em Inglês:',
+            question: 'Escreva * Eu quero beber água * em Inglês:',
             resp: 'I want to drink some water',
 
             hasOptions: false,
-            reqProgres:90
-        }, 
+            reqProgres: 90
+        },
         { // fase 29
-            question:'Escreva * Brasil * em Inglês :',
+            question: 'Escreva * Brasil * em Inglês :',
             resp: 'Brazil',
 
             hasOptions: false,
-            reqProgres:90
-        }, 
+            reqProgres: 90
+        },
         { // fase 30
-            question:'* Eu estou em fome * em inglês é :',
+            question: '* Eu estou em fome * em inglês é :',
             resp: 'Im hungry',
 
             hasOptions: true,
@@ -306,16 +306,20 @@ const SourceQuestions = (props) => {
             op2: "Im thirst",
             op3: "Im tired",
             op4: "Im sleepy",
-            reqProgres:90
-        }, 
+            reqProgres: 90
+        },
         { // fase 31
-            question:'Escreva *Eu estou com fome* em inglês:',
+            question: 'Escreva *Eu estou com fome* em inglês:',
             resp: 'I am Hungry',
 
             hasOptions: false,
-            reqProgres:100
-        }, 
-    ]
-    return(json[props])};
+            reqProgres: 100
+        },],
+        'mars':[
+
+        ]  
+    }
+    return (json[planet][props])
+};
 
 export default SourceQuestions

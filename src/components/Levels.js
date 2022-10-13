@@ -56,7 +56,7 @@ const Levels = (props) => {
 
     useEffect(() => {
       resetParams(); 
-      const resp = SourceQuestions((props.route.params?.question)-1);
+      const resp = SourceQuestions((props.route.params?.question)-1,props.route.params?.planet);
       setResponseCorrect(resp.resp);
       setQuestion(resp.question);
       setOptions({op1:resp.op1, op2:resp.op2,op3:resp.op3,op4:resp.op4});

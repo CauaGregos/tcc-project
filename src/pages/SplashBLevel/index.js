@@ -27,7 +27,7 @@ const SplashBLevel = (props) => {
       axios.put('https://app-tc.herokuapp.com/upgradeProgress',{progress:10,email:email,planet:'earth'}).then((res) => {}).catch((err) => {});
       navigate.navigate(`${props.route.params?.planet}`);
     }else
-    navigate.navigate('Levels',{question:props.route.params?.question});
+    navigate.navigate('Levels',{question:props.route.params?.question,planet:props.route.params?.planet});
   }
 
   useEffect(() => {

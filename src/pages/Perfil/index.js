@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import FontAwesome4Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './style';
 import { StackActions } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -36,9 +37,11 @@ const Perfil = (props) => {
            })
            .catch((err) => {});
     };
+    attData();
 
     // Vai pegar todas as informacoes do user antes de renderizar o componente
     useEffect(() => {
+       
         if (userObj!=null && userObj!=undefined) {
             
         axios.get('https://app-tc.herokuapp.com/getAluno/'+userObj.email+'/'+userObj.password).then(res =>{
@@ -74,7 +77,7 @@ const Perfil = (props) => {
         const data = JSON.parse(e);
         setStartedNow(data.startedNow);
       });  
-      attData();
+     
 }, []);
 
     
@@ -103,7 +106,7 @@ const Perfil = (props) => {
                         </TouchableOpacity>
 
                         <TouchableOpacity onPress={e=>attData()}>
-                        <FontAwesome5 name="cog" style={styles.titleSetting} size={29} color="#848484" />
+                        <Text style={styles.titleSetting}>Atualizar dados</Text>
                         </TouchableOpacity>
                         
                         </View>

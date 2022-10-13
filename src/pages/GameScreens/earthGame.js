@@ -38,8 +38,7 @@ const EarthGame = (props) => {
 
   // ver se a fase que chega como parametro ja foi completa
   const isCompleted =(parms) =>{
-    const resp = SourceQuestions((parms)-1);
-
+    const resp = SourceQuestions((parms)-1,'Earth');
     if (resp.reqProgres!==null && resp.reqProgres !== undefined) {
       const progresso = resp.reqProgres;
       
@@ -70,13 +69,13 @@ const EarthGame = (props) => {
   
 // ao entrar na fase, fazer a req do nivel necessario
   const enter = (parms) => {
-    const resp = SourceQuestions((parms)-1);
+    const resp = SourceQuestions((parms)-1,'Earth');
     if (resp.reqProgres!==null && resp.reqProgres !== undefined) {
       const progresso = resp.reqProgres;
       console.log(progresso);
       if (progress == progresso){
       
-      navigate.navigate('Levels',{question:parms})
+      navigate.navigate('Levels',{question:parms,planet:'Earth'})
       }
     }
   };
