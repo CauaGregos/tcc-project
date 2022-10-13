@@ -73,7 +73,7 @@ const EarthGame = (props) => {
     const resp = SourceQuestions((parms)-1);
     if (resp.reqProgres!==null && resp.reqProgres !== undefined) {
       const progresso = resp.reqProgres;
-      
+      console.log(progresso);
       if (progress == progresso){
       
       navigate.navigate('Levels',{question:parms})
@@ -125,15 +125,15 @@ const EarthGame = (props) => {
             style={styles.ANDROIDearthGame}
           ></Image>
            {!isCompleted(1) ? <Buttons style={stylesAndroid.ButtonOne} level={1}/> : <ButtonsCompleted style={stylesAndroid.ButtonOne}/>}
-           {!isCompleted(4) ? <Buttons style={stylesAndroid.ButtonTwo} level={2}/> : <ButtonsCompleted style={stylesAndroid.ButtonTwo}/>}
-           {!isCompleted(7) ? <Buttons style={stylesAndroid.ButtonThree} level={3}/> : <ButtonsCompleted style={stylesAndroid.ButtonThree}/>}
-           {!isCompleted(10) ? <Buttons style={stylesAndroid.ButtonFour} level={4}/> : <ButtonsCompleted style={stylesAndroid.ButtonFour}/>}
-           {!isCompleted(13) ? <Buttons style={stylesAndroid.ButtonFive} level={5}/> : <ButtonsCompleted style={stylesAndroid.ButtonFive}/>}
-           {!isCompleted(16) ? <Buttons style={stylesAndroid.ButtonSix} level={6}/> : <ButtonsCompleted style={stylesAndroid.ButtonSix}/>}
-           {!isCompleted(19) ? <Buttons style={stylesAndroid.ButtonSeven} level={7}/> : <ButtonsCompleted style={stylesAndroid.ButtonSeven}/>}
-           {!isCompleted(22) ? <Buttons style={stylesAndroid.ButtonEight} level={8}/> : <ButtonsCompleted style={stylesAndroid.ButtonEight}/>}
-           {!isCompleted(25) ? <Buttons style={stylesAndroid.ButtonNine} level={9}/> : <ButtonsCompleted style={stylesAndroid.ButtonNine}/>}
-           {!isCompleted(28) ? <Buttons style={stylesAndroid.ButtonTen} level={10}/> : <ButtonsCompleted style={stylesAndroid.ButtonTen}/>}
+           {!isCompleted(4) ? <Buttons style={stylesAndroid.ButtonTwo} level={4}/> : <ButtonsCompleted style={stylesAndroid.ButtonTwo}/>}
+           {!isCompleted(7) ? <Buttons style={stylesAndroid.ButtonThree} level={7}/> : <ButtonsCompleted style={stylesAndroid.ButtonThree}/>}
+           {!isCompleted(10) ? <Buttons style={stylesAndroid.ButtonFour} level={10}/> : <ButtonsCompleted style={stylesAndroid.ButtonFour}/>}
+           {!isCompleted(13) ? <Buttons style={stylesAndroid.ButtonFive} level={13}/> : <ButtonsCompleted style={stylesAndroid.ButtonFive}/>}
+           {!isCompleted(16) ? <Buttons style={stylesAndroid.ButtonSix} level={16}/> : <ButtonsCompleted style={stylesAndroid.ButtonSix}/>}
+           {!isCompleted(19) ? <Buttons style={stylesAndroid.ButtonSeven} level={19}/> : <ButtonsCompleted style={stylesAndroid.ButtonSeven}/>}
+           {!isCompleted(22) ? <Buttons style={stylesAndroid.ButtonEight} level={22}/> : <ButtonsCompleted style={stylesAndroid.ButtonEight}/>}
+           {!isCompleted(25) ? <Buttons style={stylesAndroid.ButtonNine} level={25}/> : <ButtonsCompleted style={stylesAndroid.ButtonNine}/>}
+           {!isCompleted(28) ? <Buttons style={stylesAndroid.ButtonTen} level={28}/> : <ButtonsCompleted style={stylesAndroid.ButtonTen}/>}
         </ScrollView>
       )}
     </View>

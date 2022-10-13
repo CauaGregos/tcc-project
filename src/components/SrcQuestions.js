@@ -137,11 +137,11 @@ const SourceQuestions = (props) => {
         
         }   ,
         { // fase 13
-            question:'Escreva * Idade * em Inglês',
-            resp: 'Age',
+            question:'Escreva * Estou bem * em Inglês',
+            resp: 'Im fine',
 
             hasOptions: false,
-            reqProgres:40
+            reqProgres:30
         }   ,   
         ,
         { // fase 14

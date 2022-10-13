@@ -29,7 +29,13 @@ const Perfil = (props) => {
     const userObj = props.route.params?.user ? JSON.parse(props.route.params?.user) : undefined;
     
 
-
+    const attData = () => {
+        axios.get("https://app-tc.herokuapp.com/getProgress/"+email+"/earth").then((res) => {
+            const data = res.data;
+           setProgress(data[0].progresso);
+           })
+           .catch((err) => {});
+    };
 
     // Vai pegar todas as informacoes do user antes de renderizar o componente
     useEffect(() => {
@@ -67,22 +73,12 @@ const Perfil = (props) => {
      AsyncStorage.getItem('@state').then((e) => {
         const data = JSON.parse(e);
         setStartedNow(data.startedNow);
-      });
-
-      
-
-     
+      });  
+      attData();
 }, []);
 
     
-    const updateDate = () => {
-        axios.get("https://app-tc.herokuapp.com/getProgress/"+email+"/earth").then((res) => {
-        const data = res.data;
-        setProgress(data[0].progresso);
-        })
-        .catch((err) => {});
-    }
-    updateDate();
+
 
     return (
 
@@ -105,6 +101,11 @@ const Perfil = (props) => {
                         <TouchableOpacity style={{bottom:10}} onPress={() => {navegar.navigate('SettingsScreen')}}>
                             <FontAwesome5 name="cog" style={styles.titleSetting} size={29} color="#848484" />
                         </TouchableOpacity>
+
+                        <TouchableOpacity onPress={e=>attData()}>
+                        <FontAwesome5 name="cog" style={styles.titleSetting} size={29} color="#848484" />
+                        </TouchableOpacity>
+                        
                         </View>
                         <ScrollView showsVerticalScrollIndicator={false} style={{bottom:150,height:'50%'}}>
                             <View style={styles.card}>

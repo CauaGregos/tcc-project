@@ -28,6 +28,8 @@ const Levels = (props) => {
     // respondido
     const [answered,setAnswered] =  useState(false);
     const navegate = useNavigation();
+    const [verifyColor, setVerifyColor] = useState('#CECECE');
+    const [verifyTextColor, setVerifyTextColor] = useState('#544646');
     
    
 
@@ -45,6 +47,8 @@ const Levels = (props) => {
       setColor2('#FEFEFF')
       setColor3('#FEFEFF')
       setColor4('#FEFEFF')
+      setVerifyColor('#CECECE')
+      setVerifyTextColor('#544646')
       setAnswered(false)
     }
     
@@ -80,6 +84,7 @@ const Levels = (props) => {
   }
 
     const compareResp = (resp) => {
+      console.log(resp)
         if(resp) {
             setAnswered(true);
             return resp == responseCorrect ? setIsCorrect(true) : setError();
@@ -99,6 +104,8 @@ const Levels = (props) => {
         if(e == 2){setColor2('#C3C6FC')}
         if(e == 3){setColor3('#C3C6FC')}
         if(e == 4){setColor4('#C3C6FC')}
+        setVerifyColor('#3841F2')
+        setVerifyTextColor('#FFF')
         setIsSelected(true);
         
       }
@@ -115,6 +122,8 @@ const Levels = (props) => {
       setColor2('#FEFEFF')
       setColor3('#FEFEFF')
       setColor4('#FEFEFF')
+      setVerifyColor('#CECECE')
+      setVerifyTextColor('#544646')
     }
 
 
@@ -128,7 +137,7 @@ const Levels = (props) => {
     {
       isSelect ?
       
-        <Animatable.View animation={'fadeInLeft'} style= {styles.containerFade}>   
+        <Animatable.View animation={'fadeInUp'} style= {styles.containerFade}>   
         <Text style={styles.question}>{question+` ${option}`}</Text>
               {options.op1 ? renderOptions(options.op1, 1, {
                 marginTop: 10,
@@ -186,24 +195,40 @@ const Levels = (props) => {
                 shadowColor: '#000',
               }) : null}
 
-        <TouchableOpacity onPress={e=>compareResp(option)} style={styles.verify}><Text style={styles.verifyText}>Verify</Text></TouchableOpacity>
+        <TouchableOpacity onPress={e=>compareResp(option)} style={{ 
+          marginTop:75,
+          top:300,
+          backgroundColor:verifyColor,
+          fontSize: 30,
+          textAlign: 'center',
+          alignSelf: 'center',
+          borderRadius:20,
+          width:300,
+          height: 50
+      }}><Text style={{ 
+        alignSelf:'center',
+        fontSize:25,
+        color: verifyTextColor,
+        textAlign: 'center',
+        top: 6
+      }}>Verify</Text></TouchableOpacity>
         {
           isCorrect &&
           // o nome da props planet vai ser a fase que ele vai voltar quando finalizar as 3 questoes
-          <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:'EarthGame'})}}>
+          <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:'Earth'})}}>
           <Animatable.Image
           animation={'fadeInUp'}
-            style={{width:size,height:220,top:582,position:'absolute'}}
+            style={{width:size,height:220,top:size+218,position:'absolute'}}
             source={require('../pages/assets/robotGreen.png')}
             />
             </TouchableWithoutFeedback>
         }
         {
             isInCorrect &&
-            <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:'EarthGame'})}}>
+            <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:'Earth'})}}>
               <Animatable.Image
               animation={'fadeInUp'}
-                style={{width:size,height:220,top:582,position:'absolute'}}
+                style={{width:size,height:220,top:size+218,position:'absolute'}}
                 source={require('../pages/assets/robotRed.png')}
                 />
             </TouchableWithoutFeedback>
@@ -216,18 +241,33 @@ const Levels = (props) => {
           <TextInput
         placeholder='Digite seu Email..'
         style={styles.input}
-        onChangeText = {text => setResponse(text)}
+        value = {option}
+        onChangeText = {text => setOption(text)}
         />
-        <TouchableOpacity onPress={() => {compareResp(response)}} style={styles.button}>
+        <TouchableOpacity onPress={e=>compareResp(option)} style={styles.button}>
             <FontAwesome name="angle-right" size={30} color="#3C3C3C"/>
         </TouchableOpacity>
         {
           isCorrect &&
+          // o nome da props planet vai ser a fase que ele vai voltar quando finalizar as 3 questoes
+          <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:'Earth'})}}>
           <Animatable.Image
           animation={'fadeInUp'}
-            style={{width:438,height:199,right:15,top:243}}
+            style={{width:size,height:220,top:size+218,position:'absolute'}}
             source={require('../pages/assets/robotGreen.png')}
-            />}
+            />
+            </TouchableWithoutFeedback>
+        }
+        {
+            isInCorrect &&
+            <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:'Earth'})}}>
+              <Animatable.Image
+              animation={'fadeInUp'}
+                style={{width:size,height:220,top:size+218,position:'absolute'}}
+                source={require('../pages/assets/robotRed.png')}
+                />
+            </TouchableWithoutFeedback>
+        }
       </View>
     }
     </View>
@@ -319,17 +359,6 @@ const styles = StyleSheet.create({
     height: 50,
     elevation:11,
     shadowColor: '#000',
-   },
-    verify: {
-      marginTop:75,
-      top:300,
-      backgroundColor:'#CECECE',
-      fontSize: 30,
-      textAlign: 'center',
-      alignSelf: 'center',
-      borderRadius:20,
-      width:300,
-      height: 50
    },
     textOption:{
     alignSelf:'center',
