@@ -315,7 +315,7 @@ const SourceQuestions = (props, planet) => {
             hasOptions: false,
             reqProgres: 100
         },],
-        'mars':[
+        'Mars':[
             { //fase 32
                 question: '* Meu pai está com fome * em Inglês é?',
                 resp:  'My Father is hungry',

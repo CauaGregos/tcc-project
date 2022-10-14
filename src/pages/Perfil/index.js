@@ -24,6 +24,7 @@ const Perfil = (props) => {
     const [usuario, setUsuario] = useState(null);
     const [password, setPassword] = useState(null);
     const [progress, setProgress] = useState(0);
+    const [progressMars, setProgressMars] = useState(0);
     const [imagePerfil, setImagePerfil] = useState(null)
     const [startedNow, setStartedNow] = useState(false);
     const size = Dimensions.get('window').height
@@ -34,6 +35,12 @@ const Perfil = (props) => {
         axios.get("https://app-tc.herokuapp.com/getProgress/"+email+"/earth").then((res) => {
             const data = res.data;
            setProgress(data[0].progresso);
+           })
+           .catch((err) => {});
+
+           axios.get("https://app-tc.herokuapp.com/getProgress/"+email+"/mars").then((res) => {
+            const data = res.data;
+           setProgressMars(data[0].progresso);
            })
            .catch((err) => {});
     };
@@ -120,8 +127,8 @@ const Perfil = (props) => {
                             <View style={styles.card}>
                                 <Image style={{top:'25%',left:10}} source={require('../assets/smallMars.png')}/>
                                 <Text style={styles.titleCard}>Course A2</Text>
-                                <Text style={styles.numberData}>0%</Text>
-                                <ProgressBar data={35}/>
+                                <Text style={styles.numberData}>{progressMars}%</Text>
+                                <ProgressBar data={progressMars}/>
                             </View>
                         </ScrollView>
                     </View>

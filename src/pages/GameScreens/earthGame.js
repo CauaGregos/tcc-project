@@ -106,16 +106,16 @@ const EarthGame = (props) => {
             source={require("../assets/earthGame.png")}
             style={styles.IOSearthGame}
           ></Image>
-          {!isCompleted(1) ? <Buttons style={stylesIOS.ButtonOne} level={1}/> : <ButtonsCompleted style={stylesIOS.ButtonOne}/>}
-           {!isCompleted(4) ? <Buttons style={stylesIOS.ButtonTwo} level={4}/> : <ButtonsCompleted style={stylesIOS.ButtonTwo}/>}
-           {!isCompleted(7) ? <Buttons style={stylesIOS.ButtonThree} level={7}/> : <ButtonsCompleted style={stylesIOS.ButtonThree}/>}
-           {!isCompleted(10) ? <Buttons style={stylesIOS.ButtonFour} level={10}/> : <ButtonsCompleted style={stylesIOS.ButtonFour}/>}
-           {!isCompleted(13) ? <Buttons style={stylesIOS.ButtonFive} level={13}/> : <ButtonsCompleted style={stylesIOS.ButtonFive}/>}
-           {!isCompleted(16) ? <Buttons style={stylesIOS.ButtonSix} level={16}/> : <ButtonsCompleted style={stylesIOS.ButtonSix}/>}
-           {!isCompleted(19) ? <Buttons style={stylesIOS.ButtonSeven} level={19}/> : <ButtonsCompleted style={stylesIOS.ButtonSeven}/>}
-           {!isCompleted(22) ? <Buttons style={stylesIOS.ButtonEight} level={22}/> : <ButtonsCompleted style={stylesIOS.ButtonEight}/>}
-           {!isCompleted(25) ? <Buttons style={stylesIOS.ButtonNine} level={25}/> : <ButtonsCompleted style={stylesIOS.ButtonNine}/>}
-           {!isCompleted(28) ? <Buttons style={stylesIOS.ButtonTen} level={28}/> : <ButtonsCompleted style={stylesIOS.ButtonTen}/>}
+          {!isCompleted(1) ? <Buttons style={stylesIOS.ButtonOne} level={1}/> : <ButtonsCompleted style={stylesIOS.ButtonOneCheck}/>}
+           {!isCompleted(4) ? <Buttons style={stylesIOS.ButtonTwo} level={4}/> : <ButtonsCompleted style={stylesIOS.ButtonTwoCheck}/>}
+           {!isCompleted(7) ? <Buttons style={stylesIOS.ButtonThree} level={7}/> : <ButtonsCompleted style={stylesIOS.ButtonThreeCheck}/>}
+           {!isCompleted(10) ? <Buttons style={stylesIOS.ButtonFour} level={10}/> : <ButtonsCompleted style={stylesIOS.ButtonFourCheck}/>}
+           {!isCompleted(13) ? <Buttons style={stylesIOS.ButtonFive} level={13}/> : <ButtonsCompleted style={stylesIOS.ButtonFiveCheck}/>}
+           {!isCompleted(16) ? <Buttons style={stylesIOS.ButtonSix} level={16}/> : <ButtonsCompleted style={stylesIOS.ButtonSixCheck}/>}
+           {!isCompleted(19) ? <Buttons style={stylesIOS.ButtonSeven} level={19}/> : <ButtonsCompleted style={stylesIOS.ButtonSevenCheck}/>}
+           {!isCompleted(22) ? <Buttons style={stylesIOS.ButtonEight} level={22}/> : <ButtonsCompleted style={stylesIOS.ButtonEightCheck}/>}
+           {!isCompleted(25) ? <Buttons style={stylesIOS.ButtonNine} level={25}/> : <ButtonsCompleted style={stylesIOS.ButtonNineCheck}/>}
+           {!isCompleted(28) ? <Buttons style={stylesIOS.ButtonTen} level={28}/> : <ButtonsCompleted style={stylesIOS.ButtonTenCheck}/>}
         </ScrollView>
       ) : (
         <ScrollView showsVerticalScrollIndicator={false} >
@@ -123,16 +123,16 @@ const EarthGame = (props) => {
             source={require("../assets/earthGame.png")}
             style={styles.ANDROIDearthGame}
           ></Image>
-           {!isCompleted(1) ? <Buttons style={stylesAndroid.ButtonOne} level={1}/> : <ButtonsCompleted style={stylesAndroid.ButtonOne}/>}
-           {!isCompleted(4) ? <Buttons style={stylesAndroid.ButtonTwo} level={4}/> : <ButtonsCompleted style={stylesAndroid.ButtonTwo}/>}
-           {!isCompleted(7) ? <Buttons style={stylesAndroid.ButtonThree} level={7}/> : <ButtonsCompleted style={stylesAndroid.ButtonThree}/>}
-           {!isCompleted(10) ? <Buttons style={stylesAndroid.ButtonFour} level={10}/> : <ButtonsCompleted style={stylesAndroid.ButtonFour}/>}
-           {!isCompleted(13) ? <Buttons style={stylesAndroid.ButtonFive} level={13}/> : <ButtonsCompleted style={stylesAndroid.ButtonFive}/>}
-           {!isCompleted(16) ? <Buttons style={stylesAndroid.ButtonSix} level={16}/> : <ButtonsCompleted style={stylesAndroid.ButtonSix}/>}
-           {!isCompleted(19) ? <Buttons style={stylesAndroid.ButtonSeven} level={19}/> : <ButtonsCompleted style={stylesAndroid.ButtonSeven}/>}
-           {!isCompleted(22) ? <Buttons style={stylesAndroid.ButtonEight} level={22}/> : <ButtonsCompleted style={stylesAndroid.ButtonEight}/>}
-           {!isCompleted(25) ? <Buttons style={stylesAndroid.ButtonNine} level={25}/> : <ButtonsCompleted style={stylesAndroid.ButtonNine}/>}
-           {!isCompleted(28) ? <Buttons style={stylesAndroid.ButtonTen} level={28}/> : <ButtonsCompleted style={stylesAndroid.ButtonTen}/>}
+           {!isCompleted(1) ? <Buttons style={stylesAndroid.ButtonOne} level={1}/> : <ButtonsCompleted style={stylesAndroid.ButtonOneCheck}/>}
+           {!isCompleted(4) ? <Buttons style={stylesAndroid.ButtonTwo} level={4}/> : <ButtonsCompleted style={stylesAndroid.ButtonTwoCheck}/>}
+           {!isCompleted(7) ? <Buttons style={stylesAndroid.ButtonThree} level={7}/> : <ButtonsCompleted style={stylesAndroid.ButtonThreeCheck}/>}
+           {!isCompleted(10) ? <Buttons style={stylesAndroid.ButtonFour} level={10}/> : <ButtonsCompleted style={stylesAndroid.ButtonFourCheck}/>}
+           {!isCompleted(13) ? <Buttons style={stylesAndroid.ButtonFive} level={13}/> : <ButtonsCompleted style={stylesAndroid.ButtonFiveCheck}/>}
+           {!isCompleted(16) ? <Buttons style={stylesAndroid.ButtonSix} level={16}/> : <ButtonsCompleted style={stylesAndroid.ButtonSixCheck}/>}
+           {!isCompleted(19) ? <Buttons style={stylesAndroid.ButtonSeven} level={19}/> : <ButtonsCompleted style={stylesAndroid.ButtonSevenCheck}/>}
+           {!isCompleted(22) ? <Buttons style={stylesAndroid.ButtonEight} level={22}/> : <ButtonsCompleted style={stylesAndroid.ButtonEightCheck}/>}
+           {!isCompleted(25) ? <Buttons style={stylesAndroid.ButtonNine} level={25}/> : <ButtonsCompleted style={stylesAndroid.ButtonNineCheck}/>}
+           {!isCompleted(28) ? <Buttons style={stylesAndroid.ButtonTen} level={28}/> : <ButtonsCompleted style={stylesAndroid.ButtonTenCheck}/>}
         </ScrollView>
       )}
     </View>

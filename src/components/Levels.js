@@ -215,7 +215,7 @@ const Levels = (props) => {
         {
           isCorrect &&
           // o nome da props planet vai ser a fase que ele vai voltar quando finalizar as 3 questoes
-          <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:'Earth'})}}>
+          <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:props.route.params?.planet})}}>
           <Animatable.Image
           animation={'fadeInUp'}
             style={{width:size,height:220,top:size+218,position:'absolute'}}
@@ -225,7 +225,7 @@ const Levels = (props) => {
         }
         {
             isInCorrect &&
-            <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:'Earth'})}}>
+            <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:props.route.params?.planet})}}>
               <Animatable.Image
               animation={'fadeInUp'}
                 style={{width:size,height:220,top:size+218,position:'absolute'}}
@@ -250,7 +250,7 @@ const Levels = (props) => {
         {
           isCorrect &&
           // o nome da props planet vai ser a fase que ele vai voltar quando finalizar as 3 questoes
-          <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:'Earth'})}}>
+          <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:props.route.params?.planet})}}>
           <Animatable.Image
           animation={'fadeInUp'}
             style={{width:size,height:220,top:size+218,position:'absolute'}}
@@ -260,7 +260,7 @@ const Levels = (props) => {
         }
         {
             isInCorrect &&
-            <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:'Earth'})}}>
+            <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:props.route.params?.planet})}}>
               <Animatable.Image
               animation={'fadeInUp'}
                 style={{width:size,height:220,top:size+218,position:'absolute'}}

@@ -6,6 +6,8 @@ import { useNavigation } from "@react-navigation/native";
 import Header from "../../components/Header";
 import styles from "./style";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
+
 const Mars = (props) => {
   const [alunos, setAlunos] = useState([]);
   const axios = require("axios");
@@ -16,27 +18,29 @@ const Mars = (props) => {
   const [startedNow,setStartedNow] = useState(false);
   const navigacaoFase = useNavigation();
   const navigate = useNavigation();
+  const [email,setEmail] = useState('');
 
   useEffect(() => {
-    axios
-      .get("https://app-tc.herokuapp.com/alunos")
-      .then((res) => {
-        const data = res.data;
-        for (let i = 0; i < data.length; i++) {
-          setAlunos(data[i]);
-        }
-      })
-      .catch((err) => {});
-
       AsyncStorage.getItem('@state').then((e) => {
         const data = JSON.parse(e);
         setStartedNow(data.startedNow);
       });
+
+      AsyncStorage.getItem('@User').then((e) => {
+        const data = JSON.parse(e);
+        setEmail(data.email);
+      });
   }, []);
 
-  const logout = () => {
-    setLogado(false);
-    navigate.navigate("Singin");
+  const enterIPlanet = () => {
+    axios.get("https://app-tc.herokuapp.com/getProgress/"+email+"/earth").then((res) => {
+      const data = res.data;
+      
+      if(data[0].progresso == 100){
+        navigacaoFase.navigate("MarsGame")
+      }
+      else alert("Você precisa completar o planeta anterior, desvende-o agora !!")
+    })
   };
 
   return (
@@ -51,7 +55,7 @@ const Mars = (props) => {
       <Header planet="Neptune" actualplanet="Mars" oldplanet="Earth" />
 
       {plataforma == "ios" ? (
-        <TouchableOpacity disabled={startedNow} onPress={() => navigacaoFase.navigate("MarsGame")} style={{bottom:"15%"}}>
+        <TouchableOpacity disabled={startedNow} onPress={() => enterIPlanet()} style={{bottom:"15%"}}>
           <LottieView
           style={styles.IOSmars}
           source={require("../assets/marte.json")}
@@ -60,7 +64,7 @@ const Mars = (props) => {
         />
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity disabled={startedNow} onPress={() => navigacaoFase.navigate("MarsGame")} style={{bottom:"10%"}}>
+        <TouchableOpacity disabled={startedNow} onPress={() => enterIPlanet()} style={{bottom:"10%"}}>
           <LottieView
           style={styles.ANDROIDmars}
           source={require("../assets/marte.json")}
