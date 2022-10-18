@@ -10,7 +10,7 @@ import styles from './style';
 import { StackActions } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ProgressBar from '../../components/ProgressBar';
-
+import Tryhard from '../../components/TryHard';
 // import sendEmail from '../../services/sendEmail';
 
 const Perfil = (props) => {
@@ -105,7 +105,16 @@ const Perfil = (props) => {
                             {imagePerfil != null? <Image style={{width:150,height:150,borderRadius:300,borderColor:'#3841F2',borderWidth:2}} source={{uri:imagePerfil}}/>:<Image style={{width:150,height:150,borderRadius:30}} source={require('../assets/defaultImage.png')}/>}
                         </TouchableOpacity>
                         <Text style={styles.title}>Hellou, {usuario}!</Text>
-                        <View style={styles.progressView}></View>
+                        <View style={styles.progressView}>
+                           <Tryhard text={'1'}/>
+                           <Tryhard text={'2'}/>
+                           <Tryhard text={'3'}/>
+                           <Tryhard text={'4'}/>
+                           <Tryhard text={'5'}/>
+                           <Tryhard text={'7'}/>
+                           
+                          
+                        </View>
                         <View style={{bottom:'20%'}}>
                         <Text style={styles.titleProgress}>Progresso</Text>
                         <TouchableOpacity style={{bottom:10}} onPress={() => {navegar.navigate('SettingsScreen')}}>

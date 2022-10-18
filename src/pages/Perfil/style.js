@@ -33,7 +33,10 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor:'#3841F2',
         borderRadius: 25,
-        bottom: 200
+        bottom: 200,
+        flexWrap:'wrap',
+        justifyContent: 'center',
+       
     },
     description:{
         alignSelf:'center'

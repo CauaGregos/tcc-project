@@ -4,12 +4,14 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions } from 'rea
 
 
 
-
+// salvar o tryhard no async storange, o primeiro 3 que o cara fizer vai contabilizar o try hard
 
 const Tryhard = (props) => {
-    const navigate = useNavigation();
+
     return(
     <View style={style.container}>
+        <Text style={style.text}>{props.text}</Text>
+        <Image source={require('../pages/assets/flame.png')}/>
 
     </View>
     )
@@ -19,7 +21,15 @@ const Tryhard = (props) => {
 /*Style*/
 
 const style = StyleSheet.create({
-   
+   text:{
+    color:'#FFF',
+    left:3,
+    fontSize:18
+
+   },
+   container:{
+    marginLeft:31,
+    }
 });
 
 
