@@ -77,7 +77,7 @@ const Settings = (props) => {
                 <View style={styles.containerInfos}>
                     <View>
                         <TouchableOpacity style={{ top: size * -0.05, borderRadius: 3,justifyContent:'center',alignItems:'center' }} onPress={() => navegar.navigate('CamScreen')}>
-                            {imagePerfil != null? <Image style={{width:150,height:150,borderRadius:30}} source={{uri:imagePerfil}}/>:<FontAwesome5 name="user" size={100} color="#848484" />}
+                            {imagePerfil != null? <Image style={{width:150,height:150,borderRadius:300}} source={{uri:imagePerfil}}/>:<Image style={{width:150,height:150,borderRadius:30}} source={require('../assets/defaultImage.png')}/>}
                         </TouchableOpacity>
                         <ScrollView> 
                             <Text style={styles.title}>Alterar Nome</Text>

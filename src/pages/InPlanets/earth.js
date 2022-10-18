@@ -3,7 +3,7 @@ import {
   View,
   Dimensions,
   Platform,
-  TouchableOpacity,
+  TouchableOpacity,Image
 } from "react-native";
 import LottieView from "lottie-react-native";
 import { useState, useEffect } from "react";
@@ -44,12 +44,13 @@ const Earth = (props) => {
 
   return (
     <View>
-      <LottieView
+      {/* <LottieView
         style={styles.animatedBackground}
         source={require("../assets/background.json")}
         loop={true}
         autoPlay
-      />
+      /> */}
+      <Image style={styles.animatedBackground} source={require('../assets/backgroundBi.png')}/>
 
       <Header planet="Mars" actualplanet="Earth" oldplanet="Neptune" />
 
@@ -74,7 +75,7 @@ const Earth = (props) => {
         
       )}
 
-      {plataforma == "ios" ? (
+      {/* {plataforma == "ios" ? (
         <LottieView
           style={styles.IOSrocket}
           source={require("../assets/rocketPurple.json")}
@@ -88,7 +89,7 @@ const Earth = (props) => {
           loop={true}
           autoPlay
         />
-      )}
+      )} */}
     </View>
   );
 };

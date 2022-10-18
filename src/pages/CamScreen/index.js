@@ -87,7 +87,7 @@ export default function Profile() {
     quality:1
    })
 
-   console.log(result)
+  
    axios.post('http://192.168.1.105:3000/uploadFile',result.uri)
 
    if(!(await result).cancelled){

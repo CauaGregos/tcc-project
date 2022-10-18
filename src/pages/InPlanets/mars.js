@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Dimensions, Platform, TouchableOpacity } from "react-native";
+import { View, Dimensions, Platform, TouchableOpacity,Image } from "react-native";
 import LottieView from "lottie-react-native";
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -45,12 +45,13 @@ const Mars = (props) => {
 
   return (
     <View>
-      <LottieView
+      {/* <LottieView
         style={styles.animatedBackground}
         source={require("../assets/background.json")}
         loop={true}
         autoPlay
-      />
+      /> */}
+       <Image style={styles.animatedBackground} source={require('../assets/backgroundBi.png')}/>
 
       <Header planet="Neptune" actualplanet="Mars" oldplanet="Earth" />
 
@@ -74,7 +75,7 @@ const Mars = (props) => {
         </TouchableOpacity>
       )}
 
-      {plataforma == "ios" ? (
+      {/* {plataforma == "ios" ? (
         <LottieView
           style={styles.IOSrocket}
           source={require("../assets/rocketPurple.json")}
@@ -88,7 +89,7 @@ const Mars = (props) => {
           loop={true}
           autoPlay
         />
-      )}
+      )} */}
     </View>
   );
 };

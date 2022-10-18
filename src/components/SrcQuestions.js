@@ -129,24 +129,39 @@ const SourceQuestions = (props, planet) => {
             reqProgres: 30
         },
         { // fase 12
-            question: 'Escreva * Estou bem * em Inglês',
-            resp: 'Im fine',
+            // question: 'Escreva * Estou bem * em Inglês',
+            // resp: 'Im fine',
 
-            hasOptions: false,
+            // hasOptions: false,
+            // reqProgres: 30
+
+            question: '* Estudo * em Inglês:',
+            resp: 'Study',
+
+
+            hasOptions: true,
+            op1: "School",
+            op2: "Study",
+            op3: "Run",
+            op4: "God",
             reqProgres: 30
 
         },
         { // fase 13
+            question: '* Estudo * em Inglês:',
+            resp: 'Study',
+
+
+            hasOptions: true,
+            op1: "School",
+            op2: "Study",
+            op3: "Run",
+            op4: "God",
+            reqProgres: 40
+        },
+        { // fase 14
             question: 'Escreva * Estou bem * em Inglês',
             resp: 'Im fine',
-
-            hasOptions: false,
-            reqProgres: 30
-        },
-            ,
-        { // fase 14
-            question: 'Escreva * Família * em Inglês',
-            resp: 'Family',
 
             hasOptions: false,
             reqProgres: 40
@@ -605,7 +620,9 @@ const SourceQuestions = (props, planet) => {
 
         ]  
     }
-    return (json[planet][props])
+    
+    
+    return (json[planet][props-1])
 };
 
 export default SourceQuestions

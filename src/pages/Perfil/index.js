@@ -102,7 +102,7 @@ const Perfil = (props) => {
                 <View style={styles.containerInfos}>
                     <View>
                         <TouchableOpacity style={{ top: size * -0.23, borderRadius: 3,justifyContent:'center',alignItems:'center' }} onPress={() => navegar.navigate('CamScreen')}>
-                            {imagePerfil != null? <Image style={{width:150,height:150,borderRadius:30}} source={{uri:imagePerfil}}/>:<FontAwesome5 name="user" size={100} color="#848484" />}
+                            {imagePerfil != null? <Image style={{width:150,height:150,borderRadius:300,borderColor:'#3841F2',borderWidth:2}} source={{uri:imagePerfil}}/>:<Image style={{width:150,height:150,borderRadius:30}} source={require('../assets/defaultImage.png')}/>}
                         </TouchableOpacity>
                         <Text style={styles.title}>Hellou, {usuario}!</Text>
                         <View style={styles.progressView}></View>

@@ -37,7 +37,7 @@ const Header = (props) => {
 const style = StyleSheet.create({
     container: {
         position:'absolute',
-        backgroundColor: '#000',
+        backgroundColor: '#0D0D0D',
         alignSelf: 'center',
         top:50,
         width: '90%',

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Dimensions, Platform, TouchableOpacity } from "react-native";
+import { View, Dimensions, Platform, TouchableOpacity,Image } from "react-native";
 import LottieView from "lottie-react-native";
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -16,16 +16,7 @@ const Neptune = (props) => {
   const navigate = useNavigation();
 
   useEffect(() => {
-    axios
-      .get("https://app-tc.herokuapp.com/alunos")
-      .then((res) => {
-        const data = res.data;
-        for (let i = 0; i < data.length; i++) {
-          setAlunos(data[i]);
-        }
-      })
-      .catch((err) => {});
-
+   
       AsyncStorage.getItem('@state').then((e) => {
         const data = JSON.parse(e);
         setStartedNow(data.startedNow);
@@ -40,12 +31,13 @@ const Neptune = (props) => {
 
   return (
     <View>
-      <LottieView
+      {/* <LottieView
         style={styles.animatedBackground}
         source={require("../assets/background.json")}
         loop={true}
         autoPlay
-      />
+      /> */}
+       <Image style={styles.animatedBackground} source={require('../assets/backgroundBi.png')}/>
 
       <Header planet="Earth" actualplanet="Neptune" oldplanet="Mars" />
 
@@ -69,7 +61,7 @@ const Neptune = (props) => {
         </TouchableOpacity>
       )}
 
-      {plataforma == "ios" ? (
+      {/* {plataforma == "ios" ? (
         <LottieView
           style={styles.IOSrocket}
           source={require("../assets/rocketPurple.json")}
@@ -83,7 +75,7 @@ const Neptune = (props) => {
           loop={true}
           autoPlay
         />
-      )}
+      )} */}
     </View>
   );
 };

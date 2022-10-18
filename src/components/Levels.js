@@ -56,7 +56,9 @@ const Levels = (props) => {
 
     useEffect(() => {
       resetParams(); 
-      const resp = SourceQuestions((props.route.params?.question)-1,props.route.params?.planet);
+     
+      const resp = SourceQuestions((props.route.params?.question)-0,props.route.params?.planet);
+    
       setResponseCorrect(resp.resp);
       setQuestion(resp.question);
       setOptions({op1:resp.op1, op2:resp.op2,op3:resp.op3,op4:resp.op4});
@@ -84,7 +86,7 @@ const Levels = (props) => {
   }
 
     const compareResp = (resp) => {
-      console.log(resp)
+    
         if(resp) {
             setAnswered(true);
             return resp == responseCorrect ? setIsCorrect(true) : setError();
