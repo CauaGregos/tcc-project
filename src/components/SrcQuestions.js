@@ -328,7 +328,7 @@ const SourceQuestions = (props, planet) => {
             resp: 'I am Hungry',
 
             hasOptions: false,
-            reqProgres: 100
+            reqProgres: 90
         },],
         'Mars':[
             { //fase 32

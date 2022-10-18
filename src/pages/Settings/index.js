@@ -13,7 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Settings = (props) => {
 
-    const navegar = useNavigation();
+    const navigate = useNavigation();
     const axios = require('axios');
 
     const [nome, setNome] = useState(null);
@@ -54,15 +54,16 @@ const Settings = (props) => {
      })
     }
     AsyncStorage.getItem('@Image').then((res) => { 
-        const info = JSON.parse(res);
+        try {
+            const info = JSON.parse(res);
         setImagePerfil(info.img)
-        
+        }catch(error){} 
      })
 }, []);
 
     
     const logout = () => {
-    navegar.dispatch(StackActions.replace('Splash'))
+    navigate.dispatch(StackActions.replace('Splash'))
     AsyncStorage.clear();
     }
 
@@ -71,12 +72,14 @@ const Settings = (props) => {
 
         <View style={styles.container}>
 
-
+      
             <Animatable.View animation="fadeInUp" style={styles.container}>
-
+            <TouchableOpacity style={{top: 30,right: "90.5%",position: "absolute" }} onPress={e=>navigate.goBack()}>
+            <FontAwesome5 name="caret-left" size={70} color="#fff" />
+            </TouchableOpacity>
                 <View style={styles.containerInfos}>
                     <View>
-                        <TouchableOpacity style={{ top: size * -0.05, borderRadius: 3,justifyContent:'center',alignItems:'center' }} onPress={() => navegar.navigate('CamScreen')}>
+                        <TouchableOpacity style={{ top: size * -0.05, borderRadius: 3,justifyContent:'center',alignItems:'center' }} onPress={() => navigate.navigate('CamScreen')}>
                             {imagePerfil != null? <Image style={{width:150,height:150,borderRadius:300}} source={{uri:imagePerfil}}/>:<Image style={{width:150,height:150,borderRadius:30}} source={require('../assets/defaultImage.png')}/>}
                         </TouchableOpacity>
                         <ScrollView> 

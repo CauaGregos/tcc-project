@@ -159,7 +159,7 @@ function Routes() {
         <Stack.Screen name="DailyGoal" component={DailyGoal} options={{headerShown: false}} />
         <Stack.Screen name="Singin" component={Singin} options={{headerShown: false}} />
         <Stack.Screen name="Register" component={Register} options={{headerShown: false}} />
-        <Stack.Screen name="Home" component={TabNav} options={{headerShown: false}} />
+        <Stack.Screen name="TabNav" component={TabNav} options={{headerShown: false}} />
         <Stack.Screen name="ForgotAcsses" component={ForgotAcsses} options={{headerShown: false}} />
         <Stack.Screen name="InfoForgot" component={InfoForgot} options={{headerShown: false}} />
         <Stack.Screen name="SelectLanguage"  component={SelectLanguage} options={{headerShown: false}} />

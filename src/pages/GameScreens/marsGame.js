@@ -14,6 +14,7 @@ import stylesAndroid from "./styleAndroid";
 import stylesIOS from "./styleIOS";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SourceQuestions from "../../components/SrcQuestions";
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const MarsGame = (props) => {
   const [alunos, setAlunos] = useState([]);
@@ -30,15 +31,9 @@ const MarsGame = (props) => {
 
 
 
-  const logout = () => {
-    setLogado(false);
-    navigate.navigate("Singin");
-  };
-
-
   // ver se a fase que chega como parametro ja foi completa
   const isCompleted =(parms) =>{
-    const resp = SourceQuestions((parms)-1,'Mars');
+    const resp = SourceQuestions(parms,'Mars');
     if (resp.reqProgres!==null && resp.reqProgres !== undefined) {
       const progresso = resp.reqProgres;
       
@@ -49,11 +44,24 @@ const MarsGame = (props) => {
     }
   }
 
+  const isLevelAtual = (parms) => {
+    const resp = SourceQuestions(parms,'Mars');
+   
+    if (resp.reqProgres!==null && resp.reqProgres !== undefined) {
+      const progresso = resp.reqProgres;
+      
+      if (progress == progresso){
+       
+      return true;
+      }
+      return false;
+    }
+    
+  };
+
+  
+
   const updateDate = async () =>  {
-    AsyncStorage.getItem('@state').then((e) => {
-      const data = JSON.parse(e);
-      setStartedNow(data.startedNow);
-    });
 
      AsyncStorage.getItem('@User').then((e) => {
       const data = JSON.parse(e);
@@ -69,10 +77,10 @@ const MarsGame = (props) => {
   
 // ao entrar na fase, fazer a req do nivel necessario
   const enter = (parms) => {
-    const resp = SourceQuestions((parms)-1,'Mars');
+    const resp = SourceQuestions(parms,'Mars');
     if (resp.reqProgres!==null && resp.reqProgres !== undefined) {
       const progresso = resp.reqProgres;
-     
+   
       if (progress == progresso){
       
       navigate.navigate('Levels',{question:parms,planet:'Mars'})
@@ -83,8 +91,17 @@ const MarsGame = (props) => {
   const Buttons = (parms) => {
     
     return (
-      <TouchableOpacity style={parms.style} onPress={e => enter(parms.level)}>
+      <TouchableOpacity style={parms.style}>
         <Image source={require("../assets/BotaoMarte.png")}></Image>
+      </TouchableOpacity>
+    )
+  }
+
+  const ButtonActual = (parms) => {
+    
+    return (
+      <TouchableOpacity style={parms.style} onPress={e => enter(parms.level)}>
+        <Image source={require("../assets/levelActual.png")}></Image>
       </TouchableOpacity>
     )
   }
@@ -98,41 +115,69 @@ const MarsGame = (props) => {
   }
 
   updateDate();
+  const renderOptions = (level,style,styleCheck) => {
+  
+    
+    if(isCompleted(level)){
+      return(<ButtonsCompleted style={styleCheck}/>);
+    } 
+
+    if(isLevelAtual(level)){
+      return (<ButtonActual style={style} level={level}/>);
+    }
+    else{
+      return (<Buttons style={style} level={level}/>);
+    }
+    
+  };
+
+  AsyncStorage.getItem('@state').then((e) => {
+    try{
+      const data = JSON.parse(e);
+  setStartedNow(data.startedNow!=null?data.startedNow:false);
+  }catch(e){}
+  });
   return (
     <View>
       {plataforma == "ios" ? (
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <Image
             source={require("../assets/marsGame.png")}
-            style={styles.IOSmarsGame}
+            style={styles.IOSearthGame}
           ></Image>
-            {!isCompleted(1) ? <Buttons style={stylesIOS.ButtonOne} level={1}/> : <ButtonsCompleted style={stylesIOS.ButtonOneCheck}/>}
-           {!isCompleted(4) ? <Buttons style={stylesIOS.ButtonTwo} level={4}/> : <ButtonsCompleted style={stylesIOS.ButtonTwoCheck}/>}
-           {!isCompleted(7) ? <Buttons style={stylesIOS.ButtonThree} level={7}/> : <ButtonsCompleted style={stylesIOS.ButtonThreeCheck}/>}
-           {!isCompleted(10) ? <Buttons style={stylesIOS.ButtonFour} level={10}/> : <ButtonsCompleted style={stylesIOS.ButtonFourCheck}/>}
-           {!isCompleted(13) ? <Buttons style={stylesIOS.ButtonFive} level={13}/> : <ButtonsCompleted style={stylesIOS.ButtonFiveCheck}/>}
-           {!isCompleted(16) ? <Buttons style={stylesIOS.ButtonSix} level={16}/> : <ButtonsCompleted style={stylesIOS.ButtonSixCheck}/>}
-           {!isCompleted(19) ? <Buttons style={stylesIOS.ButtonSeven} level={19}/> : <ButtonsCompleted style={stylesIOS.ButtonSevenCheck}/>}
-           {!isCompleted(22) ? <Buttons style={stylesIOS.ButtonEight} level={22}/> : <ButtonsCompleted style={stylesIOS.ButtonEightCheck}/>}
-           {!isCompleted(25) ? <Buttons style={stylesIOS.ButtonNine} level={25}/> : <ButtonsCompleted style={stylesIOS.ButtonNineCheck}/>}
-           {!isCompleted(28) ? <Buttons style={stylesIOS.ButtonTen} level={28}/> : <ButtonsCompleted style={stylesIOS.ButtonTenCheck}/>}
+          <TouchableOpacity style={{top: 30,right: "90.5%",position: "absolute" }} onPress={e=>navigate.goBack()}>
+          <FontAwesome5 name="caret-left" size={70} color="#fff" />
+          </TouchableOpacity>
+          {renderOptions(1,stylesIOS.ButtonOne,stylesIOS.ButtonOneCheck)}
+          {renderOptions(4,stylesIOS.ButtonTwo,stylesIOS.ButtonTwoCheck)}
+          {renderOptions(7,stylesIOS.ButtonThree,stylesIOS.ButtonThreeCheck)}
+          {renderOptions(10,stylesIOS.ButtonFour,stylesIOS.ButtonFourCheck)}
+          {renderOptions(13,stylesIOS.ButtonFive,stylesIOS.ButtonFiveCheck)}
+          {renderOptions(16,stylesIOS.ButtonSix,stylesIOS.ButtonSixCheck)}
+          {renderOptions(19,stylesIOS.ButtonSeven,stylesIOS.ButtonSevenCheck)}
+          {renderOptions(22,stylesIOS.ButtonEight,stylesIOS.ButtonEightCheck)}
+          {renderOptions(25,stylesIOS.ButtonNine,stylesIOS.ButtonNineCheck)}
+          {renderOptions(28,stylesIOS.ButtonTen,stylesIOS.ButtonTenCheck)}
         </ScrollView>
       ) : (
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false} >
           <Image
             source={require("../assets/marsGame.png")}
-            style={styles.ANDROIDmarsGame}
+            style={styles.ANDROIDearthGame}
           ></Image>
-            {!isCompleted(1) ? <Buttons style={stylesIOS.ButtonOne} level={1}/> : <ButtonsCompleted style={stylesIOS.ButtonOneCheck}/>}
-           {!isCompleted(4) ? <Buttons style={stylesIOS.ButtonTwo} level={4}/> : <ButtonsCompleted style={stylesIOS.ButtonTwoCheck}/>}
-           {!isCompleted(7) ? <Buttons style={stylesIOS.ButtonThree} level={7}/> : <ButtonsCompleted style={stylesIOS.ButtonThreeCheck}/>}
-           {!isCompleted(10) ? <Buttons style={stylesIOS.ButtonFour} level={10}/> : <ButtonsCompleted style={stylesIOS.ButtonFourCheck}/>}
-           {!isCompleted(13) ? <Buttons style={stylesIOS.ButtonFive} level={13}/> : <ButtonsCompleted style={stylesIOS.ButtonFiveCheck}/>}
-           {!isCompleted(16) ? <Buttons style={stylesIOS.ButtonSix} level={16}/> : <ButtonsCompleted style={stylesIOS.ButtonSixCheck}/>}
-           {!isCompleted(19) ? <Buttons style={stylesIOS.ButtonSeven} level={19}/> : <ButtonsCompleted style={stylesIOS.ButtonSevenCheck}/>}
-           {!isCompleted(22) ? <Buttons style={stylesIOS.ButtonEight} level={22}/> : <ButtonsCompleted style={stylesIOS.ButtonEightCheck}/>}
-           {!isCompleted(25) ? <Buttons style={stylesIOS.ButtonNine} level={25}/> : <ButtonsCompleted style={stylesIOS.ButtonNineCheck}/>}
-           {!isCompleted(28) ? <Buttons style={stylesIOS.ButtonTen} level={28}/> : <ButtonsCompleted style={stylesIOS.ButtonTenCheck}/>}
+          <TouchableOpacity style={{top: 30,right: "90.5%",position: "absolute" }} onPress={e=>navigate.goBack()}>
+          <FontAwesome5 name="caret-left" size={70} color="#fff" />
+          </TouchableOpacity>
+          {renderOptions(1,stylesAndroid.ButtonOne,stylesAndroid.ButtonOneCheck)}
+          {renderOptions(4,stylesAndroid.ButtonTwo,stylesAndroid.ButtonTwoCheck)}
+          {renderOptions(7,stylesAndroid.ButtonThree,stylesAndroid.ButtonThreeCheck)}
+          {renderOptions(10,stylesAndroid.ButtonFour,stylesAndroid.ButtonFourCheck)} 
+          {renderOptions(13,stylesAndroid.ButtonFive,stylesAndroid.ButtonFiveCheck)}
+          {renderOptions(16,stylesAndroid.ButtonSix,stylesAndroid.ButtonSixCheck)}
+          {renderOptions(19,stylesAndroid.ButtonSeven,stylesAndroid.ButtonSevenCheck)}
+          {renderOptions(22,stylesAndroid.ButtonEight,stylesAndroid.ButtonEightCheck)}
+          {renderOptions(25,stylesAndroid.ButtonNine,stylesAndroid.ButtonNineCheck)}
+          {renderOptions(28,stylesAndroid.ButtonTen,stylesAndroid.ButtonTenCheck)}
         </ScrollView>
       )}
     </View>

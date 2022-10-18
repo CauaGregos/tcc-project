@@ -6,30 +6,30 @@ import { useNavigation } from "@react-navigation/native";
 import Header from "../../components/Header";
 import styles from "./style";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
 const Mars = (props) => {
-  const [alunos, setAlunos] = useState([]);
   const axios = require("axios");
-  const [logado, setLogado] = useState([true]);
-  const width = Dimensions.get("screen").width;
   const plataforma = Platform.OS;
-  // logica de como 
   const [startedNow,setStartedNow] = useState(false);
   const navigacaoFase = useNavigation();
-  const navigate = useNavigation();
   const [email,setEmail] = useState('');
+  const [blocked,setBlocked] = useState(false);
 
   useEffect(() => {
       AsyncStorage.getItem('@state').then((e) => {
-        const data = JSON.parse(e);
-        setStartedNow(data.startedNow);
+        try{
+          const data = JSON.parse(e);
+      setStartedNow(data.startedNow!=null?data.startedNow:false);
+      }catch(e){}
       });
 
       AsyncStorage.getItem('@User').then((e) => {
         const data = JSON.parse(e);
         setEmail(data.email);
       });
+
+      
   }, []);
 
   const enterIPlanet = () => {
@@ -43,8 +43,20 @@ const Mars = (props) => {
     })
   };
 
+  axios.get("https://app-tc.herokuapp.com/getProgress/"+email+"/earth").then((res) => {
+      const data = res.data;
+      
+      if(data[0].progresso == 100){
+       setBlocked(false);
+      }
+      else setBlocked(true);
+    }).catch(err =>{});
+
   return (
     <View>
+      <TouchableOpacity style={{top: 30,right: "90.5%",position: "absolute" }} onPress={e=>navigacaoFase.goBack()}>
+      <FontAwesome5 name="caret-left" size={70} color="#fff" />
+      </TouchableOpacity>
       {/* <LottieView
         style={styles.animatedBackground}
         source={require("../assets/background.json")}
@@ -74,7 +86,10 @@ const Mars = (props) => {
         />
         </TouchableOpacity>
       )}
-
+     { blocked && <View style={{flex:1,position:'absolute',backgroundColor:'#5a5a5a50',width:'100%',height:'100%',zIndex:1}}>
+     <FontAwesome5 name="lock" style={{alignSelf:'center',top:'20%'}} size={70} color="#848484" />
+      </View>
+     }
       {/* {plataforma == "ios" ? (
         <LottieView
           style={styles.IOSrocket}

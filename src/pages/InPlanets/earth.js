@@ -25,22 +25,6 @@ const Earth = (props) => {
 
   const navigate = useNavigation();
  
-  useEffect(() => {
-    axios
-      .get("https://app-tc.herokuapp.com/alunos")
-      .then((res) => {
-        const data = res.data;
-        for (let i = 0; i < data.length; i++) {
-          setAlunos(data[i]);
-        }
-      })
-      .catch((err) => {});
-  }, []);
-
-  const logout = () => {
-    setLogado(false);
-    navigate.navigate("Singin");
-  };
 
   return (
     <View>

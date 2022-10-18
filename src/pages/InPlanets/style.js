@@ -4,7 +4,7 @@ const width = Dimensions.get('screen').width;
 const styles = StyleSheet.create({
     animatedBackground:{
         width: width,
-        scaleX:1.2,scaleY:1.2,
+     
         backgroundColor:'#241d28'
     },
     IOSearth:{

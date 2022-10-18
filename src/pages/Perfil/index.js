@@ -75,14 +75,18 @@ const Perfil = (props) => {
      })
     }
     AsyncStorage.getItem('@Image').then((res) => { 
-        const info = JSON.parse(res);
+        try {
+            const info = JSON.parse(res);
         setImagePerfil(info.img)
+        }catch(error){} 
         
      })
 
      AsyncStorage.getItem('@state').then((e) => {
-        const data = JSON.parse(e);
-        setStartedNow(data.startedNow);
+        try{
+            const data = JSON.parse(e);
+        setStartedNow(data.startedNow!=null?data.startedNow:false);
+        }catch(e){}
       });  
      
 }, []);

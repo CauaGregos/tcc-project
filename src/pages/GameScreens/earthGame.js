@@ -14,6 +14,8 @@ import stylesAndroid from "./styleAndroid";
 import stylesIOS from "./styleIOS";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SourceQuestions from "../../components/SrcQuestions";
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+
 
 const EarthGame = (props) => {
   const [alunos, setAlunos] = useState([]);
@@ -61,10 +63,6 @@ const EarthGame = (props) => {
   
 
   const updateDate = async () =>  {
-    AsyncStorage.getItem('@state').then((e) => {
-      const data = JSON.parse(e);
-      setStartedNow(data.startedNow);
-    });
 
      AsyncStorage.getItem('@User').then((e) => {
       const data = JSON.parse(e);
@@ -134,6 +132,13 @@ const EarthGame = (props) => {
     
   };
 
+  AsyncStorage.getItem('@state').then((e) => {
+    try{
+      const data = JSON.parse(e);
+  setStartedNow(data.startedNow!=null?data.startedNow:false);
+  }catch(e){}
+  });
+
   return (
     <View>
       {plataforma == "ios" ? (
@@ -142,6 +147,9 @@ const EarthGame = (props) => {
             source={require("../assets/earthGame.png")}
             style={styles.IOSearthGame}
           ></Image>
+          <TouchableOpacity style={{top: 30,right: "90.5%",position: "absolute" }} onPress={e=>navigate.goBack()}>
+          <FontAwesome5 name="caret-left" size={70} color="#fff" />
+          </TouchableOpacity>
           {renderOptions(1,stylesIOS.ButtonOne,stylesIOS.ButtonOneCheck)}
           {renderOptions(4,stylesIOS.ButtonTwo,stylesIOS.ButtonTwoCheck)}
           {renderOptions(7,stylesIOS.ButtonThree,stylesIOS.ButtonThreeCheck)}
@@ -159,6 +167,9 @@ const EarthGame = (props) => {
             source={require("../assets/earthGame.png")}
             style={styles.ANDROIDearthGame}
           ></Image>
+          <TouchableOpacity style={{top: 30,right: "90.5%",position: "absolute" }} onPress={e=>navigate.goBack()}>
+          <FontAwesome5 name="caret-left" size={70} color="#fff" />
+          </TouchableOpacity>
           {renderOptions(1,stylesAndroid.ButtonOne,stylesAndroid.ButtonOneCheck)}
           {renderOptions(4,stylesAndroid.ButtonTwo,stylesAndroid.ButtonTwoCheck)}
           {renderOptions(7,stylesAndroid.ButtonThree,stylesAndroid.ButtonThreeCheck)}

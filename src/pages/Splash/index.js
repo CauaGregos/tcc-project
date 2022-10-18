@@ -18,7 +18,7 @@ const Splash = () => {
 
   const checkLogin = async () => {
     const user = await AsyncStorage.getItem('@User');
-    user ? navegar.dispatch(StackActions.replace('Home',{user:user})): setanimStoped(true);
+    user ? navegar.dispatch(StackActions.replace('TabNav',{user:user})): setanimStoped(true);
   }
 
   const startedNow = async () => {
@@ -26,7 +26,7 @@ const Splash = () => {
       startedNow: true
     }
     await AsyncStorage.setItem('@state',JSON.stringify(json))
-    navegar.dispatch(StackActions.replace('Home'))
+    navegar.dispatch(StackActions.replace('TabNav'))
   }
 
   useEffect(() => {
