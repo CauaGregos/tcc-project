@@ -115,7 +115,7 @@ const MarsGame = (props) => {
   }
 
   updateDate();
-  const renderOptions = (level,style,styleCheck) => {
+  const renderOptions = (level,style,styleCheck,styleActual) => {
   
     
     if(isCompleted(level)){
@@ -123,7 +123,7 @@ const MarsGame = (props) => {
     } 
 
     if(isLevelAtual(level)){
-      return (<ButtonActual style={style} level={level}/>);
+      return (<ButtonActual style={styleActual} level={level}/>);
     }
     else{
       return (<Buttons style={style} level={level}/>);
@@ -168,16 +168,16 @@ const MarsGame = (props) => {
           <TouchableOpacity style={{top: 30,right: "90.5%",position: "absolute" }} onPress={e=>navigate.goBack()}>
           <FontAwesome5 name="caret-left" size={70} color="#fff" />
           </TouchableOpacity>
-          {renderOptions(1,stylesAndroid.ButtonOne,stylesAndroid.ButtonOneCheck)}
-          {renderOptions(4,stylesAndroid.ButtonTwo,stylesAndroid.ButtonTwoCheck)}
-          {renderOptions(7,stylesAndroid.ButtonThree,stylesAndroid.ButtonThreeCheck)}
-          {renderOptions(10,stylesAndroid.ButtonFour,stylesAndroid.ButtonFourCheck)} 
-          {renderOptions(13,stylesAndroid.ButtonFive,stylesAndroid.ButtonFiveCheck)}
-          {renderOptions(16,stylesAndroid.ButtonSix,stylesAndroid.ButtonSixCheck)}
-          {renderOptions(19,stylesAndroid.ButtonSeven,stylesAndroid.ButtonSevenCheck)}
-          {renderOptions(22,stylesAndroid.ButtonEight,stylesAndroid.ButtonEightCheck)}
-          {renderOptions(25,stylesAndroid.ButtonNine,stylesAndroid.ButtonNineCheck)}
-          {renderOptions(28,stylesAndroid.ButtonTen,stylesAndroid.ButtonTenCheck)}
+          {renderOptions(1,stylesAndroid.ButtonOne,stylesAndroid.ButtonOneCheck,stylesAndroid.ButtonOneActual)}
+          {renderOptions(4,stylesAndroid.ButtonTwo,stylesAndroid.ButtonTwoCheck,stylesAndroid.ButtonTwoActual)}
+          {renderOptions(7,stylesAndroid.ButtonThree,stylesAndroid.ButtonThreeCheck,stylesAndroid.ButtonThreeActual)}
+          {renderOptions(10,stylesAndroid.ButtonFour,stylesAndroid.ButtonFourCheck,stylesAndroid.ButtonFourActual)} 
+          {renderOptions(13,stylesAndroid.ButtonFive,stylesAndroid.ButtonFiveCheck,stylesAndroid.ButtonFiveActual)}
+          {renderOptions(16,stylesAndroid.ButtonSix,stylesAndroid.ButtonSixCheck,stylesAndroid.ButtonSixActual)}
+          {renderOptions(19,stylesAndroid.ButtonSeven,stylesAndroid.ButtonSevenCheck,stylesAndroid.ButtonSevenActual)}
+          {renderOptions(22,stylesAndroid.ButtonEight,stylesAndroid.ButtonEightCheck,stylesAndroid.ButtonEigthActual)}
+          {renderOptions(25,stylesAndroid.ButtonNine,stylesAndroid.ButtonNineCheck,stylesAndroid.ButtonNineActual)}
+          {renderOptions(28,stylesAndroid.ButtonTen,stylesAndroid.ButtonTenCheck,stylesAndroid.ButtonTenActual)}
         </ScrollView>
       )}
     </View>

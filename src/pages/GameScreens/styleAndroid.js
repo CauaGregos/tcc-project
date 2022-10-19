@@ -13,16 +13,28 @@ const stylesAndroid = StyleSheet.create({
   ButtonNine: { top: 713,right:"71%", width: 10, alignSelf: "center",position: "absolute"},
   ButtonTen: { top: 843,right:"56.5%", width: 10, alignSelf: "center" ,position: "absolute"},
 
-  ButtonOneCheck: {top: 60,right: "58.5%",width: 10,alignSelf: "center",position: "absolute" },
-  ButtonTwoCheck: {top: 190,right:"43.5%",width: 10, alignSelf: "center",position: "absolute"},
-  ButtonThreeCheck: {top: 190,right:"73.5%",width: 10, alignSelf: "center",position: "absolute"},
-  ButtonFourCheck: {top: 337,right:"58.5%",width: 10,alignSelf: "center",position: "absolute"},
-  ButtonFiveCheck: { top: 463,right:"43.5%", width: 10, alignSelf: "center" ,position: "absolute"},
-  ButtonSixCheck: { top: 463,right:"73.5%", width: 10, alignSelf: "center" ,position: "absolute"},
-  ButtonSevenCheck: { top: 588,right:"58.5%", width: 10, alignSelf: "center" ,position: "absolute"},
-  ButtonEightCheck: { top: 713,right:"43.5%", width: 10, alignSelf: "center" ,position: "absolute"},
-  ButtonNineCheck: { top: 713,right:"73.5%", width: 10, alignSelf: "center",position: "absolute"},
-  ButtonTenCheck: { top: 843,right:"58.5%", width: 10, alignSelf: "center" ,position: "absolute"},
+
+  ButtonOneCheck: {top: 90,right: "56.5%",width: 10,alignSelf: "center",position: "absolute" },
+  ButtonTwoCheck: {top: 213,right:"41.5%",width: 10, alignSelf: "center",position: "absolute"},
+  ButtonThreeCheck: {top: 213,right:"71%",width: 10, alignSelf: "center",position: "absolute"},
+  ButtonFourCheck: {top: 337,right:"56.5%",width: 10,alignSelf: "center",position: "absolute"},
+  ButtonFiveCheck: { top: 463,right:"41.5%", width: 10, alignSelf: "center" ,position: "absolute"},
+  ButtonSixCheck: { top: 463,right:"71%", width: 10, alignSelf: "center" ,position: "absolute"},
+  ButtonSevenCheck: { top: 588,right:"56.5%", width: 10, alignSelf: "center" ,position: "absolute"},
+  ButtonEightCheck: { top: 713,right:"41.5%", width: 10, alignSelf: "center" ,position: "absolute"},
+  ButtonNineCheck: { top: 713,right:"71%", width: 10, alignSelf: "center",position: "absolute"},
+  ButtonTenCheck: { top: 843,right:"56.5%", width: 10, alignSelf: "center" ,position: "absolute"},
+
+  ButtonOneActual: {top: 80,right: "59.5%",width: 10,alignSelf: "center",position: "absolute" },
+  ButtonTwoActual: {top: 203,right:"44.5%",width: 10, alignSelf: "center",position: "absolute"},
+  ButtonThreeActual: {top: 203,right:"74%",width: 10, alignSelf: "center",position: "absolute"},
+  ButtonFourActual: {top: 327,right:"59.5%",width: 10,alignSelf: "center",position: "absolute"},
+  ButtonFiveActual: { top: 453,right:"44.5%", width: 10, alignSelf: "center" ,position: "absolute"},
+  ButtonSixActual: { top: 453,right:"74%", width: 10, alignSelf: "center" ,position: "absolute"},
+  ButtonSevenActual: { top: 578,right:"59.5%", width: 10, alignSelf: "center" ,position: "absolute"},
+  ButtonEightActual: { top: 703,right:"44.5%", width: 10, alignSelf: "center" ,position: "absolute"},
+  ButtonNineActual: { top: 703,right:"74%", width: 10, alignSelf: "center",position: "absolute"},
+  ButtonTenActual: { top: 833,right:"59.5%", width: 10, alignSelf: "center" ,position: "absolute"},
 });
 
 

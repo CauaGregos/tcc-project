@@ -39,7 +39,7 @@ const Singin = () => {
             }
            
             if (res1.data[0].confirmado == 1){
-                navegar.dispatch(StackActions.replace('Home')) 
+                navegar.dispatch(StackActions.replace('TabNav')) 
                 setLogin('@User',JSON.stringify(jsonData))
             }
             else{
