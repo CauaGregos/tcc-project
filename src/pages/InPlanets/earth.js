@@ -3,27 +3,37 @@ import {
   View,
   Dimensions,
   Platform,
-  TouchableOpacity,Image
+  TouchableOpacity,Image,Text
 } from "react-native";
 import LottieView from "lottie-react-native";
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../../components/Header";
 import styles from "./style";
-
-
+import * as Animatable from 'react-native-animatable';
+import Notify from "../../components/Notify";
 const Earth = (props) => {
   const [alunos, setAlunos] = useState([]);
   const axios = require("axios");
   const [logado, setLogado] = useState([true]);
   const width = Dimensions.get("screen").width;
   const plataforma = Platform.OS;
-
+  const [notify,setNotify] = useState(true);
+  const [animation,setAnimation] = useState('fadeInUp');
   const navigacaoFase = useNavigation();
 
 
 
   const navigate = useNavigation();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTimeout(() => {
+        setNotify(false);
+      }, 2000);
+    }, 5000);
+    
+  },[])
  
 
   return (
@@ -35,7 +45,7 @@ const Earth = (props) => {
         autoPlay
       /> */}
       <Image style={styles.animatedBackground} source={require('../assets/backgroundBi.png')}/>
-
+      
       <Header planet="Mars" actualplanet="Earth" oldplanet="Neptune" />
 
       {plataforma == "ios" ? (
@@ -59,21 +69,8 @@ const Earth = (props) => {
         
       )}
 
-      {/* {plataforma == "ios" ? (
-        <LottieView
-          style={styles.IOSrocket}
-          source={require("../assets/rocketPurple.json")}
-          loop={true}
-          autoPlay
-        />
-      ) : (
-        <LottieView
-          style={styles.ANDROIDrocket}
-          source={require("../assets/rocketPurple.json")}
-          loop={true}
-          autoPlay
-        />
-      )} */}
+      {notify && <Notify mensage={'Olá viajante, tente focar ao maximo na sua missão, desative as notificações do seu aparelho. :)'}/>}
+  
     </View>
   );
 };
