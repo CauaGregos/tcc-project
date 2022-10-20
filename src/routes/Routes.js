@@ -30,6 +30,7 @@ import PerfilScreen from '../pages/Perfil';
 import Levels from '../components/Levels';
 import SplashBLevel from '../pages/SplashBLevel';
 import NavigationPlanets from '../pages/InPlanets/NavigationPlanets';
+import Perfil from '../pages/Perfil';
 
 // tipos de navigations
 const Stack = createNativeStackNavigator();
@@ -102,6 +103,17 @@ function TabNav(props) {
           }
         }} />
 
+      <Tab.Screen name="Progress" component={ProgressNav}
+              options={{
+                headerShown: false,
+                // Configuração dos icones que aparecem na tabBar
+                tabBarIcon: ({ color, size, focused }) => {
+                return focused ? <Image source={require('../pages/assets/IconProgressFocused.png')}/> : <Image source={require('../pages/assets/IconProgress.png')}/>
+                }
+              }} />
+
+
+
       <Tab.Screen name="Settings" component={SettingsNav} initialParams={{user:props.route.params?.user}}
         options={{
           headerShown: false,
@@ -122,7 +134,6 @@ function SettingsNav(props) {
  
   return (
   <Stack.Navigator>
-    <Stack.Screen name="PerfilScreen" initialParams={{user:props.route.params?.user}} component={PerfilScreen} options={{headerShown: false}} />
     <Stack.Screen name="SettingsScreen" initialParams={{user:props.route.params?.user}} component={Settings} options={{headerShown: false}} />
     <Stack.Screen name="CamScreen" component={CamScreen} options={{headerShown: false}} />
   </Stack.Navigator>
@@ -143,6 +154,16 @@ function PlanetsNav(props) {
     <Stack.Screen name="MarsGame" component={MarsGame} options={{headerShown: false}} />
     <Stack.Screen name="Levels" component={Levels} options={{headerShown: false}} />
     <Stack.Screen name="SplashBLevel" component={SplashBLevel} options={{headerShown: false}} />
+  </Stack.Navigator>
+    
+  );
+}
+
+function ProgressNav(props) {
+ 
+  return (
+  <Stack.Navigator>
+    <Stack.Screen name="PerfilScreen" initialParams={{user:props.route.params?.user}} component={Perfil} options={{headerShown: false}} />
   </Stack.Navigator>
     
   );

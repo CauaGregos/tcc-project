@@ -3,7 +3,7 @@ import { View, Dimensions, Platform, TouchableOpacity,Image,Text } from "react-n
 import LottieView from "lottie-react-native";
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-
+import Notify from "../../components/Notify";
 import styles from "./style";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
@@ -19,6 +19,7 @@ const NavigationPlanets = (props) => {
   const [email,setEmail] = useState('');
  const [index,setIndex] = useState(0);
   const [blocked,setBlocked] = useState(false);
+  const [notify,setNotify] = useState(true);
 
   let allplanets = [<Earth ANDROIDearth={styles.ANDROIDearth} IOSearth={styles.IOSearth}/>, 
   <Mars ANDROIDearth={styles.ANDROIDmars} IOSearth={styles.IOSmars}/>, <Neptune ANDROIDearth={styles.ANDROIDneptune} IOSearth={styles.IOSneptune}/> ]
@@ -50,6 +51,11 @@ const NavigationPlanets = (props) => {
       namePlanet[index] == 'mars'||namePlanet[index] == 'neptune' ?setBlocked(true):setBlocked(false);
      
       }
+      setTimeout(() => {
+        setTimeout(() => {
+          setNotify(false);
+        }, 2000);
+      }, 5000);
   }, [index]);
 
    { !startedNow && axios.get("https://app-tc.herokuapp.com/getProgress/"+email+"/"+namePlanet[index-1]).then((res) => {
@@ -91,6 +97,8 @@ const NavigationPlanets = (props) => {
       <FontAwesome5 name="lock" style={{alignSelf:'center',top:'20%'}} size={70} color="#848484" />
        </View>
       }
+      {notify && <Notify mensage={'Olá viajante, tente focar ao maximo na sua missão, desative as notificações do seu aparelho. :)'}/>}
+  
       
     </View>
   );

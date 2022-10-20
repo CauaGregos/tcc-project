@@ -30,7 +30,7 @@ const Notify = (props) => {
   return (   
     <Animatable.View animation={stop} style={{bottom:1600}}>
         <Animatable.Image animation={animation} style={{alignSelf:'flex-end',zIndex:3,left:30}} source={require('../pages/assets/robot.png')}/>
-        <Animatable.View animation={animation} style={{bottom:320,zIndex:3,backgroundColor:'#fff',width:250,borderRadius:13,borderBottomRightRadius:1}}>
+        <Animatable.View animation={animation} style={{bottom:320,zIndex:3,backgroundColor:'#fff',width:200,borderRadius:13,borderBottomRightRadius:1}}>
         <Text style={{fontSize:20,fontWeight:'bold'}} >{props.mensage}</Text>
         </Animatable.View>
         <View style={{position:'absolute',backgroundColor:'#000000ab',bottom:0,width:'100%',height:'250%',zIndex:1}}/>

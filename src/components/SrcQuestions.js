@@ -57,7 +57,7 @@ const SourceQuestions = (props, planet) => {
             reqProgres: 10
         },
         { // fase 6
-            question: 'Complete a frase em Inglês: \n + A) ~ Hi, How are you? \n B) _______, Thanks. And you? ',
+            question: 'Complete a frase em Inglês: \n A) ~ Hi, How are you? \n B) _______, Thanks. And you? ',
             resp: 'Im Fine',
 
 
