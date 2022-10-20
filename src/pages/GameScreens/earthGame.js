@@ -65,8 +65,10 @@ const EarthGame = (props) => {
   const updateDate = async () =>  {
 
      AsyncStorage.getItem('@User').then((e) => {
-      const data = JSON.parse(e);
+      try{
+        const data = JSON.parse(e);
       setEmail(data.email);
+    }catch(e){}
       
     });
      axios.get("https://app-tc.herokuapp.com/getProgress/"+email+"/earth").then((res) => {

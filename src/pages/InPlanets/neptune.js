@@ -25,8 +25,10 @@ const Neptune = (props) => {
       });
 
       AsyncStorage.getItem('@User').then((e) => {
-        const data = JSON.parse(e);
+        try{
+          const data = JSON.parse(e);
         setEmail(data.email);
+      }catch(e){}
       });
   }, []);
 

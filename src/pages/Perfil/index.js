@@ -44,7 +44,7 @@ const Perfil = (props) => {
            })
            .catch((err) => {});
     };
-    attData();
+
 
     // Vai pegar todas as informacoes do user antes de renderizar o componente
     useEffect(() => {
@@ -90,6 +90,18 @@ const Perfil = (props) => {
       });  
      
 }, []);
+
+            axios.get("https://app-tc.herokuapp.com/getProgress/"+email+"/earth").then((res) => {
+            const data = res.data;
+           setProgress(data[0].progresso);
+           })
+           .catch((err) => {});
+
+           axios.get("https://app-tc.herokuapp.com/getProgress/"+email+"/mars").then((res) => {
+            const data = res.data;
+           setProgressMars(data[0].progresso);
+           })
+           .catch((err) => {});
 
     
 

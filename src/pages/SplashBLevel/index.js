@@ -17,8 +17,10 @@ const SplashBLevel = (props) => {
 
 
   AsyncStorage.getItem('@User').then((e) => {
-    const data = JSON.parse(e);
+    try{
+      const data = JSON.parse(e);
     setEmail(data.email);
+  }catch(e){}
   });
 
 
@@ -28,7 +30,7 @@ const SplashBLevel = (props) => {
     if((props.route.params?.question-1)%3==0){
     
       axios.put('https://app-tc.herokuapp.com/upgradeProgress',{progress:10,email:email,planet:String(props.route.params?.planet).toLowerCase()}).then((res) => {}).catch((err) => {});
-      navigate.navigate(`${props.route.params?.planet}`);
+      navigate.navigate('NavigationPlanets');
       
     }else
     navigate.navigate('Levels',{question:props.route.params?.question,planet:props.route.params?.planet});

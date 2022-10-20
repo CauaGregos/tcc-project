@@ -8,10 +8,8 @@ import {
 import LottieView from "lottie-react-native";
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import Header from "../../components/Header";
-import styles from "./style";
 import * as Animatable from 'react-native-animatable';
-import Notify from "../../components/Notify";
+
 
 const Earth = (props) => {
   const [alunos, setAlunos] = useState([]);
@@ -24,36 +22,13 @@ const Earth = (props) => {
   const navigacaoFase = useNavigation();
 
 
-
-  const navigate = useNavigation();
-
-  useEffect(() => {
-    setTimeout(() => {
-      setTimeout(() => {
-        setNotify(false);
-      }, 2000);
-    }, 5000);
-    
-  },[])
- 
-
   return (
-    <View>
-      {/* <LottieView
-        style={styles.animatedBackground}
-        source={require("../assets/background.json")}
-        loop={true}
-        autoPlay
-      /> */}
-      <Image style={styles.animatedBackground} source={require('../assets/backgroundBi.png')}/>
-      
-      <Header planet="Mars" actualplanet="Earth" oldplanet="Neptune" />
-
+    <Animatable.View animation={'fadeInUp'}>
       {plataforma == "ios" ? (
         <TouchableOpacity onPress={() => navigacaoFase.navigate("EarthGame")} style={{bottom:"13%"}}>
           <LottieView
-          style={styles.IOSearth}
-          source={require("../assets/terra.json")}
+          style={props.IOSearth}
+          source={require("../pages/assets/terra.json")}
           loop={true}
           autoPlay
         />
@@ -61,18 +36,15 @@ const Earth = (props) => {
       ) : (
         <TouchableOpacity onPress={() => navigacaoFase.navigate("EarthGame")} style={{bottom:"10%"}}>
           <LottieView
-          style={styles.ANDROIDearth}
-          source={require("../assets/terra.json")}
+          style={props.ANDROIDearth}
+          source={require("../pages/assets/terra.json")}
           loop={true}
           autoPlay
         />
         </TouchableOpacity>
         
       )}
-
-      {notify && <Notify mensage={'Olá viajante, tente focar ao maximo na sua missão, desative as notificações do seu aparelho. :)'}/>}
-  
-    </View>
+    </Animatable.View>
   );
 };
 

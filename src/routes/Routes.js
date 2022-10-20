@@ -29,6 +29,7 @@ import SelectLanguage from '../pages/SelectLanguage';
 import PerfilScreen from '../pages/Perfil';
 import Levels from '../components/Levels';
 import SplashBLevel from '../pages/SplashBLevel';
+import NavigationPlanets from '../pages/InPlanets/NavigationPlanets';
 
 // tipos de navigations
 const Stack = createNativeStackNavigator();
@@ -134,6 +135,7 @@ function PlanetsNav(props) {
  
   return (
   <Stack.Navigator>
+    <Stack.Screen name="NavigationPlanets"  component={NavigationPlanets} options={{headerShown: false}} />
     <Stack.Screen name="Earth" initialParams={{planet: 'Mars'}} component={Earth} options={{headerShown: false}} />
     <Stack.Screen name="Mars" component={Mars} options={{headerShown: false}} />
     <Stack.Screen name="Neptune" component={Neptune} options={{headerShown: false}} />
