@@ -73,11 +73,11 @@ const NavigationPlanets = (props) => {
     const Header = () => {
         return(
         <View style={{position:'absolute',backgroundColor: '#0D0D0D',alignSelf: 'center',top:50,width: '90%',height: 50,borderRadius: 20,zIndex:2}}>
-            <TouchableOpacity onPress={() => setIndex(index-1)}>
-            <Image style={{left: 10,alignSelf: 'flex-start',top: "30%"}} source={require('../assets/buttonArrowleft.png')}></Image>
+            <TouchableOpacity style={{left: 10,alignSelf: 'flex-start',top: "20%"}}  onPress={() => setIndex(index-1)}>
+            <Image  source={require('../assets/buttonArrowleft.png')}></Image>
             </TouchableOpacity> 
-            <TouchableOpacity onPress={() => setIndex(index+1)}>
-            <Image style={{right: 10,alignSelf: 'flex-end',top: "-65%"}} source={require('../assets/buttonArrow.png')}></Image>
+            <TouchableOpacity style={{right: 10,alignSelf: 'flex-end',top: "-38%"}} onPress={() => setIndex(index+1)}>
+            <Image source={require('../assets/buttonArrow.png')}></Image>
             </TouchableOpacity> 
             <Text style={{ fontSize: 25,color: '#fff',alignSelf: 'center',top: "-100%",}}>{title[index]}</Text>
         </View>

@@ -133,7 +133,7 @@ const Perfil = (props) => {
                         </View>
                         <View style={{bottom:'20%'}}>
                         <Text style={styles.titleProgress}>Progresso</Text>
-                        <TouchableOpacity style={{bottom:10}} onPress={() => {navegar.navigate('SettingsScreen')}}>
+                        <TouchableOpacity style={{bottom:10}} onPress={() => {navegar.navigate('Settings')}}>
                             <FontAwesome5 name="cog" style={styles.titleSetting} size={29} color="#848484" />
                         </TouchableOpacity>
 

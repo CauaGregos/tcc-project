@@ -25,7 +25,7 @@ const Earth = (props) => {
   return (
     <Animatable.View animation={'fadeInUp'}>
       {plataforma == "ios" ? (
-        <TouchableOpacity onPress={() => navigacaoFase.navigate("EarthGame")} style={{bottom:"13%"}}>
+        <TouchableOpacity onPress={() => navigacaoFase.navigate("SplashRocket",{screen:'EarthGame'})} style={{bottom:"13%"}}>
           <LottieView
           style={props.IOSearth}
           source={require("../pages/assets/terra.json")}
@@ -34,7 +34,7 @@ const Earth = (props) => {
         />
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity onPress={() => navigacaoFase.navigate("EarthGame")} style={{bottom:"10%"}}>
+        <TouchableOpacity onPress={() => navigacaoFase.navigate("SplashRocket",{screen:'EarthGame'})} style={{bottom:"10%"}}>
           <LottieView
           style={props.ANDROIDearth}
           source={require("../pages/assets/terra.json")}
