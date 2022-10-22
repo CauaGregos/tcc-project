@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     ANDROIDearth:{
-        top: '-20%',
+        top: '-24%',
         width: '300%',
         alignSelf: 'center'
     },
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     ANDROIDmars:{
-        top: '-20%',
+        top: '-24%',
         width: '300%',
         alignSelf: 'center'
     },
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     ANDROIDneptune:{
-        top: '-20%',
+        top: '-24%',
         width: '300%',
         alignSelf: 'center'
     },
