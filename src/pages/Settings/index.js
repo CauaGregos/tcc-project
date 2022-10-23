@@ -8,7 +8,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import styles from './style';
 import { StackActions } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import stylePerfil from '../Perfil/style';
+import Notify from '../../components/Notify';
 // import sendEmail from '../../services/sendEmail';
 
 const Settings = (props) => {
@@ -22,6 +23,7 @@ const Settings = (props) => {
     const [usuario, setUsuario] = useState(null);
     const [password, setPassword] = useState(null);
     const [imagePerfil, setImagePerfil] = useState(null)
+    const [startedNow, setStartedNow] = useState(false);
     const size = Dimensions.get('window').height
     const userObj = props.route.params?.user ? JSON.parse(props.route.params?.user) : null
     
@@ -42,15 +44,17 @@ const Settings = (props) => {
         }).catch(err =>{Alert.alert("Ocorreu um problema ao buscar seus dados...")})
     }else{
     AsyncStorage.getItem('@User').then((res) => { 
-        const info = JSON.parse(res);
-        axios.get('https://app-tc.herokuapp.com/getAluno/'+info.email+'/'+info.password).then(res =>{
-           
-            setNome(res.data[0].nome)
-            setIdade(res.data[0].idade)
-            setEmail(res.data[0].email)
-            setUsuario(res.data[0].nickName)
-            setPassword(res.data[0].senha)
-        }).catch(err =>{Alert.alert("Ocorreu um problema ao buscar seus dados...")})
+        try {
+            const info = JSON.parse(res);
+            axios.get('https://app-tc.herokuapp.com/getAluno/' + info.email + '/' + info.password).then(res => {
+
+                setNome(res.data[0].nome)
+                setIdade(res.data[0].idade)
+                setEmail(res.data[0].email)
+                setUsuario(res.data[0].nickName)
+                setPassword(res.data[0].senha)
+            }).catch(err => { Alert.alert("Ocorreu um problema ao buscar seus dados...") })
+        } catch (error) {}
      })
     }
     AsyncStorage.getItem('@Image').then((res) => { 
@@ -59,6 +63,12 @@ const Settings = (props) => {
         setImagePerfil(info.img)
         }catch(error){} 
      })
+     AsyncStorage.getItem('@state').then((e) => {
+        try{
+            const data = JSON.parse(e);
+        setStartedNow(data.startedNow!=null?data.startedNow:false);
+        }catch(e){}
+      });  
 }, []);
 
     
@@ -77,6 +87,8 @@ const Settings = (props) => {
             <TouchableOpacity style={{top: 30,right: "90.5%",position: "absolute" }} onPress={e=>navigate.goBack()}>
             <FontAwesome5 name="caret-left" size={70} color="#fff" />
             </TouchableOpacity>
+            {
+                !startedNow ?
                 <View style={styles.containerInfos}>
                     <View>
                         <TouchableOpacity style={{ top: size * -0.05, borderRadius: 3,justifyContent:'center',alignItems:'center' }} onPress={() => navigate.navigate('CamScreen')}>
@@ -128,13 +140,69 @@ const Settings = (props) => {
                     <TouchableOpacity onPress={e=>logout()}>
                     <Text>Sair da conta?</Text>
                     </TouchableOpacity>
+                </View>:
+                
+                // if state are startedNow
+                <View style={styles.containerInfos}>
+                <View>
+                    <TouchableOpacity style={{ top: size * -0.05, borderRadius: 3,justifyContent:'center',alignItems:'center' }} onPress={() => navigate.navigate('CamScreen')}>
+                        {imagePerfil != null? <Image style={{width:150,height:150,borderRadius:300}} source={{uri:imagePerfil}}/>:<Image style={{width:150,height:150,borderRadius:30}} source={require('../assets/defaultImage.png')}/>}
+                    </TouchableOpacity>
+                    <View> 
+                     <ScrollView> 
+                            <Text style={styles.title}>Alterar Nome</Text>
+                            <TextInput
+                                style={styles.input}
+                                value={nome}
+                                onChangeText={text => setNome(text)}
+                                placeholder='XXX'
+                            />
+                            <Text style={styles.separetor}></Text>
+                             <Text style={styles.title2}>Alterar Email</Text>
+                            <TouchableOpacity>
+                            <TextInput
+                                editable={false}
+                                placeholder='XXX'
+                                value={email}
+                                style={styles.input}
+                                
+                            />
+                            </TouchableOpacity>
+                            <Text style={styles.separetor}></Text>
+                            <Text style={styles.title3}>Alterar nome de preferência</Text>
+                            <TextInput
+                                style={styles.input}
+                                value={usuario}
+                                onChangeText={text => setUsuario(text)}
+                                placeholder='XXX'
+                            />
+                            <Text style={styles.separetor}></Text>
+                             <Text style={styles.title4}>Alterar Senha</Text>
+                            <TouchableOpacity>
+                            <TextInput
+                                editable={false}
+                                passwordRules='number'
+                                placeholder='XXX'
+                                value={password}
+                                style={styles.input}
+                                secureTextEntry
+                            />
+                            </TouchableOpacity>
+                            <Text style={styles.separetor}></Text>
+                        
+                        </ScrollView>
+                    <View style={stylePerfil.description}>
+                        <Text style={{fontSize:20}}>Aqui você consegue ver todos os seus dados, deseja se cadastrar?</Text>
+                    </View>
+                    </View>
                 </View>
+                <TouchableOpacity style={{top:20}} onPress={e=>logout()}>
+                <Text style={{color:'#0b0fFF'}}>Criar uma conta</Text>
+                </TouchableOpacity>
+            </View>
+            }
             </Animatable.View>
-
-
-
-
-
+           
         </View>
     );
 }

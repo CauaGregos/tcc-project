@@ -32,6 +32,9 @@ import SplashBLevel from '../pages/SplashBLevel';
 import NavigationPlanets from '../pages/InPlanets/NavigationPlanets';
 import Perfil from '../pages/Perfil';
 import SplashRocket from '../pages/SplashRocket';
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
 
 // tipos de navigations
 const Stack = createNativeStackNavigator();
@@ -65,8 +68,10 @@ const jsonStyleIos = {
 
 
 export function whileTabBarVisible(route){
+  
   return(
     {
+      
       backgroundColor: plataforma == 'ios' ? jsonStyleIos.backgroundColor :jsonStyleAndroid.backgroundColor,
       borderTopWidth: plataforma == 'ios' ? jsonStyleIos.borderTopWidth :jsonStyleAndroid.borderTopWidth,
       borderRadius: plataforma == 'ios' ? jsonStyleIos.borderRadius :jsonStyleAndroid.borderRadius,
@@ -148,7 +153,7 @@ function PlanetsNav(props) {
   return (
   <Stack.Navigator>
     <Stack.Screen name="NavigationPlanets"  component={NavigationPlanets} options={{headerShown: false}} />
-    <Stack.Screen name="SplashRocket" initialParams={{screen: 'EarthGame'}} component={SplashRocket} options={{headerShown: false}} />
+    <Stack.Screen name="SplashRocket" component={SplashRocket} options={{headerShown: false}} />
     <Stack.Screen name="Earth" initialParams={{planet: 'Mars'}} component={Earth} options={{headerShown: false}} />
     <Stack.Screen name="Mars" component={Mars} options={{headerShown: false}} />
     <Stack.Screen name="Neptune" component={Neptune} options={{headerShown: false}} />

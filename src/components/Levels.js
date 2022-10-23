@@ -213,7 +213,7 @@ const Levels = (props) => {
         color: verifyTextColor,
         textAlign: 'center',
         top: 6
-      }}>Verify</Text></TouchableOpacity>
+      }}>Verificar</Text></TouchableOpacity>
         {
           isCorrect &&
           // o nome da props planet vai ser a fase que ele vai voltar quando finalizar as 3 questoes
