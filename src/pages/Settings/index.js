@@ -91,7 +91,7 @@ const Settings = (props) => {
                 !startedNow ?
                 <View style={styles.containerInfos}>
                     <View>
-                        <TouchableOpacity style={{ top: size * -0.05, borderRadius: 3,justifyContent:'center',alignItems:'center' }} onPress={() => navigate.navigate('CamScreen')}>
+                        <TouchableOpacity disabled={true} style={{ top: size * -0.05, borderRadius: 3,justifyContent:'center',alignItems:'center' }} onPress={() => navigate.navigate('CamScreen')}>
                             {imagePerfil != null? <Image style={{width:150,height:150,borderRadius:300}} source={{uri:imagePerfil}}/>:<Image style={{width:150,height:150,borderRadius:30}} source={require('../assets/defaultImage.png')}/>}
                         </TouchableOpacity>
                         <ScrollView> 
@@ -145,7 +145,7 @@ const Settings = (props) => {
                 // if state are startedNow
                 <View style={styles.containerInfos}>
                 <View>
-                    <TouchableOpacity style={{ top: size * -0.05, borderRadius: 3,justifyContent:'center',alignItems:'center' }} onPress={() => navigate.navigate('CamScreen')}>
+                    <TouchableOpacity disabled={true} style={{ top: size * -0.05, borderRadius: 3,justifyContent:'center',alignItems:'center' }} onPress={() => navigate.navigate('CamScreen')}>
                         {imagePerfil != null? <Image style={{width:150,height:150,borderRadius:300}} source={{uri:imagePerfil}}/>:<Image style={{width:150,height:150,borderRadius:30}} source={require('../assets/defaultImage.png')}/>}
                     </TouchableOpacity>
                     <View> 

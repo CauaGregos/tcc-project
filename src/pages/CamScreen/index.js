@@ -54,10 +54,7 @@ export default function Profile() {
       const data = await camReg.current.takePictureAsync();
       setCapturedPhoto(data.uri)
       setOpen(true)
-      let jsonData = {
-        img : data.uri
-    }
-    setLogin('@Image',JSON.stringify(jsonData));
+      
      }
   }
 
@@ -68,12 +65,11 @@ export default function Profile() {
   }
 
   function upload(){
-    const formdata = new FormData();
-      formdata.append('image',{
-        fileName : 'teste',
-        uri : capturedPhoto,
-      })
-      // axios.post('http://192.168.1.105:3000/uploadFile',formdata,headers)
+    let jsonData = {
+      img : capturedPhoto
+    }
+    setLogin('@Image',JSON.stringify(jsonData));
+     
   }
 
   // usando o imagePicker para pegar as fotos do album da pessoa
@@ -105,24 +101,26 @@ export default function Profile() {
   return (
     <View style={styles.container}>
       <Camera style={styles.camera} type={type} ref = {camReg}>
-          <TouchableOpacity
-            style={styles.flip}
-            onPress={toggleCameraType}>
-           <FontAwesome4Icon name="rotate-left" size={30} color="#fffa"/>
-          </TouchableOpacity>
+
+        {/* <View style={{position:'absolute',borderRadius:300,borderColor:'#FFF',borderWidth:3,width:350,height:350,alignSelf:'center',top:100}}/> */}
 
           <TouchableOpacity
-            style={styles.flip}
+            style={styles.uploadFile}
             onPress={takePictureFromAlbum}>
-            <FontAwesome name="image" size={30} color="#000000"/>
-      </TouchableOpacity>
-
+            <FontAwesome name="image" size={30} color="#FFF"/>
+        </TouchableOpacity>
       </Camera>
 
       <TouchableOpacity
             style={styles.button}
             onPress={takePicture}>
-            <FontAwesome name="camera" size={30} color="#000000"/>
+            {/* <FontAwesome name="circle" size={60} color="#FFF"/> */}
+            <View style={{borderRadius:300,backgroundColor:'#3841F2',borderColor:'#FFF',borderWidth:3,width:60,height:60}}/>
+      </TouchableOpacity>
+      <TouchableOpacity
+            style={styles.flip}
+            onPress={toggleCameraType}>
+           <FontAwesome4Icon name="rotate-left" size={35} color="#fffa"/>
       </TouchableOpacity>
       
     
@@ -132,11 +130,11 @@ export default function Profile() {
       transparent={false}
       visible={open}>
           <View style={{flex:1,justifyContent:'center',alignItems:'center',margin:20}}>
-            <TouchableOpacity style={{margin:10}} onPress={()=>setOpen(false)}>
+            <TouchableOpacity style={{margin:10,top:50,left:30}} onPress={()=>setOpen(false)}>
             <FontAwesome name="window-close" size={30} color="#FF0000"/>
             </TouchableOpacity>
-            <TouchableOpacity style={{margin:10}} onPress={()=>upload()}>
-            <FontAwesome name="check" size={30} color="#F00000"/>
+            <TouchableOpacity style={{margin:10,right:30}} onPress={()=>upload()}>
+            <FontAwesome name="check" size={30} color="#3fa836"/>
             </TouchableOpacity>
 
             <Image
@@ -171,12 +169,18 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    top:350,
+    top:'32%',
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent:'center',
   },
   flip: {
+    alignSelf: 'flex-start',
+    alignItems: 'flex-start',
+    bottom:'15%',
+    marginLeft:5
+  },
+  uploadFile: {
     alignSelf: 'flex-start',
     alignItems: 'flex-start',
     bottom:'-1%',

@@ -21,7 +21,8 @@ const NavigationPlanets = (props) => {
   const [notify,setNotify] = useState(true);
 
   let allplanets = [<Earth ANDROIDearth={styles.ANDROIDearth} IOSearth={styles.IOSearth}/>, 
-  <Mars ANDROIDearth={styles.ANDROIDmars} IOSearth={styles.IOSmars}/>, <Neptune ANDROIDearth={styles.ANDROIDneptune} IOSearth={styles.IOSneptune}/> ]
+  <Mars ANDROIDearth={styles.ANDROIDmars} IOSearth={styles.IOSmars}/>, 
+  <Neptune ANDROIDearth={styles.ANDROIDneptune} IOSearth={styles.IOSneptune}/> ]
   let namePlanet = ['earth', 'mars', 'neptune']
   let title = ['Earth', 'Mars', 'Neptune']
   const resetNavigate = () => {
