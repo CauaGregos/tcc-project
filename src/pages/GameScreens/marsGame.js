@@ -15,6 +15,7 @@ import stylesIOS from "./styleIOS";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SourceQuestions from "../../components/SrcQuestions";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import * as Animatable from 'react-native-animatable';
 
 const MarsGame = (props) => {
   const [alunos, setAlunos] = useState([]);
@@ -140,7 +141,7 @@ const MarsGame = (props) => {
   }catch(e){}
   });
   return (
-    <View>
+    <Animatable.View animation={'rubberBand'}>
       {plataforma == "ios" ? (
         <ScrollView showsVerticalScrollIndicator={false}>
           <Image
@@ -182,7 +183,7 @@ const MarsGame = (props) => {
           {renderOptions(28,stylesAndroid.ButtonTen,stylesAndroid.ButtonTenCheck,stylesAndroid.ButtonTenActual)}
         </ScrollView>
       )}
-    </View>
+    </Animatable.View>
   );
 };
 
