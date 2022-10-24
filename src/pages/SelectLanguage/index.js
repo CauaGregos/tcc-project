@@ -1,13 +1,10 @@
-import React, { useRef } from 'react';
-import {View, BackHandler, Dimensions,Touchable, Pressable,Text, Button, TouchableOpacity,Image,FlatList} from 'react-native';
-import LottieView from 'lottie-react-native';
-import { useState,useEffect } from 'react';
+import React from 'react';
+import {View, Dimensions,Text, TouchableOpacity,Image,FlatList} from 'react-native';
+import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 import styles from './style'
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
 
 

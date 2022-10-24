@@ -3,7 +3,6 @@ import { useRef, useState,useEffect } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View,Modal,Image } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome4Icon from 'react-native-vector-icons/FontAwesome';
-import * as MediaLibrary from 'expo-media-library';
 import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';

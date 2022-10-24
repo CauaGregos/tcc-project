@@ -1,7 +1,6 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity,TextInput,ScrollView, Alert,Image} from 'react-native';
+import {View, Text, TouchableOpacity,TextInput,ScrollView, Image} from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import {LinearGradient} from 'expo-linear-gradient';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import styles from './style';

@@ -1,10 +1,9 @@
-import React, { useRef } from 'react';
-import {View, BackHandler, Dimensions, Touchable, Pressable,Text, Button, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {View, Dimensions, TouchableOpacity} from 'react-native';
 import LottieView from 'lottie-react-native';
 import { useState,useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import styles from './style'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 

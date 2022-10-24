@@ -6,7 +6,6 @@ import Welcome from '../pages/Welcome';
 import Singin from '../pages/SignIn';
 import { StatusBar } from 'expo-status-bar';
 import Register from '../pages/Register';
-import Home from '../pages/Home';
 import WaitConfirm from '../pages/waitConfirm';
 import InfoForgot from '../pages/InfoForgot';
 import ForgotAcsses from '../pages/ForgotAcsses';
@@ -14,8 +13,6 @@ import SplashForgot from '../pages/SplashForgotAsses'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Settings from '../pages/Settings';
 // Familia de icones da lib vector icons
-import Icon from 'react-native-vector-icons/FontAwesome';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Splash from '../pages/Splash';
 import CamScreen from '../pages/CamScreen';
 import Earth from '../pages/InPlanets/earth';
@@ -26,7 +23,6 @@ import MarsGame from '../pages/GameScreens/marsGame';
 import DailyGoal from '../pages/DailyGoal';
 import Search from '../pages/Search';
 import SelectLanguage from '../pages/SelectLanguage';
-import PerfilScreen from '../pages/Perfil';
 import Levels from '../components/Levels';
 import SplashBLevel from '../pages/SplashBLevel';
 import NavigationPlanets from '../pages/InPlanets/NavigationPlanets';

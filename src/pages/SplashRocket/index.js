@@ -1,8 +1,8 @@
 import { useNavigation,StackActions } from '@react-navigation/native';
 import LottieView from 'lottie-react-native';
 import React, { useEffect, useRef, useState } from 'react';
-import { Animated, Dimensions, Easing,Image,Modal,TouchableOpacity, Text,Platform } from 'react-native';
-import { View, BackHandler } from 'react-native';
+import { Animated, Dimensions, Image } from 'react-native';
+import { View } from 'react-native';
 import styles from './style';
 
 

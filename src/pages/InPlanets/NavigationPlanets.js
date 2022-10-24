@@ -1,6 +1,5 @@
 import React from "react";
-import { View, Dimensions, Platform, TouchableOpacity,Image,Text } from "react-native";
-import LottieView from "lottie-react-native";
+import { View, Platform, TouchableOpacity,Image,Text } from "react-native";
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import Notify from "../../components/Notify";

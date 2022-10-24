@@ -1,7 +1,6 @@
 import React,{ useState } from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Alert,TextInput, ActivityIndicator} from 'react-native';
+import {View, Text, TouchableOpacity, Alert,TextInput, ActivityIndicator} from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import CheckBox from 'react-native-custom-checkbox';
 import { useNavigation } from '@react-navigation/native';
 import styles from './style';
 

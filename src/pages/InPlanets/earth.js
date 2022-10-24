@@ -3,14 +3,12 @@ import {
   View,
   Dimensions,
   Platform,
-  TouchableOpacity,Image,Text
-} from "react-native";
+  TouchableOpacity,Image} from "react-native";
 import LottieView from "lottie-react-native";
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../../components/Header";
 import styles from "./style";
-import * as Animatable from 'react-native-animatable';
 import Notify from "../../components/Notify";
 
 const Earth = (props) => {

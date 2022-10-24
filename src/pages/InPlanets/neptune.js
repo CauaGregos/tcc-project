@@ -1,8 +1,7 @@
 import React from "react";
-import { View, Dimensions, Platform, TouchableOpacity,Image } from "react-native";
+import { View, Platform, TouchableOpacity,Image } from "react-native";
 import LottieView from "lottie-react-native";
 import { useState, useEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
 import Header from "../../components/Header";
 import styles from "./style";
 import AsyncStorage from "@react-native-async-storage/async-storage";

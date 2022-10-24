@@ -1,5 +1,5 @@
-import React,{ useState,useEffect } from 'react';
-import {View,StyleSheet, BackHandler,Text, TouchableOpacity, Alert,TextInput, ActivityIndicator, Image, ImageBackgroundBase, ImageBackground} from 'react-native';
+import React,{ useState } from 'react';
+import {View,Text, TouchableOpacity, Alert,TextInput, ActivityIndicator, Image} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import CheckBox from 'react-native-custom-checkbox';
 import { useNavigation, StackActions } from '@react-navigation/native';

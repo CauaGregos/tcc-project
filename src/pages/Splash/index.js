@@ -1,11 +1,10 @@
 import { useNavigation,StackActions } from '@react-navigation/native';
 import LottieView from 'lottie-react-native';
 import React, { useEffect, useRef, useState } from 'react';
-import { Animated, Dimensions, Easing,Image,Modal,TouchableOpacity, Text,Platform } from 'react-native';
-import { View, BackHandler } from 'react-native';
+import { Animated, Dimensions, TouchableOpacity, Text } from 'react-native';
+import { View } from 'react-native';
 import styles from './style';
 import stylesModal from './styleModal';
-import Logo from '../assets/logo.png';
 import * as Animatable from 'react-native-animatable';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 

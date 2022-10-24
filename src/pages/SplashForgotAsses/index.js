@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import LottieView from "lottie-react-native";
 import React, { useRef } from "react";
-import { Animated, Dimensions } from "react-native";
+import { Animated } from "react-native";
 import { View } from "react-native";
 import styles from "./style";
 
