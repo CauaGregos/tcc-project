@@ -29,6 +29,9 @@ import NavigationPlanets from '../pages/InPlanets/NavigationPlanets';
 import Perfil from '../pages/Perfil';
 import SplashRocket from '../pages/SplashRocket';
 import { LogBox } from 'react-native';
+import Timer from '../pages/Timer/Timer'
+
+
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs();//Ignore all log notifications
 
@@ -111,6 +114,16 @@ function TabNav(props) {
                 // Configuração dos icones que aparecem na tabBar
                 tabBarIcon: ({ color, size, focused }) => {
                 return focused ? <Image source={require('../pages/assets/IconProgressFocused.png')}/> : <Image source={require('../pages/assets/IconProgress.png')}/>
+                }
+              }} />
+
+      
+      <Tab.Screen name="Timer" component={Timer}
+              options={{
+                headerShown: false,
+                // Configuração dos icones que aparecem na tabBar
+                tabBarIcon: ({ color, size, focused }) => {
+                return focused ? <Image source={require('../pages/assets/mail_IconLight.png')}/> : <Image source={require('../pages/assets/mail_Icon.png')}/>
                 }
               }} />
 
