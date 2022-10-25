@@ -140,7 +140,7 @@ const Levels = (props) => {
       isSelect ?
       
         <Animatable.View animation={'fadeInUp'} style= {styles.containerFade}>   
-        <Text style={styles.question}>{question+` ${option}`}</Text>
+        <Text style={styles.question}>{question}</Text>{/*` ${option}`*/}
               {options.op1 ? renderOptions(options.op1, 1, {
                 marginTop: 10,
                 top: 250,
@@ -239,7 +239,7 @@ const Levels = (props) => {
       </Animatable.View>
       :
         <View style= {styles.containerFade}>
-          <Text style={styles.question}>{question+` ${option}`}</Text>
+          <Text style={styles.question}>{question}</Text>
           <TextInput
         placeholder='Digite seu Email..'
         style={styles.input}
