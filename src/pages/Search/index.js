@@ -1,6 +1,5 @@
 import React from 'react';
-import {View, Dimensions,Text, TouchableOpacity} from 'react-native';
-import { useState } from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 import styles from './style'
@@ -8,20 +7,8 @@ import styles from './style'
 
 
 
-const Search = (props) => {
+const Search = () => {
 
-    const [alunos, setAlunos] = useState([]);
-    const axios = require('axios');
-    const [logado,setLogado] = useState([true]);
-    const width = Dimensions.get('screen').width;
-    const [test,setTest] = useState('');
-    const interInPlanet = (planet) => {
-       if(planet){
-         navigate.navigate(planet, {planet: toString(planet)});
-       } 
-    }
-
-    const navigate = useNavigation()
     const navegacaoSplash = useNavigation()
     
 

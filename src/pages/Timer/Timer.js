@@ -1,14 +1,32 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { useState } from "react";
-
+import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
+import { useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function app(){
 
-    const [seconds, setSeconds] = useState(0);
+    const [seconds, setSeconds] = useState(55);
     const [minutes, setMinutes] = useState(0);
     const [customInterval, setcustomInterval] = useState();
+    const [dailyGoal, setDailyGoal] = useState(0);
+
+    useEffect(() => {
+        AsyncStorage.getItem('@Timer').then(e=>{
+            const data = JSON.parse(e);
+            setDailyGoal(data.time)
+        })
+    }, []);
+
+   
+    
+    const checkTime = () =>{
+        if((minutes+1) == 1){
+            Alert.alert("Atingiu seu tempo")
+        }
+            
+        
+    }
 
     const startTimer = () => {
         setcustomInterval(
@@ -31,19 +49,23 @@ export default function app(){
     }
 
     const changeTimer = () => {
+      
       setSeconds((prevState) => {
         if(prevState + 1 == 60){
             setMinutes((prevState) => {
+                checkTime();
                 return prevState + 1;
             });
             return 0;
         }
         return prevState + 1;
       })
+     
     }
 
     return(
         <View style={styles.container}>
+            <Text>Sua meta diaria é de: {dailyGoal} {minutes}</Text>
             <Text style={styles.textTimer}>
                 {minutes < 10 ? '0' + minutes : minutes}
                  :

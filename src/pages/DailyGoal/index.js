@@ -5,26 +5,17 @@ import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 import styles from './style'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
 const DailyGoal = (props) => {
-
-    const [alunos, setAlunos] = useState([]);
-    const axios = require('axios');
-    const [logado,setLogado] = useState([true]);
-    const width = Dimensions.get('screen').width;
-    const [test,setTest] = useState('');
-    const interInPlanet = (planet) => {
-       if(planet){
-         navigate.navigate(planet, {planet: toString(planet)});
-       } 
-    }
-
-    const navigate = useNavigation()
+   
     const navegacaoSplash = useNavigation()
-    
+    const setDailyGoal = (time) =>{
+      const json = {time:time}
+      AsyncStorage.setItem('@Timer',JSON.stringify(json)).then(()=>{navegacaoSplash.navigate("Search")})
+    }
 
     return (
         
@@ -46,21 +37,21 @@ const DailyGoal = (props) => {
           
           <Animatable.View animation={"fadeInRight"} delay={500} style={styles.containerOptions}>
             <Text style={styles.headerText}> Escolha sua meta diária: </Text>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity onPress={e=>setDailyGoal(5)} style={styles.button}>
               <Text style={styles.buttonText}>Casual   5min / Dia</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity onPress={e=>setDailyGoal(10)} style={styles.button}>
               <Text style={styles.buttonText}>Regular   10min / Dia</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity onPress={e=>setDailyGoal(15)} style={styles.button}>
               <Text style={styles.buttonText}>Intensa   15min / Dia</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity onPress={e=>setDailyGoal(20)} style={styles.button}>
               <Text style={styles.buttonText}>Puxada   20min / Dia</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navegacaoSplash.navigate("Search")}  style={styles.buttonAceppt}>
+            {/* <TouchableOpacity onPress={() => navegacaoSplash.navigate("Search")}  style={styles.buttonAceppt}>
               <Text style={styles.buttonText}>{<FontAwesome name="angle-right" size={30} color="#3C3C3C"/>}</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
           </Animatable.View>
       </Animatable.View>
