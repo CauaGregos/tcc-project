@@ -3,8 +3,10 @@ import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import styles from "./Style";
 
-export default function app(){
+export default function Timer(){
 
     const [seconds, setSeconds] = useState(55);
     const [minutes, setMinutes] = useState(0);
@@ -18,11 +20,39 @@ export default function app(){
         })
     }, []);
 
+
+    const checkSaveTryhard = () => {
+        AsyncStorage.getItem('@Tryhard').then((res)=>{
+            let arrayReplace = [];
+            const obj = JSON.parse(res);
+            
+            if (obj){
+                const ultimoValor = obj.vitory[obj.vitory.length - 1]
+                obj.vitory.forEach(element => {
+                    arrayReplace.push(element)
+                });
+                arrayReplace.push(ultimoValor+1);
+                AsyncStorage.removeItem('@Tryhard').then(e=>{
+                    const data = {
+                        vitory:arrayReplace
+                    }
+                    AsyncStorage.setItem('@Tryhard',JSON.stringify(data))
+                })
+            }
+            else{
+                const json = {
+                    vitory:[1]
+                }
+                AsyncStorage.setItem('@Tryhard',JSON.stringify(json))
+            }
+        })
+    };
    
     
     const checkTime = () =>{
         if((minutes+1) == 1){
             Alert.alert("Atingiu seu tempo")
+            checkSaveTryhard();
         }
             
         
@@ -72,9 +102,9 @@ export default function app(){
                 {seconds < 10 ? '0' + seconds : seconds}
             </Text>
             <View style={styles.buttonContainer}>
-                <TouchableOpacity onPress={startTimer} style={styles.button}><Text style={styles.textButton}>Start</Text></TouchableOpacity>
-                <TouchableOpacity onPress={stopTimer} style={styles.button}><Text style={styles.textButton}>Stop</Text></TouchableOpacity>
-                <TouchableOpacity onPress={clearTimer} style={styles.button}><Text style={styles.textButton}>Clear</Text></TouchableOpacity>
+                <TouchableOpacity onPress={startTimer} style={styles.button}><FontAwesome name={'play'} color={'#FFF'} style={{alignSelf:'center',top:10}} size={20}/></TouchableOpacity>
+                <TouchableOpacity onPress={stopTimer} style={styles.button}><FontAwesome name={'stop'} color={'#FFF'} style={{alignSelf:'center',top:10}} size={20}/></TouchableOpacity>
+                <TouchableOpacity onPress={clearTimer} style={styles.button}><FontAwesome name={'rotate-left'} color={'#FFF'} style={{alignSelf:'center',top:10}} size={20}/></TouchableOpacity>
             </View>
             <StatusBar style="auto"></StatusBar>
         </View>
@@ -82,33 +112,3 @@ export default function app(){
 
 }
 
-const styles = StyleSheet.create({
-    textTimer: {
-       fontSize: 30,
-       textAlign: "center",
-       alignSelf: "center",
-    },
-    buttonContainer: {
-        width: "80%",
-        height: "20%",
-        flexDirection: "row",
-        justifyContent: "space-around",
-        marginTop: 20,
-        alignSelf: "center",
-    },
-    container:{
-        alignContent: "center",
-        top: 330,
-    },
-    button:{
-        backgroundColor: "#363636",
-        width: "20%",
-        borderRadius: 15,
-    },
-    textButton:{
-        color: "#fff",
-        textAlign: "center",
-        top: 10
-    }
-
-   })

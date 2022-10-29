@@ -29,13 +29,12 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         height: 15,
         width: "90%",
-        height: "10%",
+        height: "5%",
         alignSelf: 'center',
         backgroundColor:'#3841F2',
         borderRadius: 25,
-        bottom: 200,
-        flexWrap:'wrap',
-        justifyContent: 'center',
+        bottom: 180,
+        flexDirection:'row'
        
     },
     description:{
