@@ -15,9 +15,6 @@ import Settings from '../pages/Settings';
 // Familia de icones da lib vector icons
 import Splash from '../pages/Splash';
 import CamScreen from '../pages/CamScreen';
-import Earth from '../pages/InPlanets/earth';
-import Mars from '../pages/InPlanets/mars';
-import Neptune from '../pages/InPlanets/neptune';
 import EarthGame from '../pages/GameScreens/earthGame';
 import MarsGame from '../pages/GameScreens/marsGame';
 import DailyGoal from '../pages/DailyGoal';
@@ -163,9 +160,6 @@ function PlanetsNav(props) {
   <Stack.Navigator>
     <Stack.Screen name="NavigationPlanets"  component={NavigationPlanets} options={{headerShown: false}} />
     <Stack.Screen name="SplashRocket" component={SplashRocket} options={{headerShown: false}} />
-    <Stack.Screen name="Earth" initialParams={{planet: 'Mars'}} component={Earth} options={{headerShown: false}} />
-    <Stack.Screen name="Mars" component={Mars} options={{headerShown: false}} />
-    <Stack.Screen name="Neptune" component={Neptune} options={{headerShown: false}} />
     <Stack.Screen name="EarthGame" component={EarthGame} options={{headerShown: false}} />
     <Stack.Screen name="MarsGame" component={MarsGame} options={{headerShown: false}} />
     <Stack.Screen name="Levels" component={Levels} options={{headerShown: false}} />
