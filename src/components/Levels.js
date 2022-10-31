@@ -8,6 +8,7 @@ import SourceQuestions from './SrcQuestions';
 import * as Animatable from 'react-native-animatable';
 import { whileTabBarVisible } from '../routes/Routes';
 import { listenerCount } from 'events';
+import Notify from './Notify';
 
 const Levels = (props) => {
     const [response, setResponse] = useState('');
@@ -227,13 +228,19 @@ const Levels = (props) => {
         }
         {
             isInCorrect &&
-            <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:props.route.params?.planet})}}>
+            <><TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:props.route.params?.planet})}}>
+             
               <Animatable.Image
               animation={'fadeInUp'}
-                style={{width:size,height:220,top:size+218,position:'absolute'}}
+                style={{width:size,height:220,top:size+190,position:'absolute'}}
                 source={require('../pages/assets/robotRed.png')}
                 />
-            </TouchableWithoutFeedback>
+               
+            </TouchableWithoutFeedback> 
+            <View style={{backgroundColor:'#E79A95',borderRadius:10,padding:10,top:135,width:'100%',height:100,alignSelf:'center'}}>
+              <Text style={{color:'#FFF',fontSize:20,fontWeight:'bold'}}>A resposta correta é {<Text style={{color:'#aaeca4'}}>"{responseCorrect}"</Text>}.</Text>
+            </View>
+          </>
         }
        
       </Animatable.View>
@@ -262,13 +269,17 @@ const Levels = (props) => {
         }
         {
             isInCorrect &&
-            <TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:props.route.params?.planet})}}>
+           <><TouchableWithoutFeedback onPress={e => {navegate.navigate('SplashBLevel',{question:props.route.params?.question+1,planet:props.route.params?.planet})}}>
               <Animatable.Image
               animation={'fadeInUp'}
                 style={{width:size,height:220,top:size+218,position:'absolute'}}
                 source={require('../pages/assets/robotRed.png')}
                 />
             </TouchableWithoutFeedback>
+            <View style={{backgroundColor:'#E79A95',borderRadius:10,padding:10,bottom:100,width:'100%',height:100,alignSelf:'center'}}>
+             <Text style={{color:'#FFF',fontSize:20,fontWeight:'bold'}}>A resposta correta é {<Text style={{color:'#aaeca4'}}>"{responseCorrect}"</Text>}.</Text>
+           </View>
+           </>
         }
       </View>
     }

@@ -5,14 +5,17 @@ import { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import styles from "./Style";
+import NotifyConfetti from "../../components/NotifyConfetti";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Timer(){
 
-    const [seconds, setSeconds] = useState(55);
+    const [seconds, setSeconds] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [customInterval, setcustomInterval] = useState();
+    const [anim,setAnim] = useState(false);
     const [dailyGoal, setDailyGoal] = useState(0);
-
+    const navigate = useNavigation();
     useEffect(() => {
         AsyncStorage.getItem('@Timer').then(e=>{
             const data = JSON.parse(e);
@@ -50,9 +53,14 @@ export default function Timer(){
    
     
     const checkTime = () =>{
-        if((minutes+1) == 1){
-            Alert.alert("Atingiu seu tempo")
+        if((minutes+1) == dailyGoal){
+            // Alert.alert("Atingiu seu tempo")
+            navigate.navigate('Timer')
+            setAnim(true);
             checkSaveTryhard();
+            setTimeout(() => {
+                setAnim(false);
+            }, 7000)
         }
             
         
@@ -95,7 +103,6 @@ export default function Timer(){
 
     return(
         <View style={styles.container}>
-            <Text>Sua meta diaria é de: {dailyGoal} {minutes}</Text>
             <Text style={styles.textTimer}>
                 {minutes < 10 ? '0' + minutes : minutes}
                  :
@@ -106,8 +113,10 @@ export default function Timer(){
                 <TouchableOpacity onPress={stopTimer} style={styles.button}><FontAwesome name={'stop'} color={'#FFF'} style={{alignSelf:'center',top:10}} size={20}/></TouchableOpacity>
                 <TouchableOpacity onPress={clearTimer} style={styles.button}><FontAwesome name={'rotate-left'} color={'#FFF'} style={{alignSelf:'center',top:10}} size={20}/></TouchableOpacity>
             </View>
+            {anim && <NotifyConfetti mensage={'Parabéns, você bateu sua meta de conhecimento hoje!'}/>}
             <StatusBar style="auto"></StatusBar>
         </View>
+        
     )
 
 }

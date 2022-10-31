@@ -45,12 +45,12 @@ const plataforma = Platform.OS
 const jsonStyleAndroid = {
   backgroundColor: '#202020',
   borderTopWidth: 0,
-  borderRadius: 10,
+  borderRadius: 25,
   position: 'absolute',
   left: 10,
   right: 10,
-  bottom:'3%',
-  height:50
+  bottom:'2%',
+  height:80
 }
 
 const jsonStyleIos = {

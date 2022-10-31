@@ -129,34 +129,23 @@ const SourceQuestions = (props, planet) => {
             reqProgres: 30
         },
         { // fase 12
-            // question: 'Escreva * Estou bem * em Inglês',
-            // resp: 'Im fine',
+            question: 'Escreva * Estou bem * em Inglês',
+            resp: 'Im fine',
 
-            // hasOptions: false,
-            // reqProgres: 30
-
-            question: '* Estudo * em Inglês:',
-            resp: 'Study',
-
-
-            hasOptions: true,
-            op1: "School",
-            op2: "Study",
-            op3: "Run",
-            op4: "God",
+            hasOptions: false,
             reqProgres: 30
 
         },
         { // fase 13
-            question: '* Estudo * em Inglês:',
-            resp: 'Study',
+            question: '"Fazer" em inglê podemos dizer:',
+            resp: 'I do',
 
 
             hasOptions: true,
-            op1: "School",
-            op2: "Study",
-            op3: "Run",
-            op4: "God",
+            op1: "I do",
+            op2: "I was",
+            op3: "I did",
+            op4: "I Good",
             reqProgres: 40
         },
         { // fase 14

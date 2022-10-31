@@ -97,6 +97,7 @@ const Settings = (props) => {
                         <ScrollView> 
                             <Text style={styles.title}>Alterar Nome</Text>
                             <TextInput
+                                editable={false}
                                 style={styles.input}
                                 value={nome}
                                 onChangeText={text => setNome(text)}
@@ -116,6 +117,7 @@ const Settings = (props) => {
                             <Text style={styles.separetor}></Text>
                             <Text style={styles.title3}>Alterar nome de preferência</Text>
                             <TextInput
+                                editable={false}
                                 style={styles.input}
                                 value={usuario}
                                 onChangeText={text => setUsuario(text)}
@@ -123,7 +125,7 @@ const Settings = (props) => {
                             />
                             <Text style={styles.separetor}></Text>
                              <Text style={styles.title4}>Alterar Senha</Text>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={e=>navigate.navigate('ForgotAcsses')}>
                             <TextInput
                                 editable={false}
                                 passwordRules='number'
