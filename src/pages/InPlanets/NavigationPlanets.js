@@ -72,7 +72,7 @@ const NavigationPlanets = (props) => {
   }
     const Header = () => {
         return(
-        <View style={{position:'absolute',backgroundColor: '#0D0D0D',alignSelf: 'center',top:50,width: '90%',height: 50,borderRadius: 20,zIndex:2}}>
+        <View style={{position:'absolute',backgroundColor: '#222222',alignSelf: 'center',top:50,width: '90%',height: 50,borderRadius: 20,zIndex:2}}>
             <TouchableOpacity style={{left: 10,alignSelf: 'flex-start',top: "20%"}}  onPress={() => setIndex(index-1)}>
             <Image  source={require('../assets/buttonArrowleft.png')}></Image>
             </TouchableOpacity> 
