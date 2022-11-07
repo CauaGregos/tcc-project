@@ -29,7 +29,7 @@ const SplashBLevel = (props) => {
     if((props.route.params?.question-1)%3==0){
     
       axios.put('https://app-tc.herokuapp.com/upgradeProgress',{progress:10,email:email,planet:String(props.route.params?.planet).toLowerCase()}).then((res) => {}).catch((err) => {});
-      navigate.navigate('NavigationPlanets');
+      navigate.navigate('SplashRocket',{screen:props.route.params?.planet+"Game"})
       
     }else
     navigate.navigate('Levels',{question:props.route.params?.question,planet:props.route.params?.planet});

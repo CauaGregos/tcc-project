@@ -147,7 +147,7 @@ const MarsGame = (props) => {
             source={require("../assets/marsGame.png")}
             style={styles.IOSearthGame}
           ></Image>
-          <TouchableOpacity style={{top: 30,right: "90.5%",position: "absolute" }} onPress={e=>navigate.goBack()}>
+          <TouchableOpacity style={{top: 30,right: "90.5%",position: "absolute" }} onPress={e=>navigate.navigate('NavigationPlanets')}>
           <FontAwesome5 name="caret-left" size={70} color="#fff" />
           </TouchableOpacity>
           {renderOptions(1,stylesIOS.ButtonOne,stylesIOS.ButtonOneCheck)}
@@ -167,7 +167,7 @@ const MarsGame = (props) => {
             source={require("../assets/marsGame.png")}
             style={styles.ANDROIDearthGame}
           ></Image>
-          <TouchableOpacity style={{top: 30,right: "90.5%",position: "absolute" }} onPress={e=>navigate.goBack()}>
+          <TouchableOpacity style={{top: 30,right: "90.5%",position: "absolute" }} onPress={e=>navigate.navigate('NavigationPlanets')}>
           <FontAwesome5 name="caret-left" size={70} color="#fff" />
           </TouchableOpacity>
           {renderOptions(1,stylesAndroid.ButtonOne,stylesAndroid.ButtonOneCheck,stylesAndroid.ButtonOneActual)}

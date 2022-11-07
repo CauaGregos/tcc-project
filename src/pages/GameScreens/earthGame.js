@@ -5,7 +5,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import styles from "./style";
@@ -28,7 +28,6 @@ const EarthGame = (props) => {
   const plataforma = Platform.OS;
 
   const navigate = useNavigation();
-
 
 
   // ver se a fase que chega como parametro ja foi completa
@@ -148,7 +147,7 @@ const EarthGame = (props) => {
             source={require("../assets/earthGame.png")}
             style={styles.IOSearthGame}
           ></Image>
-          <TouchableOpacity style={{top: 30,right: "90.5%",position: "absolute" }} onPress={e=>navigate.goBack()}>
+          <TouchableOpacity style={{top: 30,right: "90.5%",position: "absolute" }} onPress={e=>navigate.navigate('NavigationPlanets')}>
           <FontAwesome5 name="caret-left" size={70} color="#fff" />
           </TouchableOpacity>
           {renderOptions(1,stylesIOS.ButtonOne,stylesIOS.ButtonOneCheck)}
@@ -168,7 +167,7 @@ const EarthGame = (props) => {
             source={require("../assets/earthGame.png")}
             style={styles.ANDROIDearthGame}
           ></Image>
-          <TouchableOpacity style={{top: 30,right: "90.5%",position: "absolute" }} onPress={e=>navigate.goBack()}>
+          <TouchableOpacity style={{top: 30,right: "90.5%",position: "absolute" }} onPress={e=>navigate.navigate('NavigationPlanets')}>
           <FontAwesome5 name="caret-left" size={70} color="#fff" />
           </TouchableOpacity>
           {renderOptions(1,stylesAndroid.ButtonOne,stylesAndroid.ButtonOneCheck)}
