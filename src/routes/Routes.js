@@ -120,7 +120,7 @@ function TabNav(props) {
                 headerShown: false,
                 // Configuração dos icones que aparecem na tabBar
                 tabBarIcon: ({ color, size, focused }) => {
-                return focused ? <Image source={require('../pages/assets/mail_IconLight.png')}/> : <Image source={require('../pages/assets/mail_Icon.png')}/>
+                return focused ? <Image source={require('../pages/assets/timeLigth.png')}/> : <Image source={require('../pages/assets/timeNotLigth.png')}/>
                 }
               }} />
 
