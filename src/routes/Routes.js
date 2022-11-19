@@ -3,7 +3,7 @@ import { Image, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Welcome from '../pages/Welcome';
-import Singin from '../pages/SignIn';
+import SignIn from '../pages/SignIn';
 import { StatusBar } from 'expo-status-bar';
 import Register from '../pages/Register';
 import WaitConfirm from '../pages/waitConfirm';
@@ -190,7 +190,7 @@ function Routes() {
         <Stack.Screen name="WaitConfirm" component={WaitConfirm} options={{headerShown: false}} />
         <Stack.Screen name="Search" component={Search} options={{headerShown: false}} />
         <Stack.Screen name="DailyGoal" component={DailyGoal} options={{headerShown: false}} />
-        <Stack.Screen name="Singin" component={Singin} options={{headerShown: false}} />
+        <Stack.Screen name="SignIn" component={SignIn} options={{headerShown: false}} />
         <Stack.Screen name="Register" component={Register} options={{headerShown: false}} />
         <Stack.Screen name="TabNav" component={TabNav} options={{headerShown: false}} />
         <Stack.Screen name="ForgotAcsses" component={ForgotAcsses} options={{headerShown: false}} />

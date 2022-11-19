@@ -106,7 +106,7 @@ const Register = () => {
                     </TouchableOpacity>
 
 
-                    <TouchableOpacity style={styles.buttonRegister} onPress={() => { navegar.navigate('Singin') }}>
+                    <TouchableOpacity style={styles.buttonRegister} onPress={() => { navegar.navigate('SignIn') }}>
                         <Text style={styles.registerText}>Já possui acesso clique aqui para fazer o login</Text>
                     </TouchableOpacity>
                 </ScrollView>

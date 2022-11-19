@@ -180,7 +180,7 @@ const Perfil = (props) => {
                     
                     <View style={styles.description}>
                         <Text style={{fontSize:20}}>Gostou da plataforma? Realize o login!</Text>
-                        <TouchableOpacity style={styles.button2} onPress={()=>{navegar.dispatch(StackActions.replace('Singin')); AsyncStorage.clear();}}>
+                        <TouchableOpacity style={styles.button2} onPress={()=>{navegar.dispatch(StackActions.replace('SignIn')); AsyncStorage.clear();}}>
                         <Text style={{color:'#FFF',fontSize:30}}> Fazer o login</Text>
                         </TouchableOpacity>
                     </View>

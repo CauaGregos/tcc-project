@@ -95,7 +95,7 @@ const Settings = (props) => {
                             {imagePerfil != null? <Image style={{width:150,height:150,borderRadius:300}} source={{uri:imagePerfil}}/>:<Image style={{width:150,height:150,borderRadius:30}} source={require('../assets/defaultImage.png')}/>}
                         </TouchableOpacity>
                         <ScrollView> 
-                            <Text style={styles.title}>Alterar Nome</Text>
+                            <Text style={styles.title}>Nome</Text>
                             <TextInput
                                 editable={false}
                                 style={styles.input}
@@ -104,7 +104,7 @@ const Settings = (props) => {
                                 placeholder='Digite seu nome completo..'
                             />
                             <Text style={styles.separetor}></Text>
-                             <Text style={styles.title2}>Alterar Email</Text>
+                             <Text style={styles.title2}>Email</Text>
                             <TouchableOpacity>
                             <TextInput
                                 editable={false}
@@ -115,7 +115,7 @@ const Settings = (props) => {
                             />
                             </TouchableOpacity>
                             <Text style={styles.separetor}></Text>
-                            <Text style={styles.title3}>Alterar nome de preferência</Text>
+                            <Text style={styles.title3}>Apelido</Text>
                             <TextInput
                                 editable={false}
                                 style={styles.input}

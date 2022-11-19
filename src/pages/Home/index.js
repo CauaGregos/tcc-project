@@ -50,7 +50,7 @@ const Home = (props) => {
 
       const logout = () =>{
         setLogado(false)
-        navigate.navigate('Singin')
+        navigate.navigate('SignIn')
       }
 
 

@@ -8,7 +8,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-const Singin = () => {
+const SignIn = () => {
     const axios = require('axios');
     const navegar = useNavigation();
     const [email, setEmail] = useState(""); 
@@ -106,4 +106,4 @@ const Singin = () => {
 
 
 
-export default Singin;
+export default SignIn;
